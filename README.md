@@ -1,4 +1,4 @@
-[README.md](https://github.com/user-attachments/files/29022767/README.md)
+[README.md](https://github.com/user-attachments/files/29022828/README.md)
 # 🎨 Parsa Studio
 ## Premium Custom Frontend Development & AI-Powered Cloud Architectures
 ### Swiss Editorial Minimalism • Insanely Optimized • VPN & Filter Resistant
