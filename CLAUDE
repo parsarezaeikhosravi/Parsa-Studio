@@ -1,0 +1,49 @@
+# CLAUDE.md - Parsa Studio Developer Profile & AI Instructions
+## Custom System Instincts, Preferences, and Guidelines for Parsa Rezaei Khosravi
+
+This document serves as the permanent system instruction file (`CLAUDE.md`) for all AI editors, terminals, and agents (such as Claude Code, Cursor, and ChatGPT) collaborating with **Parsa Rezaei Khosravi**.
+
+---
+
+## 👤 Developer Profile: Parsa Rezaei Khosravi
+*   **Name:** Parsa Rezaei Khosravi (پارسا رضائی خسروی)
+*   **Role:** Lead Frontend Architect & Cloud CRM Engineer
+*   **Brand Identity:** Parsa Studio (استودیو پارسا) - Shiraz, Iran
+*   **Design Philosophy:** Swiss Editorial Minimalism (مینی‌مالیسم تحریری سوئیسی) - high-contrast typography (Playfair Display / Georgia), creamy-bone white canvas (`#FAF6F0`), deep charcoal lines (`#111111`), and Royal Klein Blue accents (`#002FA7`).
+*   **Code Ethos:** Hand-coded, insanely optimized vanilla architectures (sub-0.4s load speed) with zero dependency on heavy templates or shifty WordPress plugins.
+
+---
+
+## 🛠️ Strict AI Behavior & Coding Rules (قوانین طلایی تعامل)
+
+### ۱. سبک برنامه‌نویسی کاملاً انسانی (Human-Like Code Style)
+*   Do not output generic, machine-like templates. All codes must look like they were written by a highly meticulous, elite human developer.
+*   Utilize modular CSS variables, semantic HTML5, clean vanilla ES6+ JS, and lightweight SVG graphics. No bloated WebGL or heavy libraries that fail under slow local connections.
+*   **Always output the FULL, complete code of the modified file inside a single code block. Do not use placeholders, omissions, or partial snippets, so the user can easily copy and overwrite the entire file.**
+
+### ۲. لحن کامنت‌های آموزشی فارسی (Senior Developer Teaching Style)
+*   All Farsi comments inside the code must be written from the perspective of Parsa himself, acting as a senior developer sharing knowledge with peers or junior developers.
+*   The tone must be authoritative, warm, professional, and mentoring:
+    *   *Bad:* `// این تابع ورود کاربر را چک می‌کند` (Generic bot translation)
+    *   *Good:* `// همکاران عزیز، این تابع فرآیند احراز هویت بدون رمز (OTP) بیمار را مدیریت می‌کند تا اصطکاک ورود به صفر برسد` (Parsa's signature style).
+
+### ۳. مدیریت و حفاظت از توکن‌ها (Token Conservation Rule)
+*   Do not create, rewrite, or edit files in the workspace until explicitly requested by the user. 
+*   All verbal discussions, explanations, and strategic brainstorming must be kept highly concise, precise, and compressed to prevent token exhaustion.
+
+### ۴. راست‌چین کردن متون و جدول‌های فارسی (RTL Punctuation & Alignment)
+*   All Persian text in chat responses must follow strict Right-To-Left (RTL) rules. Punctuation marks (dots, question marks) must be at the very end of sentences (to the left).
+*   All data tables must be rendered RTL (the first key column must be on the right-hand side).
+
+### ۵. مستندات کامیت گیت‌هاب (GitHub Commit Documentation)
+*   Only provide a **Commit Title** and **Description** when a file is actually modified or created in the workspace. Format them strictly to match premium open-source repository standards.
+
+---
+
+## 🌍 Iran Market Localization Rules (بومی‌سازی اختصاصی بازار ایران)
+
+When designing clinical pages, portals, or corporate sites for the Iranian market, always strictly integrate these 4 native principles:
+1.  **VPN-Resistant Lightweight Core (مقاومت در برابر فیلترینگ):** Avoid external Google Fonts, CDNs, or foreign assets that get blocked locally. All required resources must be self-sufficiently embedded (Root Isolation).
+2.  **SMS Blacklist Bypassing (عبور از لیست سیاه مخابرات):** Use transactional short pattern APIs for SMS. Fall back immediately to WhatsApp/Telegram APIs if delivery fails.
+3.  **Tiered Accommodation & Dynamic Navigation (کانسیرژ مسافرتی شیراز):** Always accommodate out-of-town car travelers with Bronze (Suite/Apartment with parking) to Gold (Boutique hotel) options and dynamic "Neshan/Balad/Google" map navigation.
+4.  **Value-Based Pricing over Direct IPG (شفافیت مالی و قرارداد):** For expensive projects, remove direct online payment gateways (IPG). Use a "Request Digital Contract & Consult" button instead to align with local tax laws.
