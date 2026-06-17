@@ -1,48 +1,32 @@
-# Official GitHub Actions workflow for deploying static content to GitHub Pages
-# For details, see: https://github.com/actions/starter-workflows/blob/main/pages/jekyll-gh-pages.yml
+# پایپ‌لاین انتشار خودکار روی گیت‌هاب پیجز با استفاده از برنچ gh-pages
+# همکاران گرامی، این پایپ‌لاین وظیفه دارد به جای دپلوی مستقیم گیت‌هاب اکشنز (که نیاز به دسترسی ادمین برای تغییر منبع دارد)،
+# فایل‌ها را روی برنچ اختصاصی gh-pages پوش کند تا بدون نیاز به دسترسی ادمین، دپلوی خودکار با موفقیت انجام شود.
 
-name: Deploy static content to Pages
+name: Deploy to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["main"] # تریگر شدن با هر کامیت روی برنچ اصلی
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write # برای ساخت و آپدیت برنچ gh-pages دسترسی نوشتن لازم داریم
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
-  # Single deploy job, since we are deploying handcrafted static HTML/CSS/JS files
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload Artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages Branch
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          # Upload entire repository (static HTML, CSS, JS files)
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: './' # دپلوی کل پروژه به صورت استاتیک
+          publish_branch: gh-pages # انتشار روی این برنچ
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
