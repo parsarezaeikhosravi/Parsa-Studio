@@ -1,12 +1,14 @@
+# همکاران گرامی، این پایپ‌لاین به طور خودکار آمار بازدید و کلون‌های مخزن را دریافت کرده
+# و نشان‌گرهای (Badges) زنده برای نمایش در README.md تولید می‌کند.
 name: Generate Traffic Badges
 
 on:
   schedule:
-    - cron: '0 0 * * *' # هر شب راس ساعت ۱۲ به وقت گرینویچ آمار را آپدیت می‌کند
-  workflow_dispatch: # امکان اجرای دستی ربات از تب Actions را فراهم می‌سازد
+    - cron: '0 0 * * *' # اجرای خودکار هر روز ساعت 00:00 UTC
+  workflow_dispatch: # امکان اجرای دستی از منوی Actions
 
 permissions:
-  contents: write
+  contents: write # برای پوش کردن فایل‌های SVG به برنچ traffic نیاز به دسترسی نوشتن داریم
 
 jobs:
   run:
@@ -19,4 +21,4 @@ jobs:
         uses: yi-Xu-0100/traffic-to-badge@v2
         with:
           my_token: ${{ secrets.GITHUB_TOKEN }}
-          static_list: "Parsa-Studio, dr-sara-radmanesh" # نام مخازن شما
+          static_list: "Parsa-Studio, DR-Sara-Radmanesh" # رعایت دقیق نام مخازن با حروف بزرگ
