@@ -1,0 +1,22 @@
+name: Generate Traffic Badges
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # هر شب راس ساعت ۱۲ به وقت گرینویچ آمار را آپدیت می‌کند
+  workflow_dispatch: # امکان اجرای دستی ربات از تب Actions را فراهم می‌سازد
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Generate Badges
+        uses: yi-Xu-0100/traffic-to-badge@v2
+        with:
+          my_token: ${{ secrets.GITHUB_TOKEN }}
+          static_list: "Parsa-Studio, dr-sara-radmanesh" # نام مخازن شما
