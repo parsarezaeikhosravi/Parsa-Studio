@@ -1,3 +1,4 @@
+[![Total Views](https://raw.githubusercontent.com/parsarezaeikhosravi/Parsa-Studio/traffic/total_views.svg)](https://github.com/parsarezaeikhosravi/Parsa-Studio/tree/traffic)  [![Total Clones](https://raw.githubusercontent.com/parsarezaeikhosravi/Parsa-Studio/traffic/total_clones.svg)](https://github.com/parsarezaeikhosravi/Parsa-Studio/tree/traffic)
 [README.md](https://github.com/user-attachments/files/29022828/README.md)
 # 🎨 Parsa Studio
 ## Premium Custom Frontend Development & AI-Powered Cloud Architectures
