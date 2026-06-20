@@ -116,10 +116,49 @@ section{padding:5.5rem 0;}
 .nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:transform .25s ease,opacity .25s ease;}
 
 /* ============================================================
+   ۰۳ب — کرسر اختصاصی
+   همکاران عزیز، این حلقه رو با جاوااسکریپت می‌سازیم نه HTML ثابت،
+   چون فقط روی دیوایس‌های با موس واقعی معنی داره؛ تشخیصش رو با
+   media query پوینتر هم دوباره تضمین می‌کنیم تا روی موبایل گم نشه.
+   ============================================================ */
+.cursor-ring{
+  position:fixed;left:0;top:0;width:20px;height:20px;border:1.5px solid var(--ink);
+  border-radius:50%;pointer-events:none;z-index:300;transform:translate(-50%,-50%);
+  transition:background-color .25s ease,border-color .25s ease,width .25s ease,height .25s ease;
+}
+.cursor-ring.is-active{background:var(--accent);border-color:var(--accent);width:32px;height:32px;}
+@media (pointer:coarse){.cursor-ring{display:none;}}
+
+/* ============================================================
+   ۰۳ج — انیمیشن خودترسیمی لوگو (Boot Animation)
+   ترتیب اجرا: اول مربع رنگی با یه پاپ الاستیک می‌شینه، بعد هر نوار
+   با stroke-dashoffset مثل یه خط‌کش خودش رو می‌کشه، در آخر رنگ سفیدش
+   پر می‌شه. عدد ۵۰۰ برای dasharray عمداً بزرگ‌تر از طول واقعی مسیره؛
+   این تکنیک استانداردِ ترسیم SVG با CSSه و نیازی به اندازه‌گیری دقیق نداره.
+   ============================================================ */
+.logo-bg{transform-box:fill-box;transform-origin:center;animation:logoPop .45s var(--ease-elastic) both;}
+.logo-path{
+  fill-opacity:0;stroke:#FAF6F0;stroke-width:4;stroke-linejoin:round;
+  stroke-dasharray:500;stroke-dashoffset:500;animation-fill-mode:forwards;
+}
+.logo-path-1{animation:logoDraw .7s ease forwards .25s, logoFillIn .4s ease forwards .95s;}
+.logo-path-2{animation:logoDraw .7s ease forwards .4s, logoFillIn .4s ease forwards 1.1s;}
+.logo-path-3{animation:logoDraw .7s ease forwards .55s, logoFillIn .4s ease forwards 1.25s;}
+@keyframes logoPop{from{transform:scale(0);}to{transform:scale(1);}}
+@keyframes logoDraw{to{stroke-dashoffset:0;}}
+@keyframes logoFillIn{to{fill-opacity:1;}}
+
+/* ============================================================
    ۰۴ — هرو: تز اصلی برند، شانه‌به‌شانه با ترمینال زنده اثبات سرعت
    ============================================================ */
 .hero{padding-top:4.5rem;}
 .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:3.5rem;align-items:center;}
+.terminal-wrap{position:relative;}
+.hero-decor{
+  position:absolute;top:-34px;right:-34px;width:180px;z-index:0;
+  opacity:.92;pointer-events:none;animation:floatY 6s ease-in-out infinite;
+}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
 .hero-cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.6rem;}
 
 .trust-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -130,8 +169,22 @@ section{padding:5.5rem 0;}
 }
 .trust-strip li:first-child{border-right:0;}
 
+/* ============================================================
+   ۰۴ب — ردیف آماره‌های شمارشی
+   اعداد همون ادعاهایی هستن که قبلاً تو ترمینال و پکیج‌ها زدیم؛
+   اینجا فقط با شمارش زنده، تأثیر بصری‌شون رو دو برابر می‌کنیم.
+   ============================================================ */
+.stats-row{padding:3.2rem 0;}
+.stats-row ul{display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
+.stats-row li{padding:0 2.6rem;text-align:center;border-right:1px solid var(--line);}
+.stats-row li:first-child{border-right:0;}
+.stat-value{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,3.2rem);color:var(--accent);direction:ltr;display:inline-block;}
+.stat-suffix{font-size:.5em;color:var(--ink-soft);margin-right:.15em;}
+.stat-label{display:block;margin-top:.4rem;font-size:.85rem;color:var(--ink-soft);}
+
 /* --- ویجت ۱: ترمینال پایش زنده‌ی سرعت --- */
 .terminal{
+  position:relative;z-index:1;
   background:var(--ink);color:var(--bg);border-radius:6px;
   padding:1.4rem 1.5rem;font-family:var(--font-mono);font-size:.85rem;
   min-height:230px;box-shadow:0 24px 48px -24px rgba(17,17,17,.45);
@@ -160,6 +213,7 @@ section{padding:5.5rem 0;}
    می‌ده؛ یعنی دقیقاً همون قدرتی که به مشتری می‌فروشیم.
    ============================================================ */
 .morph-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:center;}
+.morph-decor{width:min(220px,60%);margin-bottom:1.4rem;}
 .morph-controls{display:flex;flex-direction:column;gap:.8rem;}
 .morph-btn{
   text-align:right;padding:.9em 1.2em;border:1px solid var(--line);border-radius:var(--radius-sm);
@@ -202,13 +256,21 @@ section{padding:5.5rem 0;}
    ============================================================ */
 .packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:2.2rem;}
 .package-card{
+  position:relative;
   border:1px solid var(--line);border-radius:6px;padding:2.2rem 1.8rem;background:var(--bg);
   display:flex;flex-direction:column;
 }
 .package-card.is-featured{border-color:var(--accent);box-shadow:0 28px 56px -32px rgba(0,47,167,.35);}
 .package-audience{font-size:.82rem;color:var(--ink-soft);margin-bottom:1rem;}
+.package-icon{width:56px;height:56px;margin-bottom:.6rem;}
 .package-price{font-family:var(--font-display);font-size:1.5rem;margin:1.2rem 0;color:var(--accent);}
 .package-card .btn{margin-top:auto;justify-content:center;width:100%;}
+/* خط آبی که از لبه‌ی راست کارت موقع هاور رشد می‌کنه — اشاره‌ی ظریف به برند بدون شلوغ‌کاری */
+.package-card::before{
+  content:"";position:absolute;top:0;right:0;width:3px;height:0;background:var(--accent);
+  transition:height .35s ease;
+}
+.package-card:hover::before{height:100%;}
 
 /* ============================================================
    ۰۸ — ویجت ۳: سندباکس زنده‌ی فرانت‌اند
@@ -250,6 +312,8 @@ section{padding:5.5rem 0;}
 .site-footer{background:var(--ink);color:var(--bg);padding:5rem 0 2.5rem;}
 .site-footer h2{color:var(--bg);}
 .site-footer p{color:rgba(250,246,240,.65);}
+.footer-top{display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:center;}
+.footer-decor{width:150px;opacity:.95;}
 .contact-channels{display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0;}
 .contact-channels a{
   border:1px solid rgba(250,246,240,.3);padding:.85em 1.5em;border-radius:var(--radius-sm);
@@ -267,6 +331,19 @@ section{padding:5.5rem 0;}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
 .reveal.is-visible{opacity:1;transform:none;}
 
+/* خط جداکننده‌ی خودرسم — از سمت راست (هماهنگ با چیدمان RTL) رشد می‌کنه.
+   چون از همون کلاس reveal و observer موجود استفاده می‌کنه، نیازی به
+   جاوااسکریپت جدید نداره؛ فقط specificity بالاتر، رفتار transform رو عوض می‌کنه. */
+.section-divider{height:1px;background:var(--line);max-width:var(--container);margin:0 auto;}
+.section-divider.reveal{opacity:1;transform:scaleX(0);transform-origin:right center;transition:transform 1s cubic-bezier(.16,1,.3,1);}
+.section-divider.reveal.is-visible{transform:scaleX(1);}
+
+/* ریویل پرده‌ای H1 — مثل بالا رفتن یه پرده، نه فقط فید معمولی.
+   عمداً جدا از .reveal پایه نوشتمش چون H1 از همون transform استفاده
+   نمی‌کنه (clip-path)؛ تداخل با ترنسفورم translateY والدش نداره. */
+.clip-reveal{clip-path:inset(0 0 100% 0);transition:clip-path .9s cubic-bezier(.16,1,.3,1);}
+.reveal.is-visible .clip-reveal{clip-path:inset(0 0 0% 0);}
+
 /* ============================================================
    ۱۲ — واکنش‌گرایی موبایل (یک بلوک واحد برای نگهداری ساده‌تر)
    ============================================================ */
@@ -283,6 +360,11 @@ section{padding:5.5rem 0;}
   .packages-grid{grid-template-columns:1fr;}
   .trust-strip li{border-right:0;border-top:1px solid var(--line);width:100%;text-align:center;}
   .trust-strip li:first-child{border-top:0;}
+  .stats-row li{border-right:0;border-top:1px solid var(--line);width:100%;padding:1rem 0;}
+  .stats-row li:first-child{border-top:0;}
+  .footer-top{grid-template-columns:1fr;}
+  .footer-decor{width:110px;}
+  .hero-decor{width:110px;top:-20px;right:-12px;}
   section{padding:3.6rem 0;}
 }
 </style>
@@ -300,10 +382,10 @@ section{padding:5.5rem 0;}
            هر کدوم یه «نوار پرچمی» با گوشه‌های گرد محدبه/محدبه که با چرخش
            ظریفش، حس برند پارسا استودیو رو منتقل می‌کنه؛ بدون هیچ فایل تصویری. -->
       <svg class="brand-mark" viewBox="0 0 200 200" aria-hidden="true">
-        <rect width="200" height="200" rx="36" fill="#002FA7"/>
-        <path d="M40 48A22 22 0 0 1 62 26L170 26L170 70L62 70A22 22 0 0 0 40 48Z" fill="#FAF6F0"/>
-        <path d="M40 92A22 22 0 0 1 62 70L136 70L136 114L62 114A22 22 0 0 0 40 92Z" fill="#FAF6F0"/>
-        <path d="M40 136A22 22 0 0 1 62 114L86 114L86 158L62 158A22 22 0 0 1 40 136Z" fill="#FAF6F0"/>
+        <rect class="logo-bg" width="200" height="200" rx="36" fill="#002FA7"/>
+        <path class="logo-path logo-path-1" d="M40 48A22 22 0 0 1 62 26L170 26L170 70L62 70A22 22 0 0 0 40 48Z" fill="#FAF6F0"/>
+        <path class="logo-path logo-path-2" d="M40 92A22 22 0 0 1 62 70L136 70L136 114L62 114A22 22 0 0 0 40 92Z" fill="#FAF6F0"/>
+        <path class="logo-path logo-path-3" d="M40 136A22 22 0 0 1 62 114L86 114L86 158L62 158A22 22 0 0 1 40 136Z" fill="#FAF6F0"/>
       </svg>
       استودیو پارسا
     </a>
@@ -331,7 +413,7 @@ section{padding:5.5rem 0;}
     <div class="container hero-grid">
       <div class="reveal">
         <span class="eyebrow">معمار دیجیتال برندهای طراز اول</span>
-        <h1>فراتر از وردپرس؛ آن‌سوی انتظار.</h1>
+        <h1 class="clip-reveal">فراتر از وردپرس؛ آن‌سوی انتظار.</h1>
         <p>من پارسا رضائی خسروی هستم. در استودیو پارسا، وب‌سایت طراحی نمی‌کنیم؛ ما «دژهای دیجیتال» خلق می‌کنیم. سازه‌های فوق‌سریع (زیر ۰.۴ ثانیه)، ایمن در برابر فیلترینگ، و آغشته به هوش مصنوعی. این یک سایت نیست، یک بیانیه است.</p>
         <div class="hero-cta-row">
           <a href="#packages" class="btn btn-primary">ورود به استودیو پارسا</a>
@@ -340,10 +422,16 @@ section{padding:5.5rem 0;}
       </div>
 
       <!-- ویجت ۱: ترمینال زنده — اثبات تجربی به‌جای ادعای کلیشه‌ای -->
-      <div class="terminal reveal" id="perf-terminal" aria-label="ترمینال نمایش زنده‌ی نتایج سرعت">
-        <div class="terminal-bar"><span></span><span></span><span></span></div>
-        <div class="terminal-log" id="terminal-log"></div>
-        <span class="terminal-cursor" aria-hidden="true"></span>
+      <div class="terminal-wrap reveal">
+        <picture>
+          <source srcset="assets/images/circuit-sphere.webp" type="image/webp">
+          <img class="hero-decor" src="assets/images/circuit-sphere.png" alt="نماد بصری زیرساخت هوش مصنوعی استودیو پارسا" width="500" height="500" loading="eager" fetchpriority="high">
+        </picture>
+        <div class="terminal" id="perf-terminal" aria-label="ترمینال نمایش زنده‌ی نتایج سرعت">
+          <div class="terminal-bar"><span></span><span></span><span></span></div>
+          <div class="terminal-log" id="terminal-log"></div>
+          <span class="terminal-cursor" aria-hidden="true"></span>
+        </div>
       </div>
     </div>
   </section>
@@ -358,6 +446,28 @@ section{padding:5.5rem 0;}
     </div>
     <p class="terminal-caption" style="text-align:center;padding:0 1.6rem 1.2rem;">هر ۱ ثانیه تاخیر بیشتر، یعنی ریزش ۱۵ درصدی مراجعین مطب شما قبل از نوبت‌گیری.</p>
   </div>
+
+  <!-- ردیف آماره‌های شمارشی — همون اعداد ترمینال و پکیج CRM، این‌بار زنده می‌شمارن -->
+  <div class="stats-row reveal">
+    <div class="container">
+      <ul>
+        <li>
+          <span class="stat-value"><span class="stat-number" data-target="0.4" data-decimals="1">0</span><span class="stat-suffix">s</span></span>
+          <span class="stat-label">سرعت لود واقعی</span>
+        </li>
+        <li>
+          <span class="stat-value"><span class="stat-number" data-target="100" data-decimals="0">0</span><span class="stat-suffix">/100</span></span>
+          <span class="stat-label">امتیاز PageSpeed</span>
+        </li>
+        <li>
+          <span class="stat-value"><span class="stat-number" data-target="40" data-decimals="0">0</span><span class="stat-suffix">%</span></span>
+          <span class="stat-label">رشد نرخ نوبت‌دهی با CRM پارسا</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
 
   <!-- ============================================================
        متن اقناعی: مرز باریک بین «بودن» و «دیده شدن»
@@ -417,12 +527,18 @@ section{padding:5.5rem 0;}
     </div>
   </section>
 
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
   <!-- ============================================================
        ویجت ۲: کارت متامورف — اثبات عملی نداشتن قالب
        ============================================================ -->
   <section id="style-proof" class="reveal">
     <div class="container morph-wrap">
       <div>
+        <picture>
+          <source srcset="assets/images/glass-morph.webp" type="image/webp">
+          <img class="morph-decor" src="assets/images/glass-morph.png" alt="حجم سه‌بعدی چندلایه شیشه‌ای، نماد تغییر سبک بدون قالب" width="500" height="500" loading="lazy" decoding="async">
+        </picture>
         <span class="eyebrow">اثبات بدون قالب</span>
         <h2>یک کارت، سه هویت کاملاً متفاوت</h2>
         <p>این یک کارت محصول واقعی است. با کلیک روی هر دکمه، کل رنگ، فونت، مرز و انحنای کارت در صدم‌ثانیه عوض می‌شود — همان قدرتی که برای برند شما هم به‌کار می‌گیریم.</p>
@@ -442,6 +558,8 @@ section{padding:5.5rem 0;}
     </div>
   </section>
 
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
   <!-- ============================================================
        پکیج‌های لوکس آتلیه
        ============================================================ -->
@@ -452,6 +570,10 @@ section{padding:5.5rem 0;}
       <div class="packages-grid">
 
         <div class="package-card">
+          <picture>
+            <source srcset="assets/images/clipboard-signature.webp" type="image/webp">
+            <img class="package-icon" src="assets/images/clipboard-signature.png" alt="" width="500" height="500" loading="lazy" decoding="async">
+          </picture>
           <h3>امضای دیجیتال</h3>
           <p class="package-audience">پزشکان مستقل و وکلای تک‌ستاره</p>
           <p>فقط یک لندینگ پیج نیست؛ «رساله شخصیت» شماست. صفحه‌ای فوق‌سریع با طراحی انحصاری مینی‌مال سوئیسی که اتوریته شما را در نگاه اول قفل می‌کند.</p>
@@ -460,6 +582,10 @@ section{padding:5.5rem 0;}
         </div>
 
         <div class="package-card is-featured">
+          <picture>
+            <source srcset="assets/images/circuit-sphere.webp" type="image/webp">
+            <img class="package-icon" src="assets/images/circuit-sphere.png" alt="" width="500" height="500" loading="lazy" decoding="async">
+          </picture>
           <h3>قلعه حرفه‌ای</h3>
           <p class="package-audience">کلینیک‌های زیبایی تخصصی و موسسات حقوقی بزرگ</p>
           <p>دفتر مرکزی مجازی شما. ترکیب طراحی هنری مینی‌مال با سیستم مدیریت ابری مشتریان (CRM) که با هوش مصنوعی نرخ نوبت‌دهی را تا ۴۰٪ افزایش می‌دهد.</p>
@@ -479,6 +605,8 @@ section{padding:5.5rem 0;}
       </div>
     </div>
   </section>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
 
   <!-- ============================================================
        ویجت ۳: سندباکس زنده‌ی فرانت‌اند
@@ -514,6 +642,8 @@ section{padding:5.5rem 0;}
     </div>
   </section>
 
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
   <!-- ============================================================
        سوالات متداول
        ============================================================ -->
@@ -544,15 +674,23 @@ section{padding:5.5rem 0;}
      فوتر و تماس
      ============================================================ -->
 <footer id="contact" class="site-footer">
-  <div class="container">
-    <h2>بیانیه دیجیتال خودتان را امروز شروع کنید</h2>
-    <p>طبق اصل بومی‌سازی بازار ایران، سریع‌ترین مسیر ارتباطی برای شما کانال‌های زیر است؛ نه فرم‌های ایمیلی که گاهی در صف اسپم گم می‌شوند.</p>
-    <!-- پارسا جان، آیدی‌های واقعی تلگرام/واتساپ/ایمیل رو همین‌جا جای‌گزین کن -->
-    <div class="contact-channels">
-      <a href="https://t.me/parsastudio" target="_blank" rel="noopener">تلگرام</a>
-      <a href="https://wa.me/989000000000" target="_blank" rel="noopener">واتساپ</a>
-      <a href="mailto:hello@parsastudio.ir">hello@parsastudio.ir</a>
+  <div class="container footer-top">
+    <div>
+      <h2>بیانیه دیجیتال خودتان را امروز شروع کنید</h2>
+      <p>طبق اصل بومی‌سازی بازار ایران، سریع‌ترین مسیر ارتباطی برای شما کانال‌های زیر است؛ نه فرم‌های ایمیلی که گاهی در صف اسپم گم می‌شوند.</p>
+      <!-- پارسا جان، آیدی‌های واقعی تلگرام/واتساپ/ایمیل رو همین‌جا جای‌گزین کن -->
+      <div class="contact-channels">
+        <a href="https://t.me/parsastudio" target="_blank" rel="noopener">تلگرام</a>
+        <a href="https://wa.me/989000000000" target="_blank" rel="noopener">واتساپ</a>
+        <a href="mailto:hello@parsastudio.ir">hello@parsastudio.ir</a>
+      </div>
     </div>
+    <picture>
+      <source srcset="assets/images/clipboard-signature.webp" type="image/webp">
+      <img class="footer-decor" src="assets/images/clipboard-signature.png" alt="نماد بصری ثبت درخواست مشاوره و قرارداد دیجیتال" width="500" height="500" loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <div class="container">
     <div class="footer-bottom">
       <span>© ۲۰۲۶ استودیو پارسا — شیراز، ایران</span>
       <span>طراحی و توسعه: پارسا رضائی خسروی</span>
@@ -691,6 +829,62 @@ document.addEventListener('DOMContentLoaded', function () {
       input.addEventListener('input', render);
     });
     render();
+  })();
+
+  // --- ماژول ۶: کرسر اختصاصی (فقط روی دیوایس‌های دارای موس واقعی) ---
+  (function initCursor(){
+    if(!window.matchMedia('(pointer: fine)').matches) return;
+    var ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    ring.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ring);
+
+    document.addEventListener('mousemove', function(e){
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    });
+
+    var hoverSelector = 'a, button, summary, input[type="range"], input[type="color"], .morph-btn';
+    document.querySelectorAll(hoverSelector).forEach(function(el){
+      el.addEventListener('mouseenter', function(){ ring.classList.add('is-active'); });
+      el.addEventListener('mouseleave', function(){ ring.classList.remove('is-active'); });
+    });
+  })();
+
+  // --- ماژول ۷: شمارنده‌ی زنده‌ی آماره‌ها ---
+  (function initStatCounters(){
+    var numbers = document.querySelectorAll('.stat-number');
+    if(!numbers.length) return;
+
+    function animateOne(el){
+      var target = parseFloat(el.dataset.target);
+      var decimals = parseInt(el.dataset.decimals || '0', 10);
+      var duration = 1200;
+      var start = null;
+
+      function step(timestamp){
+        if(!start) start = timestamp;
+        var progress = Math.min((timestamp - start) / duration, 1);
+        var value = target * progress;
+        el.textContent = decimals ? value.toFixed(decimals) : Math.round(value);
+        if(progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    if('IntersectionObserver' in window){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            animateOne(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .6 });
+      numbers.forEach(function(el){ obs.observe(el); });
+    } else {
+      numbers.forEach(animateOne);
+    }
   })();
 
 });
