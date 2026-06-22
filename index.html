@@ -180,10 +180,50 @@ section{padding:5.5rem 0;}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:3.5rem;align-items:center;}
 .terminal-wrap{position:relative;}
 .hero-decor{
-  position:absolute;top:-34px;right:-34px;width:180px;z-index:0;
-  opacity:.95;pointer-events:none;animation:floatY 6s ease-in-out infinite;
+  position:absolute;top:-120px;right:-90px;width:380px;z-index:0;
+  opacity:.92;pointer-events:none;animation:floatY 7s ease-in-out infinite;
+  filter:drop-shadow(0 0 36px rgba(212,175,55,.25));
 }
 @keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+
+/* همکاران عزیز، چرخوندن یه دایره‌ی ساده هیچ تغییری به چشم نمی‌آورد —
+   برای این‌که چرخش حلقه‌های مدار واقعاً «دیده» بشه، باید الگوی
+   نقطه‌چین (stroke-dasharray) داشته باشن؛ این دقیقاً همون چیزیه که
+   تو نسخه‌ی قبلی فراموش شده بود. دو حلقه عمداً در دو جهت مخالف و
+   با سرعت متفاوت می‌چرخن تا حس «رادار/مدار زنده» القا شه. */
+.ring-a{transform-box:fill-box;transform-origin:center;animation:ringRotateCW 26s linear infinite;}
+.ring-b{transform-box:fill-box;transform-origin:center;animation:ringRotateCCW 18s linear infinite;}
+@keyframes ringRotateCW{to{transform:rotate(360deg);}}
+@keyframes ringRotateCCW{to{transform:rotate(-360deg);}}
+
+.core-pulse{transform-box:fill-box;transform-origin:center;animation:corePulse 3.6s ease-in-out infinite;}
+@keyframes corePulse{0%,100%{opacity:.7;transform:scale(1);}50%{opacity:1;transform:scale(1.08);}}
+
+/* ۰۴ج — درخشش ابری هرو و رد طلایی متحرک
+   این عناصر کاملاً تزئینی و aria-hidden هستن؛ فقط همون اتمسفر
+   دودی-طلایی اسکرین‌شات Stitch رو زیر متن هرو شبیه‌سازی می‌کنن،
+   بدون این‌که خوانایی متن یا کنتراست رو لمس کنن. */
+.hero-glow-blob{
+  position:absolute;top:8%;right:36%;width:480px;height:480px;z-index:0;
+  background:radial-gradient(circle,rgba(212,175,55,.16),transparent 70%);
+  filter:blur(10px);pointer-events:none;animation:blobBreathe 9s ease-in-out infinite;
+}
+@keyframes blobBreathe{0%,100%{transform:scale(1) translateY(0);opacity:.8;}50%{transform:scale(1.12) translateY(-12px);opacity:1;}}
+
+.hero-trail{
+  position:absolute;z-index:0;height:1px;width:60%;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.55),transparent);
+  pointer-events:none;mix-blend-mode:screen;
+}
+.hero-trail-1{top:18%;left:-20%;animation:trailSweep 7s ease-in-out infinite;}
+.hero-trail-2{top:64%;left:-30%;animation:trailSweep 9s ease-in-out 2.4s infinite;}
+@keyframes trailSweep{
+  0%{transform:translateX(0) rotate(-6deg);opacity:0;}
+  10%{opacity:1;}
+  90%{opacity:1;}
+  100%{transform:translateX(140%) rotate(-6deg);opacity:0;}
+}
+
 .hero-cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.6rem;}
 
 .trust-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-deep);}
@@ -498,6 +538,9 @@ section{padding:5.5rem 0;}
        ============================================================ -->
   <section class="hero">
     <canvas id="hero-rain" aria-hidden="true"></canvas>
+    <div class="hero-glow-blob" aria-hidden="true"></div>
+    <div class="hero-trail hero-trail-1" aria-hidden="true"></div>
+    <div class="hero-trail hero-trail-2" aria-hidden="true"></div>
     <div class="container hero-grid">
       <div class="reveal">
         <span class="eyebrow">معمار دیجیتال برندهای طراز اول</span>
@@ -518,9 +561,11 @@ section{padding:5.5rem 0;}
               <stop offset="100%" style="stop-color:var(--accent);stop-opacity:0"/>
             </radialGradient>
           </defs>
-          <circle cx="100" cy="100" r="92" fill="url(#circuitCore)"/>
-          <circle cx="100" cy="100" r="70" fill="none" style="stroke:var(--accent)" stroke-opacity=".35" stroke-width="1"/>
-          <circle cx="100" cy="100" r="46" fill="none" style="stroke:var(--accent)" stroke-opacity=".55" stroke-width="1"/>
+          <g class="core-pulse">
+            <circle cx="100" cy="100" r="92" fill="url(#circuitCore)"/>
+          </g>
+          <circle class="ring-a" cx="100" cy="100" r="70" fill="none" style="stroke:var(--accent)" stroke-opacity=".4" stroke-width="1.2" stroke-dasharray="4 9"/>
+          <circle class="ring-b" cx="100" cy="100" r="46" fill="none" style="stroke:var(--accent)" stroke-opacity=".6" stroke-width="1.2" stroke-dasharray="2 6"/>
           <g style="stroke:var(--accent)" stroke-width="1.4" stroke-linecap="round">
             <path d="M100 30V8M100 192v-22M30 100H8M192 100h-22M52 52L36 36M148 52l16-16M52 148l-16 16M148 148l16 16"/>
           </g>
@@ -556,8 +601,8 @@ section{padding:5.5rem 0;}
   <div class="stats-row reveal">
     <div class="container">
       <svg class="stats-decor" viewBox="0 0 200 200" aria-hidden="true">
-        <circle cx="100" cy="100" r="70" fill="none" style="stroke:var(--accent)" stroke-width="1"/>
-        <circle cx="100" cy="100" r="46" fill="none" style="stroke:var(--accent)" stroke-width="1"/>
+        <circle class="ring-a" cx="100" cy="100" r="70" fill="none" style="stroke:var(--accent)" stroke-width="1.2" stroke-dasharray="4 9"/>
+        <circle class="ring-b" cx="100" cy="100" r="46" fill="none" style="stroke:var(--accent)" stroke-width="1.2" stroke-dasharray="2 6"/>
         <circle cx="100" cy="100" r="6" style="fill:var(--accent)"/>
       </svg>
       <div class="stats-heading">
