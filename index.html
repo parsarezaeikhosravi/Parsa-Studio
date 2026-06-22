@@ -272,7 +272,9 @@ section{padding:5.5rem 0;}
 /* ============================================================
    ۰۵ — متن اقناعی «مرز باریک» و بخش سرویس‌ها/سئو
    ============================================================ */
-.prose-section .container{max-width:860px;}
+.prose-section .container{max-width:1000px;display:flex;align-items:center;gap:3rem;justify-content:space-between;}
+.prose-decor{width:min(160px,40%);flex-shrink:0;opacity:.9;animation:floatY 6.5s ease-in-out infinite;}
+@media (max-width:900px){.prose-section .container{flex-direction:column;}}
 
 .services-section h3{margin-top:2.6rem;border-right:3px solid var(--accent);padding-right:1rem;}
 .services-section h4{margin-top:1.4rem;}
@@ -293,6 +295,11 @@ section{padding:5.5rem 0;}
   color:var(--ink-soft);transition:border-color .2s ease,color .2s ease;
 }
 .morph-btn[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);}
+
+.morph-card .morph-icon{display:none;width:42px;height:42px;margin-bottom:.8rem;}
+.morph-card[data-style="luxe"] .morph-icon-luxe{display:block;}
+.morph-card[data-style="holo"] .morph-icon-holo{display:block;}
+.morph-card[data-style="retro"] .morph-icon-retro{display:block;}
 
 .morph-card{
   --mc-bg:linear-gradient(150deg,rgba(212,175,55,.12),rgba(212,175,55,.02));
@@ -357,6 +364,7 @@ section{padding:5.5rem 0;}
    پیام برند، آبی برای اکشن‌های کارکردی/فرمی.
    ============================================================ */
 .sandbox-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.sandbox-decor{width:min(220px,70%);margin-top:1.6rem;opacity:.95;animation:floatY 6s ease-in-out infinite;}
 .sandbox-controls label{display:block;font-size:.85rem;font-weight:700;margin-bottom:.4rem;}
 .sandbox-field{margin-bottom:1.4rem;}
 .sandbox-field input[type="range"]{width:100%;accent-color:var(--accent);}
@@ -428,7 +436,7 @@ section{padding:5.5rem 0;}
 .site-footer h2{color:var(--ink);}
 .site-footer p{color:var(--ink-soft);}
 .footer-top{display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:center;}
-.footer-decor{width:150px;opacity:.95;}
+.footer-decor{width:200px;opacity:.95;animation:floatY 7s ease-in-out infinite;filter:drop-shadow(0 0 28px rgba(212,175,55,.22));}
 .contact-channels{display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0 1.6rem;}
 .contact-channels a{
   border:1px solid var(--line);padding:.85em 1.5em;border-radius:var(--radius-sm);
@@ -633,9 +641,18 @@ section{padding:5.5rem 0;}
        ============================================================ -->
   <section id="chera" class="prose-section reveal">
     <div class="container">
-      <span class="eyebrow">چرا کد اختصاصی</span>
-      <h2>مرز باریک بین «بودن» و «دیده شدن» در اقتصاد دیجیتال</h2>
-      <p>دکتر یا وکیلی را تصور کنید که در گران‌ترین برج شهر مطب دارد، اما بیمارانش را با یک پراید مدل ۸۲ جابه‌جا می‌کند. این دقیقاً همان تضاد مخربی است که استفاده از قالب‌های آماده وردپرس برای برند شخصی شما ایجاد می‌کند. وردپرس یک سیستم عامل عمومی است؛ برای وبلاگ‌نویسان ساخته شده، نه برای نخبگانی که یک اشتباه در برندینگ دیجیتال، برایشان گران تمام می‌شود.</p>
+      <div>
+        <span class="eyebrow">چرا کد اختصاصی</span>
+        <h2>مرز باریک بین «بودن» و «دیده شدن» در اقتصاد دیجیتال</h2>
+        <p>دکتر یا وکیلی را تصور کنید که در گران‌ترین برج شهر مطب دارد، اما بیمارانش را با یک پراید مدل ۸۲ جابه‌جا می‌کند. این دقیقاً همان تضاد مخربی است که استفاده از قالب‌های آماده وردپرس برای برند شخصی شما ایجاد می‌کند. وردپرس یک سیستم عامل عمومی است؛ برای وبلاگ‌نویسان ساخته شده، نه برای نخبگانی که یک اشتباه در برندینگ دیجیتال، برایشان گران تمام می‌شود.</p>
+      </div>
+      <svg class="prose-decor" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M50 8v62" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M18 26h64" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M18 26l-11 27h22Z" fill="none" style="stroke:var(--accent)" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M82 26l9 18h-18Z" fill="none" style="stroke:var(--accent)" stroke-opacity=".5" stroke-width="1.6" stroke-linejoin="round"/>
+        <rect x="38" y="70" width="24" height="9" rx="2" style="fill:var(--accent)"/>
+      </svg>
     </div>
   </section>
 
@@ -719,6 +736,18 @@ section{padding:5.5rem 0;}
 
       <div class="morph-card" id="morph-card" data-style="luxe">
         <span class="morph-tag">نمونه محصول</span>
+        <svg class="morph-icon morph-icon-luxe" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M8 14 20 4 32 14 20 36Z" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M8 14h24M14 14 20 36M26 14 20 36" style="stroke:var(--accent)" stroke-width="1.1" stroke-opacity=".6"/>
+        </svg>
+        <svg class="morph-icon morph-icon-holo" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M20 6 34 32H6Z" fill="none" style="stroke:var(--mc-accent)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M20 6v26M11 32l9-26M29 32l-9-26" style="stroke:var(--mc-accent)" stroke-width="1" stroke-opacity=".5"/>
+        </svg>
+        <svg class="morph-icon morph-icon-retro" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="4" y="8" width="32" height="24" rx="2" fill="none" style="stroke:var(--mc-accent)" stroke-width="2"/>
+          <path d="M10 16l6 4-6 4M20 24h10" style="stroke:var(--mc-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
         <h3>دژ دیجیتال شما</h3>
         <p>یک سازه‌ی فرانت‌اند فوق‌سریع، طراحی‌شده برای اعتبار، نه برای شباهت به بقیه.</p>
         <span class="morph-cta">مشاهده جزئیات</span>
@@ -793,6 +822,15 @@ section{padding:5.5rem 0;}
         <span class="eyebrow">حس کنید، نه فقط بخوانید</span>
         <h2>دکمه‌ی زیر، دست خودتان است</h2>
         <p>رنگ، اندازه فونت و انحنای گوشه را تغییر دهید و ببینید کد CSS واقعی همین لحظه چطور زنده می‌شود — بدون هیچ جادویی، فقط فرانت‌اند خالص.</p>
+        <svg class="sandbox-decor" viewBox="0 0 120 90" aria-hidden="true">
+          <rect x="4" y="4" width="112" height="82" rx="8" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+          <circle cx="16" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/>
+          <circle cx="26" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/>
+          <circle cx="36" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/>
+          <path d="M16 36l14 8-14 8M40 52h20" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="70" y="34" width="34" height="28" rx="4" style="fill:var(--accent)" opacity=".12"/>
+          <rect x="70" y="34" width="34" height="28" rx="4" fill="none" style="stroke:var(--accent-cool)" stroke-width="1.6"/>
+        </svg>
       </div>
 
       <div>
@@ -883,7 +921,7 @@ section{padding:5.5rem 0;}
 <!-- ============================================================
      فوتر و تماس
      ============================================================ -->
-<footer id="contact" class="site-footer">
+<footer id="contact" class="site-footer reveal">
   <div class="container footer-top">
     <div>
       <h2>بیانیه دیجیتال خودتان را امروز شروع کنید</h2>
