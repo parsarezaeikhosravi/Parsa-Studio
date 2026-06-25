@@ -1,10 +1,3 @@
-باشه، چشم. من همه‌ی اصلاحات UI/UX رو یکجا روی فایل `index 8.html` اعمال کردم و یک فایل کامل و آماده‌ی کپی‌پیست تحویلت می‌دم. 
-
----
-
-## 📦 فایل کامل index.html (با تمام اصلاحات)
-
-```html
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
@@ -17,7 +10,7 @@
 
 <style>
 /* ============================================================
-   ۰۱ — ریشه‌های طراحی (Design Tokens) — نسخه‌ی «دژ طلایی»
+   ۰۱ — ریشه‌های طراحی (Design Tokens)
    ============================================================ */
 :root{
   --bg:#0c0c0c;
@@ -59,7 +52,7 @@
   --ease-elastic:cubic-bezier(.68,-0.55,.27,1.55);
 }
 
-/* ۰۱ب — تم روشن (اختیاری) */
+/* ۰۱ب — تم روشن */
 html[data-theme="light"]{
   --bg:#FAF7F1;
   --bg-deep:#F0EAE0;
@@ -75,12 +68,25 @@ html[data-theme="light"]{
 html[data-theme="light"] body{
   background:radial-gradient(circle at 50% -10%, rgba(212,175,55,.12), transparent 55%), var(--bg);
 }
-html[data-theme="light"] .terminal-log .muted{color:rgba(23,20,16,.5);}
-html[data-theme="light"] .sandbox-code,html[data-theme="light"] .terminal{color:var(--ink);}
-/* تنظیمات کارت‌های morph در تم روشن */
-html[data-theme="light"] .morph-card[data-style="luxe"]{ --mc-bg:rgba(212,175,55,.08); }
-html[data-theme="light"] .morph-card[data-style="holo"]{ --mc-bg:linear-gradient(135deg,#E9F3FF,#F6E9FF 45%,#FFF3E0); }
-html[data-theme="light"] .morph-card[data-style="retro"]{ --mc-bg:#0a0a0a; }
+
+/* ===================== PAGE LOADER ===================== */
+.page-loader {
+  position: fixed; inset: 0; z-index: 99999;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+.page-loader.is-hidden { opacity: 0; }
+.page-loader .loader-logo {
+  width: 48px; height: 48px;
+  border: 3px solid var(--glass-border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* یوتیلیتی‌ها */
 .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
@@ -91,15 +97,13 @@ body.no-scroll{overflow:hidden;}
 }
 
 /* ============================================================
-   ۰۲ — ریست پایه و تایپوگرافی عمومی
+   ۰۲ — ریست پایه و تایپوگرافی
    ============================================================ */
 *,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
   margin:0;
-  background:
-    radial-gradient(circle at 50% -10%, rgba(212,175,55,.07), transparent 55%),
-    var(--bg);
+  background:radial-gradient(circle at 50% -10%, rgba(212,175,55,.07), transparent 55%), var(--bg);
   color:var(--ink);
   font-family:var(--font-body);
   font-size:1rem;
@@ -128,8 +132,8 @@ section{padding:5.5rem 0;}
 
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:1px;}
 
-/* اصلاح لنگر اسکرول برای هدر sticky */
-#chera, #services, #packages, #testimonials, #sandbox, #cost-calculator, #faq, #contact{
+/* اصلاح لنگر اسکرول */
+#chera, #services, #packages, #testimonials, #sandbox, #cost-calculator, #price-calculator, #faq, #contact{
   scroll-margin-top: 80px;
 }
 
@@ -192,7 +196,7 @@ section{padding:5.5rem 0;}
 html[data-theme="light"] .theme-toggle .icon-moon{display:none;}
 html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 
-/* منوی موبایل با بکدراپ */
+/* منوی موبایل */
 @media (max-width:900px){
   .main-nav{
     position:fixed;inset:0 0 auto 0;top:64px;background:var(--bg);
@@ -210,11 +214,8 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 }
 
 /* ============================================================
-   ۰۴ — هرو و بقیه‌ی بخش‌ها (همانند قبل، فقط با اصلاحات جزئی)
+   ۰۴ — هرو
    ============================================================ */
-/* ... تمام استایل‌های بخش هرو، ترمینال، ریویل، و ... مثل قبل است.
-   برای اختصار، بخش‌هایی که تغییری نکرده‌اند را با کامنت خلاصه می‌کنم،
-   ولی در فایل نهایی کامل هستند. */
 .hero{padding-top:4.5rem;position:relative;overflow:hidden;}
 #hero-rain{position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:none;}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:3.5rem;align-items:center;}
@@ -234,19 +235,43 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 .hero-trail-2{top:64%;right:-30%;animation:trailSweep 9s ease-in-out 2.4s infinite;}
 @keyframes trailSweep{0%{transform:translateX(0) rotate(-6deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateX(-140%) rotate(-6deg);opacity:0;}}
 .hero-cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.6rem;}
+
+/* نوار اعتماد */
 .trust-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-deep);}
 .trust-strip ul{display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
 .trust-strip li{padding:1.1rem 1.8rem;font-size:.85rem;color:var(--ink-soft);border-right:1px solid var(--line);}
 .trust-strip li:first-child{border-right:0;}
+
+/* ============================================================
+   ۰۵ — آمار (با کارت‌های جدید)
+   ============================================================ */
 .stats-row{padding:3.6rem 0;position:relative;overflow:hidden;}
 .stats-row .stats-decor{position:absolute;left:-40px;top:50%;width:200px;transform:translateY(-50%);opacity:.18;pointer-events:none;}
 .stats-heading{text-align:center;margin-bottom:2.2rem;}
-.stats-row ul{display:flex;justify-content:center;gap:0;flex-wrap:wrap;position:relative;z-index:1;}
-.stats-row li{padding:0 2.6rem;text-align:center;border-right:1px solid var(--line);}
-.stats-row li:first-child{border-right:0;}
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  gap:20px;
+  position:relative;z-index:1;
+}
+.stat-card{
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-md);
+  padding:28px 24px;
+  text-align:center;
+  transition:all .3s ease;
+}
+.stat-card:hover{
+  border-color:var(--accent);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(0,0,0,.15);
+}
 .stat-value{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,3.2rem);color:var(--accent);direction:ltr;display:inline-block;}
 .stat-suffix{font-size:.5em;color:var(--ink-soft);margin-right:.15em;}
 .stat-label{display:block;margin-top:.4rem;font-size:.85rem;color:var(--ink-soft);}
+
+/* ترمینال */
 .terminal{position:relative;z-index:1;background:linear-gradient(150deg,rgba(255,255,255,.045),rgba(255,255,255,.01));border:1px solid var(--glass-border);-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));border-radius:var(--radius-md);padding:1.4rem 1.5rem;font-family:var(--font-mono);font-size:.85rem;min-height:230px;box-shadow:0 30px 60px -28px rgba(0,0,0,.7),0 0 46px -12px rgba(212,175,55,.18);}
 .terminal-bar{display:flex;gap:.4rem;margin-bottom:1rem;}
 .terminal-bar span{width:9px;height:9px;border-radius:50%;background:rgba(212,175,55,.3);}
@@ -257,6 +282,9 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 @keyframes blink{50%{opacity:0;}}
 .terminal-caption{font-size:.85rem;color:var(--ink-soft);margin-top:1rem;}
 
+/* ============================================================
+   ۰۶ — متن اقناعی و خدمات
+   ============================================================ */
 .prose-section .container{max-width:1000px;display:flex;align-items:center;gap:3rem;justify-content:space-between;}
 .prose-decor{width:min(160px,40%);flex-shrink:0;opacity:.9;animation:floatY 6.5s ease-in-out infinite;}
 @media (max-width:900px){.prose-section .container{flex-direction:column;}}
@@ -265,7 +293,7 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2.4rem 3rem;margin-top:1.6rem;}
 
 /* ============================================================
-   ۰۵ — کارت متامورف (با اصلاحات تم روشن)
+   ۰۷ — کارت متامورف
    ============================================================ */
 .morph-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:center;}
 .morph-swatches{display:flex;gap:.7rem;margin-bottom:1.4rem;}
@@ -301,7 +329,7 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 .morph-card[data-style="retro"] .morph-cta{color:#0a0a0a;}
 
 /* ============================================================
-   ۰۶ — پکیج‌های لوکس آتلیه (با اصلاح هاور)
+   ۰۸ — پکیج‌ها (با نشان ویژه)
    ============================================================ */
 .packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:2.2rem;}
 .package-card{
@@ -318,6 +346,13 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 }
 .package-card.is-featured{border-color:var(--accent);box-shadow:0 30px 60px -30px rgba(212,175,55,.4),0 0 0 1px var(--accent-20) inset;}
 .package-card:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-10);}
+.package-badge{
+  position:absolute;top:16px;left:16px;
+  background:var(--accent);color:var(--on-accent);
+  font-size:.72rem;font-weight:700;
+  padding:4px 14px;border-radius:99px;
+  text-transform:uppercase;letter-spacing:.05em;
+}
 .package-audience{font-size:.82rem;color:var(--ink-soft);margin-bottom:1rem;}
 .package-icon{width:56px;height:56px;margin-bottom:.6rem;}
 .package-price{font-family:var(--font-display);font-size:1.8rem;margin:1.2rem 0;color:var(--accent);text-shadow:0 0 20px rgba(212,175,55,0.2);font-weight:700;border-bottom:1px solid var(--accent-20);padding-bottom:.4rem;display:inline-block;}
@@ -329,115 +364,7 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 .package-card:hover::before{height:100%;}
 
 /* ============================================================
-   ۰۷ — ویجت‌های سندباکس و ماشین‌حساب (با اصلاحات لمسی)
-   ============================================================ */
-.sandbox-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
-.sandbox-decor{width:min(220px,70%);margin-top:1.6rem;opacity:.95;animation:floatY 6s ease-in-out infinite;}
-.sandbox-controls label{display:block;font-size:.85rem;font-weight:700;margin-bottom:.4rem;}
-.sandbox-field{margin-bottom:1.4rem;}
-.sandbox-field input[type="range"]{width:100%;accent-color:var(--accent);height:4px;}
-.sandbox-preview-wrap{display:flex;align-items:center;justify-content:center;min-height:160px;border:1px solid var(--glass-border);border-radius:var(--radius-md);background:var(--bg-deep);}
-#sb-preview{border:0;cursor:pointer;font-family:var(--font-body);color:#fff;padding:.9em 1.8em;background:var(--accent-cool);border-radius:4px;font-size:16px;font-weight:700;transition:border-radius .3s var(--ease-elastic);}
-.sandbox-code{margin-top:1.2rem;background:#000;color:#9fe6b0;font-family:var(--font-mono);font-size:.8rem;padding:1rem 1.2rem;border-radius:6px;direction:ltr;text-align:left;overflow-x:auto;border:1px solid var(--line);}
-
-.calc-card{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;align-items:center;border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:2.4rem;background:linear-gradient(150deg,rgba(255,255,255,.04),rgba(255,255,255,.01));-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));margin-top:2rem;}
-.calc-field{margin-bottom:1.5rem;}
-.calc-field label{display:block;font-size:.85rem;font-weight:700;margin-bottom:.5rem;}
-.calc-field input[type="range"]{width:100%;accent-color:var(--accent);height:4px;}
-.calc-field input[type="number"]{width:100%;background:var(--bg-deep);border:1px solid var(--line);color:var(--ink);padding:.6em .8em;border-radius:var(--radius-sm);font-family:var(--font-mono);direction:ltr;text-align:left;appearance:textfield;}
-.calc-field input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
-.calc-readout{display:flex;justify-content:space-between;font-size:.8rem;color:var(--ink-soft);margin-top:.3rem;direction:ltr;}
-.calc-result{text-align:center;}
-.calc-loss-number{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.4rem);color:var(--accent);direction:ltr;}
-.calc-bar-track{height:10px;border-radius:99px;background:var(--bg-deep);overflow:hidden;margin:1rem 0;}
-.calc-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-soft));border-radius:99px;transition:width .5s var(--ease-elastic);}
-.calc-benchmark{font-size:.85rem;color:var(--ink-soft);}
-.calc-benchmark strong{color:var(--accent);}
-
-/* ============================================================
-   ۰۸ — سوالات متداول (با بهبود ضربه‌پذیری)
-   ============================================================ */
-.faq-item{
-  border:1px solid var(--glass-border);border-radius:var(--radius-md);margin-bottom:.9rem;
-  background:linear-gradient(150deg,rgba(255,255,255,.03),rgba(255,255,255,.005));
-  padding:0 1.4rem;-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));
-}
-.faq-item summary{
-  cursor:pointer;list-style:none;padding:1.3rem 0;font-family:var(--font-display);
-  font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;
-  width:100%;user-select:none;
-}
-.faq-item summary::-webkit-details-marker{display:none;}
-.faq-item summary::after{content:"+";font-family:var(--font-mono);font-size:1.8rem;color:var(--accent);transition:transform .25s ease;flex-shrink:0;line-height:1;}
-.faq-item[open] summary::after{transform:rotate(45deg);}
-.faq-item .faq-answer{padding-bottom:1.5rem;}
-
-/* ============================================================
-   ۰۹ — فوتر و تماس (با دکمه‌ی بازگشت به بالا)
-   ============================================================ */
-.site-footer{background:var(--bg-footer);color:var(--ink);padding:5rem 0 2.5rem;border-top:1px solid var(--line);}
-.site-footer h2{color:var(--ink);}
-.site-footer p{color:var(--ink-soft);}
-.footer-top{display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:center;}
-.footer-decor{width:200px;opacity:.95;animation:floatY 7s ease-in-out infinite;filter:drop-shadow(0 0 28px rgba(212,175,55,.22));}
-.contact-channels{display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0 1.6rem;}
-.contact-channels a{border:1px solid var(--line);padding:.85em 1.5em;border-radius:var(--radius-sm);font-size:.9rem;transition:background .2s ease,border-color .2s ease;}
-.contact-channels a:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
-.contact-form{display:flex;gap:.8rem;flex-wrap:wrap;max-width:520px;}
-.contact-form input{flex:1 1 180px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--ink);padding:.85em 1em;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.9rem;}
-.contact-form input::placeholder{color:var(--ink-soft);}
-.contact-form input:focus{border-color:var(--accent-cool);}
-.contact-form input[type="email"]{direction:ltr;text-align:left;}
-.contact-form button{flex:0 0 auto;position:relative;}
-.contact-form button[disabled]{opacity:.6;cursor:wait;}
-.contact-form button .spinner{display:none;width:20px;height:20px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.8s linear infinite;margin-left:0.5rem;}
-.contact-form button.loading .spinner{display:inline-block;}
-@keyframes spin{to{transform:rotate(360deg);}}
-.contact-form-note{font-size:.78rem;color:var(--ink-soft);margin-top:.6rem;}
-.contact-form input[aria-invalid="true"]{border-color:#E0584F;}
-.contact-form-error{display:block;font-size:.76rem;color:#FF8A80;margin-top:.3rem;}
-.form-status{font-size:.85rem;margin-top:.8rem;min-height:1.2em;}
-.form-status[data-state="success"]{color:#6BE39A;}
-.form-status[data-state="error"]{color:#FF8A80;}
-.footer-bottom{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.6rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.78rem;color:var(--ink-soft);}
-
-/* ============================================================
-   ۱۰ — دکمه‌ی بازگشت به بالا (Back to Top)
-   ============================================================ */
-.back-to-top{
-  position:fixed;bottom:2rem;left:2rem;z-index:300;
-  width:50px;height:50px;border-radius:50%;
-  background:var(--accent);color:var(--on-accent);
-  border:none;cursor:pointer;font-size:1.6rem;
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;
-  transform:translateY(20px);
-  transition:opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow:0 8px 24px rgba(212,175,55,0.3);
-}
-.back-to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
-.back-to-top:hover{box-shadow:0 8px 32px rgba(212,175,55,0.5);transform:scale(1.05);}
-.back-to-top:active{transform:scale(0.95);}
-.back-to-top svg{width:24px;height:24px;fill:currentColor;}
-
-/* ============================================================
-   ۱۱ — استایل اسکرول‌بار
-   ============================================================ */
-::-webkit-scrollbar{width:8px;height:8px;}
-::-webkit-scrollbar-track{background:var(--bg-deep);}
-::-webkit-scrollbar-thumb{background:var(--accent);border-radius:99px;}
-::-webkit-scrollbar-thumb:hover{background:var(--accent-soft);}
-html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
-
-/* ============================================================
-   ۱۲ — استایل‌های لمسی برای موبایل
-   ============================================================ */
-@media (pointer:coarse){
-  input[type="range"]{height:6px !important;}
-}
-
-/* ============================================================
-   ۱۳ — استایل‌های جدید: Testimonials Carousel (با آواتار SVG)
+   ۰۹ — نظرات مشتریان
    ============================================================ */
 .testimonials-section{background:var(--bg-deep);position:relative;overflow:hidden;}
 .testimonials-section .container{position:relative;z-index:1;}
@@ -459,29 +386,143 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
 .testimonial-dots{display:flex;justify-content:center;gap:.6rem;margin-top:.6rem;}
 .testimonial-dots button{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:transparent;padding:0;cursor:pointer;transition:background .2s ease,border-color .2s ease;}
 .testimonial-dots button.is-active{background:var(--accent);border-color:var(--accent);}
-@media (max-width:1024px){.testimonials-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:640px){.testimonials-grid{grid-template-columns:1fr;}}
 
 /* ============================================================
-   ۱۴ — استایل‌های Debug Panel (برای صفحه‌ی مخفی)
+   ۱۰ — سندباکس
    ============================================================ */
-.debug-panel{max-width:900px;margin:2rem auto;padding:2rem;background:var(--bg-deep);border:1px solid var(--glass-border);border-radius:var(--radius-md);font-family:var(--font-mono);direction:ltr;text-align:left;}
-.debug-panel h2{font-family:var(--font-display);direction:rtl;text-align:right;color:var(--accent);}
-.debug-panel .error-item{border-bottom:1px solid var(--line);padding:.8rem 0;}
-.debug-panel .error-item .meta{font-size:.75rem;color:var(--ink-soft);}
-.debug-panel .error-item .msg{font-weight:700;color:#ff8a80;}
-.debug-panel .error-item .stack{font-size:.7rem;white-space:pre-wrap;color:var(--ink-soft);margin-top:.3rem;background:rgba(0,0,0,0.3);padding:.5rem;border-radius:4px;}
-.debug-panel .metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:1rem 0;}
-.debug-panel .metric{background:var(--glass-bg-strong);padding:.8rem;border-radius:var(--radius-sm);text-align:center;}
-.debug-panel .metric .value{font-size:1.6rem;color:var(--accent);}
-.debug-panel .metric .label{font-size:.7rem;color:var(--ink-soft);}
-.debug-panel .actions{display:flex;gap:1rem;flex-wrap:wrap;margin:1.5rem 0;}
-.debug-panel .actions button{background:var(--accent);color:var(--on-accent);border:none;padding:.6rem 1.4rem;border-radius:var(--radius-sm);cursor:pointer;font-weight:700;}
-.debug-panel .actions button:hover{background:var(--accent-soft);}
-.debug-panel .actions button.danger{background:#E0584F;color:#fff;}
-.debug-panel .actions button.danger:hover{background:#c0392b;}
+.sandbox-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.sandbox-decor{width:min(220px,70%);margin-top:1.6rem;opacity:.95;animation:floatY 6s ease-in-out infinite;}
+.sandbox-controls label{display:block;font-size:.85rem;font-weight:700;margin-bottom:.4rem;}
+.sandbox-field{margin-bottom:1.4rem;}
+.sandbox-field input[type="range"]{width:100%;accent-color:var(--accent);height:4px;}
+.sandbox-preview-wrap{display:flex;align-items:center;justify-content:center;min-height:160px;border:1px solid var(--glass-border);border-radius:var(--radius-md);background:var(--bg-deep);}
+#sb-preview{border:0;cursor:pointer;font-family:var(--font-body);color:#fff;padding:.9em 1.8em;background:var(--accent-cool);border-radius:4px;font-size:16px;font-weight:700;transition:border-radius .3s var(--ease-elastic);}
+.sandbox-code{margin-top:1.2rem;background:#000;color:#9fe6b0;font-family:var(--font-mono);font-size:.8rem;padding:1rem 1.2rem;border-radius:6px;direction:ltr;text-align:left;overflow-x:auto;border:1px solid var(--line);}
 
-/* واکنش‌گرایی عمومی */
+/* ============================================================
+   ۱۱ — ماشین‌حساب هزینه
+   ============================================================ */
+.calc-card{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;align-items:center;border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:2.4rem;background:linear-gradient(150deg,rgba(255,255,255,.04),rgba(255,255,255,.01));-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));margin-top:2rem;}
+.calc-field{margin-bottom:1.5rem;}
+.calc-field label{display:block;font-size:.85rem;font-weight:700;margin-bottom:.5rem;}
+.calc-field input[type="range"]{width:100%;accent-color:var(--accent);height:4px;}
+.calc-field input[type="number"]{width:100%;background:var(--bg-deep);border:1px solid var(--line);color:var(--ink);padding:.6em .8em;border-radius:var(--radius-sm);font-family:var(--font-mono);direction:ltr;text-align:left;appearance:textfield;}
+.calc-field input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
+.calc-readout{display:flex;justify-content:space-between;font-size:.8rem;color:var(--ink-soft);margin-top:.3rem;direction:ltr;}
+.calc-result{text-align:center;}
+.calc-loss-number{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.4rem);color:var(--accent);direction:ltr;}
+.calc-bar-track{height:10px;border-radius:99px;background:var(--bg-deep);overflow:hidden;margin:1rem 0;}
+.calc-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-soft));border-radius:99px;transition:width .5s var(--ease-elastic);}
+.calc-benchmark{font-size:.85rem;color:var(--ink-soft);}
+.calc-benchmark strong{color:var(--accent);}
+
+/* ============================================================
+   ۱۲ — ماشین‌حساب قیمت (ویجت جدید)
+   ============================================================ */
+.price-calc-wrapper{
+  margin-top:2rem;
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-md);
+  padding:2rem 1.8rem;
+  max-width:560px;
+}
+.price-calc-group{margin-bottom:1.5rem;}
+.price-calc-label{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.9rem;font-weight:600;
+  margin-bottom:.6rem;
+}
+.price-calc-value{color:var(--accent);font-weight:700;}
+.price-calc-total{
+  padding:1.2rem;
+  background:var(--accent-10);
+  border:1px solid var(--accent-20);
+  border-radius:var(--radius-sm);
+  text-align:center;
+}
+.price-calc-total-label{font-size:.85rem;color:var(--ink-soft);margin-bottom:.5rem;}
+.price-calc-total-price{font-size:1.8rem;font-weight:800;color:var(--accent);}
+
+/* ============================================================
+   ۱۳ — سوالات متداول
+   ============================================================ */
+.faq-item{
+  border:1px solid var(--glass-border);border-radius:var(--radius-md);margin-bottom:.9rem;
+  background:linear-gradient(150deg,rgba(255,255,255,.03),rgba(255,255,255,.005));
+  padding:0 1.4rem;-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));
+}
+.faq-item summary{
+  cursor:pointer;list-style:none;padding:1.3rem 0;font-family:var(--font-display);
+  font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  width:100%;user-select:none;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";font-family:var(--font-mono);font-size:1.8rem;color:var(--accent);transition:transform .25s ease;flex-shrink:0;line-height:1;}
+.faq-item[open] summary::after{transform:rotate(45deg);}
+.faq-item .faq-answer{padding-bottom:1.5rem;}
+
+/* ============================================================
+   ۱۴ — فوتر و تماس
+   ============================================================ */
+.site-footer{background:var(--bg-footer);color:var(--ink);padding:5rem 0 2.5rem;border-top:1px solid var(--line);}
+.site-footer h2{color:var(--ink);}
+.site-footer p{color:var(--ink-soft);}
+.footer-top{display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:center;}
+.footer-decor{width:200px;opacity:.95;animation:floatY 7s ease-in-out infinite;filter:drop-shadow(0 0 28px rgba(212,175,55,.22));}
+.contact-channels{display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0 1.6rem;}
+.contact-channels a{border:1px solid var(--line);padding:.85em 1.5em;border-radius:var(--radius-sm);font-size:.9rem;transition:background .2s ease,border-color .2s ease;}
+.contact-channels a:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+.contact-form{display:flex;gap:.8rem;flex-wrap:wrap;max-width:520px;}
+.contact-form input{flex:1 1 180px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--ink);padding:.85em 1em;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.9rem;}
+.contact-form input::placeholder{color:var(--ink-soft);}
+.contact-form input:focus{border-color:var(--accent-cool);}
+.contact-form input[type="email"]{direction:ltr;text-align:left;}
+.contact-form button{flex:0 0 auto;position:relative;}
+.contact-form button[disabled]{opacity:.6;cursor:wait;}
+.contact-form button .spinner{display:none;width:20px;height:20px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.8s linear infinite;margin-left:0.5rem;}
+.contact-form button.loading .spinner{display:inline-block;}
+.contact-form-note{font-size:.78rem;color:var(--ink-soft);margin-top:.6rem;}
+.contact-form input[aria-invalid="true"]{border-color:#E0584F;}
+.contact-form-error{display:block;font-size:.76rem;color:#FF8A80;margin-top:.3rem;}
+.form-status{font-size:.85rem;margin-top:.8rem;min-height:1.2em;}
+.form-status[data-state="success"]{color:#6BE39A;}
+.form-status[data-state="error"]{color:#FF8A80;}
+.footer-bottom{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.6rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.78rem;color:var(--ink-soft);}
+
+/* ============================================================
+   ۱۵ — دکمه‌ی بازگشت به بالا
+   ============================================================ */
+.back-to-top{
+  position:fixed;bottom:2rem;left:2rem;z-index:300;
+  width:50px;height:50px;border-radius:50%;
+  background:var(--accent);color:var(--on-accent);
+  border:none;cursor:pointer;font-size:1.6rem;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transform:translateY(20px);
+  transition:opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow:0 8px 24px rgba(212,175,55,0.3);
+}
+.back-to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
+.back-to-top:hover{box-shadow:0 8px 32px rgba(212,175,55,0.5);transform:scale(1.05);}
+.back-to-top:active{transform:scale(0.95);}
+.back-to-top svg{width:24px;height:24px;fill:currentColor;}
+
+/* استایل اسکرول‌بار */
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-track{background:var(--bg-deep);}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:99px;}
+::-webkit-scrollbar-thumb:hover{background:var(--accent-soft);}
+html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
+
+/* استایل‌های لمسی */
+@media (pointer:coarse){
+  input[type="range"]{height:6px !important;}
+}
+
+/* واکنش‌گرایی */
+@media (max-width:1024px){.testimonials-grid{grid-template-columns:repeat(2,1fr);}}
 @media (max-width:900px){
   .hero-grid,.morph-wrap,.sandbox-grid,.calc-card{grid-template-columns:1fr;}
   .services-grid{grid-template-columns:1fr;}
@@ -500,9 +541,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
 @media (max-width:640px){.testimonials-grid{grid-template-columns:1fr;}}
 </style>
 
-<!-- ============================================================
-     داده‌ساختاریافته‌ی Schema.org (مثل قبل)
-     ============================================================ -->
+<!-- Schema.org -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -515,14 +554,17 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
   ]
 }
 </script>
-<!-- GA کامنت‌شده مثل قبل -->
 </head>
 <body>
+
+<!-- PAGE LOADER -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-logo"></div>
+</div>
+
 <a class="skip-link" href="#main">پرش به محتوای اصلی</a>
 
-<!-- ============================================================
-     هدر سایت (با کلاس scrolled که توسط JS کنترل می‌شود)
-     ============================================================ -->
+<!-- HEADER -->
 <header class="site-header" id="site-header">
   <div class="header-inner">
     <a href="#" class="brand" aria-label="استودیو پارسا - بازگشت به ابتدای صفحه">
@@ -567,9 +609,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
 
 <main id="main">
 
-  <!-- ============================================================
-       هرو (مثل قبل، بدون تغییر)
-       ============================================================ -->
+  <!-- HERO -->
   <section class="hero">
     <canvas id="hero-rain" aria-hidden="true"></canvas>
     <div class="hero-glow-blob" aria-hidden="true"></div>
@@ -611,34 +651,217 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
     </div>
   </section>
 
-  <!-- نوار اعتماد، آمار، چرا ما، خدمات، کارت متامورف، پکیج‌ها — همه مثل قبل -->
-  <!-- (برای اختصار، این بخش‌ها را با کامنت خلاصه می‌کنم، ولی در فایل واقعی کامل هستند) -->
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="container">
+      <ul>
+        <li>سرعت لود زیر ۰.۴ ثانیه</li>
+        <li>ریشه مستقل از CDN و فیلترینگ</li>
+        <li>بدون افزونه، بدون باگ امنیتی وردپرس</li>
+      </ul>
+    </div>
+    <p class="terminal-caption" style="text-align:center;padding:0 1.6rem 1.2rem;">هر ۱ ثانیه تاخیر بیشتر، یعنی ریزش ۱۵ درصدی مراجعین مطب شما قبل از نوبت‌گیری.</p>
+  </div>
 
-  <div class="trust-strip"><div class="container"><ul><li>سرعت لود زیر ۰.۴ ثانیه</li><li>ریشه مستقل از CDN و فیلترینگ</li><li>بدون افزونه، بدون باگ امنیتی وردپرس</li></ul></div><p class="terminal-caption" style="text-align:center;padding:0 1.6rem 1.2rem;">هر ۱ ثانیه تاخیر بیشتر، یعنی ریزش ۱۵ درصدی مراجعین مطب شما قبل از نوبت‌گیری.</p></div>
-
-  <div class="stats-row reveal"><div class="container"><svg class="stats-decor" viewBox="0 0 200 200" aria-hidden="true"><circle class="ring-a" cx="100" cy="100" r="70" fill="none" style="stroke:var(--accent)" stroke-width="1.2" stroke-dasharray="4 9"/><circle class="ring-b" cx="100" cy="100" r="46" fill="none" style="stroke:var(--accent)" stroke-width="1.2" stroke-dasharray="2 6"/><circle cx="100" cy="100" r="6" style="fill:var(--accent)"/></svg><div class="stats-heading"><span class="eyebrow">شفافیت کامل</span><h2>مرز عملکرد</h2></div><ul><li><span class="stat-value"><span class="stat-number" data-target="0.4" data-decimals="1">0</span><span class="stat-suffix">s</span></span><span class="stat-label">سرعت لود واقعی</span></li><li><span class="stat-value"><span class="stat-number" data-target="100" data-decimals="0">0</span><span class="stat-suffix">/100</span></span><span class="stat-label">امتیاز PageSpeed</span></li><li><span class="stat-value"><span class="stat-number" data-target="40" data-decimals="0">0</span><span class="stat-suffix">%</span></span><span class="stat-label">رشد نرخ نوبت‌دهی با CRM پارسا</span></li></ul></div></div>
+  <!-- STATS (با کارت‌های جدید) -->
+  <div class="stats-row reveal">
+    <div class="container">
+      <svg class="stats-decor" viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="ring-a" cx="100" cy="100" r="70" fill="none" style="stroke:var(--accent)" stroke-width="1.2" stroke-dasharray="4 9"/>
+        <circle class="ring-b" cx="100" cy="100" r="46" fill="none" style="stroke:var(--accent)" stroke-width="1.2" stroke-dasharray="2 6"/>
+        <circle cx="100" cy="100" r="6" style="fill:var(--accent)"/>
+      </svg>
+      <div class="stats-heading">
+        <span class="eyebrow">شفافیت کامل</span>
+        <h2>مرز عملکرد</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value"><span class="stat-number" data-target="0.4" data-decimals="1">0</span><span class="stat-suffix">s</span></div>
+          <div class="stat-label">سرعت لود واقعی</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value"><span class="stat-number" data-target="100" data-decimals="0">0</span><span class="stat-suffix">/100</span></div>
+          <div class="stat-label">امتیاز PageSpeed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value"><span class="stat-number" data-target="40" data-decimals="0">0</span><span class="stat-suffix">%</span></div>
+          <div class="stat-label">رشد نرخ نوبت‌دهی با CRM پارسا</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="section-divider reveal" aria-hidden="true"></div>
 
-  <section id="chera" class="prose-section reveal"><div class="container"><div><span class="eyebrow">چرا کد اختصاصی</span><h2>مرز باریک بین «بودن» و «دیده شدن» در اقتصاد دیجیتال</h2><p>دکتر یا وکیلی را تصور کنید که در گران‌ترین برج شهر مطب دارد، اما بیمارانش را با یک پراید مدل ۸۲ جابه‌جا می‌کند. این دقیقاً همان تضاد مخربی است که استفاده از قالب‌های آماده وردپرس برای برند شخصی شما ایجاد می‌کند. وردپرس یک سیستم عامل عمومی است؛ برای وبلاگ‌نویسان ساخته شده، نه برای نخبگانی که یک اشتباه در برندینگ دیجیتال، برایشان گران تمام می‌شود.</p></div><svg class="prose-decor" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8v62" style="stroke:var(--accent)" stroke-width="2"/><path d="M18 26h64" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/><path d="M18 26l-11 27h22Z" fill="none" style="stroke:var(--accent)" stroke-width="1.6" stroke-linejoin="round"/><path d="M82 26l9 18h-18Z" fill="none" style="stroke:var(--accent)" stroke-opacity=".5" stroke-width="1.6" stroke-linejoin="round"/><rect x="38" y="70" width="24" height="9" rx="2" style="fill:var(--accent)"/></svg></div></section>
+  <!-- CHERA -->
+  <section id="chera" class="prose-section reveal">
+    <div class="container">
+      <div>
+        <span class="eyebrow">چرا کد اختصاصی</span>
+        <h2>مرز باریک بین «بودن» و «دیده شدن» در اقتصاد دیجیتال</h2>
+        <p>دکتر یا وکیلی را تصور کنید که در گران‌ترین برج شهر مطب دارد، اما بیمارانش را با یک پراید مدل ۸۲ جابه‌جا می‌کند. این دقیقاً همان تضاد مخربی است که استفاده از قالب‌های آماده وردپرس برای برند شخصی شما ایجاد می‌کند. وردپرس یک سیستم عامل عمومی است؛ برای وبلاگ‌نویسان ساخته شده، نه برای نخبگانی که یک اشتباه در برندینگ دیجیتال، برایشان گران تمام می‌شود.</p>
+      </div>
+      <svg class="prose-decor" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M50 8v62" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M18 26h64" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M18 26l-11 27h22Z" fill="none" style="stroke:var(--accent)" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M82 26l9 18h-18Z" fill="none" style="stroke:var(--accent)" stroke-opacity=".5" stroke-width="1.6" stroke-linejoin="round"/>
+        <rect x="38" y="70" width="24" height="9" rx="2" style="fill:var(--accent)"/>
+      </svg>
+    </div>
+  </section>
 
-  <section id="services" class="services-section section-bg-deep reveal"><div class="container"><span class="eyebrow">خدمات تخصصی</span><h2>طراحی سایت اختصاصی و لوکس برای برندهای حرفه‌ای</h2><p>هر پروژه از صفر و بر اساس هویت بصری همان کارفرما ساخته می‌شود؛ نه از روی یک قالب مشترک با هزاران سایت دیگر.</p><h3>طراحی سایت برای پزشکان و کلینیک‌های شیراز</h3><div class="services-grid"><div><h4>طراحی سایت نوبت‌دهی آنلاین پزشکان</h4><p>سیستم نوبت‌دهی متصل به CRM شما، بدون فرم‌های کند و بدون افتادن نوبت بیمار در ایمیل گم‌شده.</p></div><div><h4>طراحی سایت برای کلینیک‌های زیبایی</h4><p>لندینگ پیجی که اعتبار پزشکی و جذابیت بصری را همزمان منتقل می‌کند، بدون افت سرعت روی موبایل بیمار.</p></div></div><h3>طراحی سایت حرفه‌ای برای وکلا و دفاتر حقوقی</h3><div class="services-grid"><div><h4>طراحی سایت وکیل پایه یک دادگستری</h4><p>اعتمادسازی فوری برای موکل، با اتوریته بصری متناسب با شأن حرفه‌ای شما.</p></div><div></div></div><h3>چرا استودیو پارسا؟</h3><div class="services-grid"><div><h4>طراحی اختصاصی بدون قالب آماده</h4><p>هر سبک بصری که نیاز داشته باشید، از صفر طراحی و کدنویسی می‌شود — این را در بخش بعدی به‌چشم خودتان می‌بینید.</p></div><div><h4>سرعت بالا و بهینه‌سازی Core Web Vitals</h4><p>همان عددی که در ترمینال بالا دیدید؛ نه شعار، یک اندازه‌گیری واقعی.</p></div></div></div></section>
+  <!-- SERVICES -->
+  <section id="services" class="services-section section-bg-deep reveal">
+    <div class="container">
+      <span class="eyebrow">خدمات تخصصی</span>
+      <h2>طراحی سایت اختصاصی و لوکس برای برندهای حرفه‌ای</h2>
+      <p>هر پروژه از صفر و بر اساس هویت بصری همان کارفرما ساخته می‌شود؛ نه از روی یک قالب مشترک با هزاران سایت دیگر.</p>
+
+      <h3>طراحی سایت برای پزشکان و کلینیک‌های شیراز</h3>
+      <div class="services-grid">
+        <div>
+          <h4>طراحی سایت نوبت‌دهی آنلاین پزشکان</h4>
+          <p>سیستم نوبت‌دهی متصل به CRM شما، بدون فرم‌های کند و بدون افتادن نوبت بیمار در ایمیل گم‌شده.</p>
+        </div>
+        <div>
+          <h4>طراحی سایت برای کلینیک‌های زیبایی</h4>
+          <p>لندینگ پیجی که اعتبار پزشکی و جذابیت بصری را همزمان منتقل می‌کند، بدون افت سرعت روی موبایل بیمار.</p>
+        </div>
+      </div>
+
+      <h3>طراحی سایت حرفه‌ای برای وکلا و دفاتر حقوقی</h3>
+      <div class="services-grid">
+        <div>
+          <h4>طراحی سایت وکیل پایه یک دادگستری</h4>
+          <p>اعتمادسازی فوری برای موکل، با اتوریته بصری متناسب با شأن حرفه‌ای شما.</p>
+        </div>
+        <div></div>
+      </div>
+
+      <h3>چرا استودیو پارسا؟</h3>
+      <div class="services-grid">
+        <div>
+          <h4>طراحی اختصاصی بدون قالب آماده</h4>
+          <p>هر سبک بصری که نیاز داشته باشید، از صفر طراحی و کدنویسی می‌شود — این را در بخش بعدی به‌چشم خودتان می‌بینید.</p>
+        </div>
+        <div>
+          <h4>سرعت بالا و بهینه‌سازی Core Web Vitals</h4>
+          <p>همان عددی که در ترمینال بالا دیدید؛ نه شعار، یک اندازه‌گیری واقعی.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="section-divider reveal" aria-hidden="true"></div>
 
-  <!-- کارت متامورف -->
-  <section id="style-proof" class="reveal"><div class="container morph-wrap"><div><div class="morph-swatches" role="img" aria-label="پیش‌نمایش سه سبک کارت"><div class="morph-swatch is-active" data-style="luxe"><span class="morph-swatch-dot"></span><span class="morph-swatch-bar"></span></div><div class="morph-swatch" data-style="holo"><span class="morph-swatch-dot"></span><span class="morph-swatch-bar"></span></div><div class="morph-swatch" data-style="retro"><span class="morph-swatch-dot"></span><span class="morph-swatch-bar"></span></div></div><span class="eyebrow">اثبات بدون قالب</span><h2>یک کارت، سه هویت کاملاً متفاوت</h2><p>این یک کارت محصول واقعی است. با کلیک روی هر دکمه، کل رنگ، فونت، مرز و انحنای کارت در صدم‌ثانیه عوض می‌شود — همان قدرتی که برای برند شما هم به‌کار می‌گیریم.</p><div class="morph-controls" role="group" aria-label="انتخاب سبک کارت"><button class="morph-btn" data-style="luxe" aria-pressed="true">طلایی لوکس</button><button class="morph-btn" data-style="holo" aria-pressed="false">لایت هولوگرافیک</button><button class="morph-btn" data-style="retro" aria-pressed="false">ترمینال رترو</button></div></div><div class="morph-card" id="morph-card" data-style="luxe"><span class="morph-tag">نمونه محصول</span><svg class="morph-icon morph-icon-luxe" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 14 20 4 32 14 20 36Z" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linejoin="round"/><path d="M8 14h24M14 14 20 36M26 14 20 36" style="stroke:var(--accent)" stroke-width="1.1" stroke-opacity=".6"/></svg><svg class="morph-icon morph-icon-holo" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 6 34 32H6Z" fill="none" style="stroke:var(--mc-accent)" stroke-width="2" stroke-linejoin="round"/><path d="M20 6v26M11 32l9-26M29 32l-9-26" style="stroke:var(--mc-accent)" stroke-width="1" stroke-opacity=".5"/></svg><svg class="morph-icon morph-icon-retro" viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="8" width="32" height="24" rx="2" fill="none" style="stroke:var(--mc-accent)" stroke-width="2"/><path d="M10 16l6 4-6 4M20 24h10" style="stroke:var(--mc-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>دژ دیجیتال شما</h3><p>یک سازه‌ی فرانت‌اند فوق‌سریع، طراحی‌شده برای اعتبار، نه برای شباهت به بقیه.</p><span class="morph-cta">مشاهده جزئیات</span></div></div></section>
+  <!-- STYLE PROOF -->
+  <section id="style-proof" class="reveal">
+    <div class="container morph-wrap">
+      <div>
+        <div class="morph-swatches" role="img" aria-label="پیش‌نمایش سه سبک کارت">
+          <div class="morph-swatch is-active" data-style="luxe">
+            <span class="morph-swatch-dot"></span>
+            <span class="morph-swatch-bar"></span>
+          </div>
+          <div class="morph-swatch" data-style="holo">
+            <span class="morph-swatch-dot"></span>
+            <span class="morph-swatch-bar"></span>
+          </div>
+          <div class="morph-swatch" data-style="retro">
+            <span class="morph-swatch-dot"></span>
+            <span class="morph-swatch-bar"></span>
+          </div>
+        </div>
+        <span class="eyebrow">اثبات بدون قالب</span>
+        <h2>یک کارت، سه هویت کاملاً متفاوت</h2>
+        <p>این یک کارت محصول واقعی است. با کلیک روی هر دکمه، کل رنگ، فونت، مرز و انحنای کارت در صدم‌ثانیه عوض می‌شود — همان قدرتی که برای برند شما هم به‌کار می‌گیریم.</p>
+        <div class="morph-controls" role="group" aria-label="انتخاب سبک کارت">
+          <button class="morph-btn" data-style="luxe" aria-pressed="true">طلایی لوکس</button>
+          <button class="morph-btn" data-style="holo" aria-pressed="false">لایت هولوگرافیک</button>
+          <button class="morph-btn" data-style="retro" aria-pressed="false">ترمینال رترو</button>
+        </div>
+      </div>
+
+      <div class="morph-card" id="morph-card" data-style="luxe">
+        <span class="morph-tag">نمونه محصول</span>
+        <svg class="morph-icon morph-icon-luxe" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M8 14 20 4 32 14 20 36Z" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M8 14h24M14 14 20 36M26 14 20 36" style="stroke:var(--accent)" stroke-width="1.1" stroke-opacity=".6"/>
+        </svg>
+        <svg class="morph-icon morph-icon-holo" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M20 6 34 32H6Z" fill="none" style="stroke:var(--mc-accent)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M20 6v26M11 32l9-26M29 32l-9-26" style="stroke:var(--mc-accent)" stroke-width="1" stroke-opacity=".5"/>
+        </svg>
+        <svg class="morph-icon morph-icon-retro" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="4" y="8" width="32" height="24" rx="2" fill="none" style="stroke:var(--mc-accent)" stroke-width="2"/>
+          <path d="M10 16l6 4-6 4M20 24h10" style="stroke:var(--mc-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>دژ دیجیتال شما</h3>
+        <p>یک سازه‌ی فرانت‌اند فوق‌سریع، طراحی‌شده برای اعتبار، نه برای شباهت به بقیه.</p>
+        <span class="morph-cta">مشاهده جزئیات</span>
+      </div>
+    </div>
+  </section>
 
   <div class="section-divider reveal" aria-hidden="true"></div>
 
-  <!-- پکیج‌ها -->
-  <section id="packages" class="section-bg-deep reveal"><div class="container"><span class="eyebrow">پکیج‌های آتلیه</span><h2>مجموعه آتلیه — سرمایه‌گذاری بر اساس ارزش</h2><div class="packages-grid"><div class="package-card"><svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true"><rect x="14" y="8" width="36" height="50" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/><rect x="24" y="4" width="16" height="8" rx="2" style="fill:var(--accent)"/><path d="M20 24h24M20 32h24M20 40h14" style="stroke:var(--ink-soft)" stroke-width="2" stroke-linecap="round"/><path d="M20 50q4-8 8 0t8-10 8 6" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/></svg><h3>امضای دیجیتال</h3><p class="package-audience">پزشکان مستقل و وکلای تک‌ستاره</p><p>فقط یک لندینگ پیج نیست؛ «رساله شخصیت» شماست. صفحه‌ای فوق‌سریع با طراحی انحصاری مینی‌مال سوئیسی که اتوریته شما را در نگاه اول قفل می‌کند.</p><div class="package-price">۷,۰۰۰,۰۰۰ تومان</div><a href="#contact" class="btn btn-primary">پرداخت آنلاین و رزرو</a></div><div class="package-card is-featured"><svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="26" fill="none" style="stroke:var(--accent)" stroke-width="2"/><circle cx="32" cy="32" r="14" fill="none" style="stroke:var(--accent)" stroke-width="1.4" stroke-opacity=".6"/><circle cx="32" cy="32" r="3.4" style="fill:var(--accent)"/><path d="M32 6v8M32 50v8M6 32h8M50 32h8" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/></svg><h3>قلعه حرفه‌ای</h3><p class="package-audience">کلینیک‌های زیبایی تخصصی و موسسات حقوقی بزرگ</p><p>دفتر مرکزی مجازی شما. ترکیب طراحی هنری مینی‌مال با سیستم مدیریت ابری مشتریان (CRM) که با هوش مصنوعی نرخ نوبت‌دهی را تا ۴۰٪ افزایش می‌دهد.</p><div class="package-price">۳۰,۰۰۰,۰۰۰ تومان</div><a href="#contact" class="btn btn-ghost">درخواست پیش‌نویس قرارداد دیجیتال</a></div><div class="package-card"><svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6 56 18v16c0 16-10 24-24 28C18 58 8 50 8 34V18Z" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linejoin="round"/><path d="M22 32l8 8 14-16" fill="none" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>اکسیر جامع</h3><p class="package-audience">سازمان‌ها و برندهای به‌دنبال انحصار مطلق تکنولوژیک</p><p>هویت بصری کامل (لوگو و برندبوک)، صفحات نامحدود، فونت انحصاری و CRM ابری مجهز به پیش‌بینی رفتار مشتری.</p><div class="package-price">توافقی / VIP</div><a href="#contact" class="btn btn-ghost">ثبت درخواست مشاوره حضوری</a></div></div></div></section>
+  <!-- PACKAGES (با نشان ویژه) -->
+  <section id="packages" class="section-bg-deep reveal">
+    <div class="container">
+      <span class="eyebrow">پکیج‌های آتلیه</span>
+      <h2>مجموعه آتلیه — سرمایه‌گذاری بر اساس ارزش</h2>
+      <div class="packages-grid">
+
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="14" y="8" width="36" height="50" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <rect x="24" y="4" width="16" height="8" rx="2" style="fill:var(--accent)"/>
+            <path d="M20 24h24M20 32h24M20 40h14" style="stroke:var(--ink-soft)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M20 50q4-8 8 0t8-10 8 6" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>امضای دیجیتال</h3>
+          <p class="package-audience">پزشکان مستقل و وکلای تک‌ستاره</p>
+          <p>فقط یک لندینگ پیج نیست؛ «رساله شخصیت» شماست. صفحه‌ای فوق‌سریع با طراحی انحصاری مینی‌مال سوئیسی که اتوریته شما را در نگاه اول قفل می‌کند.</p>
+          <div class="package-price">۷,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">پرداخت آنلاین و رزرو</a>
+        </div>
+
+        <div class="package-card is-featured">
+          <span class="package-badge">★ بهترین ارزش</span>
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="26" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <circle cx="32" cy="32" r="14" fill="none" style="stroke:var(--accent)" stroke-width="1.4" stroke-opacity=".6"/>
+            <circle cx="32" cy="32" r="3.4" style="fill:var(--accent)"/>
+            <path d="M32 6v8M32 50v8M6 32h8M50 32h8" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>قلعه حرفه‌ای</h3>
+          <p class="package-audience">کلینیک‌های زیبایی تخصصی و موسسات حقوقی بزرگ</p>
+          <p>دفتر مرکزی مجازی شما. ترکیب طراحی هنری مینی‌مال با سیستم مدیریت ابری مشتریان (CRM) که با هوش مصنوعی نرخ نوبت‌دهی را تا ۴۰٪ افزایش می‌دهد.</p>
+          <div class="package-price">۳۰,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-ghost">درخواست پیش‌نویس قرارداد دیجیتال</a>
+        </div>
+
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 6 56 18v16c0 16-10 24-24 28C18 58 8 50 8 34V18Z" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M22 32l8 8 14-16" fill="none" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>اکسیر جامع</h3>
+          <p class="package-audience">سازمان‌ها و برندهای به‌دنبال انحصار مطلق تکنولوژیک</p>
+          <p>هویت بصری کامل (لوگو و برندبوک)، صفحات نامحدود، فونت انحصاری و CRM ابری مجهز به پیش‌بینی رفتار مشتری.</p>
+          <div class="package-price">توافقی / VIP</div>
+          <a href="#contact" class="btn btn-ghost">ثبت درخواست مشاوره حضوری</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <div class="section-divider reveal" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       سکشن جدید: Testimonials Carousel
-       ============================================================ -->
+  <!-- TESTIMONIALS -->
   <section id="testimonials" class="testimonials-section reveal" aria-label="نظرات مشتریان">
     <div class="container">
       <span class="eyebrow">اعتماد حرفه‌ای‌ها</span>
@@ -655,24 +878,144 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
 
   <div class="section-divider reveal" aria-hidden="true"></div>
 
-  <!-- ============================================================
-       سندباکس، ماشین‌حساب، سوالات، فوتر — مثل قبل
-       ============================================================ -->
-  <section id="sandbox" class="reveal"><div class="container sandbox-grid"><div><span class="eyebrow">حس کنید، نه فقط بخوانید</span><h2>دکمه‌ی زیر، دست خودتان است</h2><p>رنگ، اندازه فونت و انحنای گوشه را تغییر دهید و ببینید کد CSS واقعی همین لحظه چطور زنده می‌شود — بدون هیچ جادویی، فقط فرانت‌اند خالص.</p><svg class="sandbox-decor" viewBox="0 0 120 90" aria-hidden="true"><rect x="4" y="4" width="112" height="82" rx="8" fill="none" style="stroke:var(--accent)" stroke-width="2"/><circle cx="16" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/><circle cx="26" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/><circle cx="36" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/><path d="M16 36l14 8-14 8M40 52h20" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><rect x="70" y="34" width="34" height="28" rx="4" style="fill:var(--accent)" opacity=".12"/><rect x="70" y="34" width="34" height="28" rx="4" fill="none" style="stroke:var(--accent-cool)" stroke-width="1.6"/></svg></div><div><div class="sandbox-controls"><div class="sandbox-field"><label for="sb-color">رنگ اصلی</label><input type="color" id="sb-color" value="#3E6FE0"></div><div class="sandbox-field"><label for="sb-radius">انحنای گوشه (px)</label><input type="range" id="sb-radius" min="0" max="40" value="4"></div><div class="sandbox-field"><label for="sb-size">اندازه فونت (px)</label><input type="range" id="sb-size" min="13" max="22" value="16"></div></div><div class="sandbox-preview-wrap"><button id="sb-preview" type="button">دکمه نمونه شما</button></div><pre class="sandbox-code"><code id="sb-code"></code></pre></div></div></section>
+  <!-- SANDBOX -->
+  <section id="sandbox" class="reveal">
+    <div class="container sandbox-grid">
+      <div>
+        <span class="eyebrow">حس کنید، نه فقط بخوانید</span>
+        <h2>دکمه‌ی زیر، دست خودتان است</h2>
+        <p>رنگ، اندازه فونت و انحنای گوشه را تغییر دهید و ببینید کد CSS واقعی همین لحظه چطور زنده می‌شود — بدون هیچ جادویی، فقط فرانت‌اند خالص.</p>
+        <svg class="sandbox-decor" viewBox="0 0 120 90" aria-hidden="true">
+          <rect x="4" y="4" width="112" height="82" rx="8" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+          <circle cx="16" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/>
+          <circle cx="26" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/>
+          <circle cx="36" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/>
+          <path d="M16 36l14 8-14 8M40 52h20" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="70" y="34" width="34" height="28" rx="4" style="fill:var(--accent)" opacity=".12"/>
+          <rect x="70" y="34" width="34" height="28" rx="4" fill="none" style="stroke:var(--accent-cool)" stroke-width="1.6"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="sandbox-controls">
+          <div class="sandbox-field">
+            <label for="sb-color">رنگ اصلی</label>
+            <input type="color" id="sb-color" value="#3E6FE0">
+          </div>
+          <div class="sandbox-field">
+            <label for="sb-radius">انحنای گوشه (px)</label>
+            <input type="range" id="sb-radius" min="0" max="40" value="4">
+          </div>
+          <div class="sandbox-field">
+            <label for="sb-size">اندازه فونت (px)</label>
+            <input type="range" id="sb-size" min="13" max="22" value="16">
+          </div>
+        </div>
+        <div class="sandbox-preview-wrap">
+          <button id="sb-preview" type="button">دکمه نمونه شما</button>
+        </div>
+        <pre class="sandbox-code"><code id="sb-code"></code></pre>
+      </div>
+    </div>
+  </section>
 
   <div class="section-divider reveal" aria-hidden="true"></div>
 
-  <section id="cost-calculator" class="section-bg-deep reveal"><div class="container"><span class="eyebrow">واقعیت، نه فرضیات</span><h2>سایت فعلی شما هر ماه چقدر مشتری از دست می‌دهد؟</h2><p>دو عدد را وارد کنید: سرعت لود فعلی سایت‌تان و میانگین بازدیدکننده‌ی ماهانه‌اش. عدد ریزش، بر همان نرخ ۱۵٪ به‌ازای هر ۱ ثانیه تاخیر محاسبه می‌شود.</p><div class="calc-card"><div><div class="calc-field"><label for="calc-speed">سرعت لود فعلی سایت شما</label><input type="range" id="calc-speed" min="0.4" max="5" step="0.1" value="2.6"><div class="calc-readout"><span id="calc-speed-value">2.6s</span><span>0.4s — 5s</span></div></div><div class="calc-field"><label for="calc-visitors">میانگین بازدیدکننده ماهانه</label><input type="number" id="calc-visitors" min="0" step="50" value="1200"></div></div><div class="calc-result"><span class="eyebrow">ریزش تخمینی ماهانه</span><div class="calc-loss-number"><span id="calc-loss-visitors">0</span> نفر</div><div class="calc-bar-track"><div class="calc-bar-fill" id="calc-bar-fill"></div></div><p class="calc-benchmark">با ساختار استودیو پارسا (<strong>0.4s</strong>) همین تعداد بازدیدکننده، تقریباً صفر مورد را از دست می‌دهد.</p></div></div></div></section>
+  <!-- COST CALCULATOR (Loss) -->
+  <section id="cost-calculator" class="section-bg-deep reveal">
+    <div class="container">
+      <span class="eyebrow">واقعیت، نه فرضیات</span>
+      <h2>سایت فعلی شما هر ماه چقدر مشتری از دست می‌دهد؟</h2>
+      <p>دو عدد را وارد کنید: سرعت لود فعلی سایت‌تان و میانگین بازدیدکننده‌ی ماهانه‌اش. عدد ریزش، بر همان نرخ ۱۵٪ به‌ازای هر ۱ ثانیه تاخیر محاسبه می‌شود.</p>
+
+      <div class="calc-card">
+        <div>
+          <div class="calc-field">
+            <label for="calc-speed">سرعت لود فعلی سایت شما</label>
+            <input type="range" id="calc-speed" min="0.4" max="5" step="0.1" value="2.6">
+            <div class="calc-readout"><span id="calc-speed-value">2.6s</span><span>0.4s — 5s</span></div>
+          </div>
+          <div class="calc-field">
+            <label for="calc-visitors">میانگین بازدیدکننده ماهانه</label>
+            <input type="number" id="calc-visitors" min="0" step="50" value="1200">
+          </div>
+        </div>
+
+        <div class="calc-result">
+          <span class="eyebrow">ریزش تخمینی ماهانه</span>
+          <div class="calc-loss-number"><span id="calc-loss-visitors">0</span> نفر</div>
+          <div class="calc-bar-track"><div class="calc-bar-fill" id="calc-bar-fill"></div></div>
+          <p class="calc-benchmark">با ساختار استودیو پارسا (<strong>0.4s</strong>) همین تعداد بازدیدکننده، تقریباً صفر مورد را از دست می‌دهد.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="section-divider reveal" aria-hidden="true"></div>
 
-  <section id="faq" class="reveal"><div class="container" style="max-width:860px;"><span class="eyebrow">پرسش‌های پرستیژی</span><h2>سوالات متداول</h2><details class="faq-item"><summary>سایت اختصاصی برای من ۵۰ میلیون آب می‌خورد، اما وردپرس ۲۰ میلیون! چرا؟</summary><div class="faq-answer"><p>تفاوت در «هزینه» و «سرمایه‌گذاری» است. شما با وردپرس یک نرم‌افزار کرایه می‌کنید که هر شب باید دعا کنید هک نشود یا با اولین نوسان اینترنت ایران قطع نشود. کد اختصاصی استودیو پارسا، یک «ملک دیجیتال» است. شما مالک یک اثر هنری مهندسی‌شده هستید که تا سال‌ها نه ری‌دیزاین می‌خواهد، نه خیانت امنیتی می‌کند و نه گوگل آن را به‌خاطر کندی تحریم می‌کند.</p></div></details><details class="faq-item"><summary>اینترنت ایران فیلتر است و نوسان دارد، تضمین شما چیست؟</summary><div class="faq-answer"><p>ما معماری «ریشه مستقل» (Root Isolation) را پیاده می‌کنیم. سایت‌های وردپرسی به CDN‌ها و فونت‌های گوگل معتاد هستند؛ در فیلترینگ‌های سراسری، این وابستگی باعث فروپاشی ظاهری سایت می‌شود. کد ما یک سازه خودکفا و درون‌زا است. هر آنچه برای اجرا نیاز دارد، در دل کد و سرور داخلی شما تعبیه شده است. ما سیستمی طراحی می‌کنیم که با اینترنت نیمه‌جان هم تپش قلب داشته باشد.</p></div></details></div></section>
+  <!-- PRICE CALCULATOR (جدید) -->
+  <section id="price-calculator" class="reveal" style="background:var(--bg-deep);">
+    <div class="container" style="max-width:700px;">
+      <span class="eyebrow">شفافیت قیمت</span>
+      <h2>هزینه‌ی تقریبی پروژه‌ات رو محاسبه کن</h2>
+      <p>با حرکت اسلایدرها، برآورد اولیه‌ی هزینه رو دریافت کن.</p>
+      <div class="price-calc-wrapper">
+        <div class="price-calc-group">
+          <div class="price-calc-label">
+            <span>تعداد صفحات وب‌سایت</span>
+            <span class="price-calc-value" id="pagesValue">۵</span>
+          </div>
+          <input type="range" id="pagesRange" min="1" max="20" value="5">
+        </div>
+        <div class="price-calc-group">
+          <div class="price-calc-label">
+            <span>تعداد طرح‌های لوگو</span>
+            <span class="price-calc-value" id="logoValue">۳</span>
+          </div>
+          <input type="range" id="logoRange" min="1" max="10" value="3">
+        </div>
+        <div class="price-calc-group">
+          <div class="price-calc-label">
+            <span>تعداد آیتم هویت بصری</span>
+            <span class="price-calc-value" id="identityValue">۵</span>
+          </div>
+          <input type="range" id="identityRange" min="0" max="15" value="5">
+        </div>
+        <div class="price-calc-total">
+          <div class="price-calc-total-label">تخمین هزینه</div>
+          <div class="price-calc-total-price" id="calcTotalPrice">۸,۵۰۰,۰۰۰ تومان</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
+  <!-- FAQ -->
+  <section id="faq" class="reveal">
+    <div class="container" style="max-width:860px;">
+      <span class="eyebrow">پرسش‌های پرستیژی</span>
+      <h2>سوالات متداول</h2>
+
+      <details class="faq-item">
+        <summary>سایت اختصاصی برای من ۵۰ میلیون آب می‌خورد، اما وردپرس ۲۰ میلیون! چرا؟</summary>
+        <div class="faq-answer">
+          <p>تفاوت در «هزینه» و «سرمایه‌گذاری» است. شما با وردپرس یک نرم‌افزار کرایه می‌کنید که هر شب باید دعا کنید هک نشود یا با اولین نوسان اینترنت ایران قطع نشود. کد اختصاصی استودیو پارسا، یک «ملک دیجیتال» است. شما مالک یک اثر هنری مهندسی‌شده هستید که تا سال‌ها نه ری‌دیزاین می‌خواهد، نه خیانت امنیتی می‌کند و نه گوگل آن را به‌خاطر کندی تحریم می‌کند.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>اینترنت ایران فیلتر است و نوسان دارد، تضمین شما چیست؟</summary>
+        <div class="faq-answer">
+          <p>ما معماری «ریشه مستقل» (Root Isolation) را پیاده می‌کنیم. سایت‌های وردپرسی به CDN‌ها و فونت‌های گوگل معتاد هستند؛ در فیلترینگ‌های سراسری، این وابستگی باعث فروپاشی ظاهری سایت می‌شود. کد ما یک سازه خودکفا و درون‌زا است. هر آنچه برای اجرا نیاز دارد، در دل کد و سرور داخلی شما تعبیه شده است. ما سیستمی طراحی می‌کنیم که با اینترنت نیمه‌جان هم تپش قلب داشته باشد.</p>
+        </div>
+      </details>
+    </div>
+  </section>
 
 </main>
 
-<!-- ============================================================
-     فوتر و تماس
-     ============================================================ -->
+<!-- FOOTER -->
 <footer id="contact" class="site-footer reveal">
   <div class="container footer-top">
     <div>
@@ -683,6 +1026,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
         <a href="https://wa.me/989000000000" target="_blank" rel="noopener">واتساپ</a>
         <a href="mailto:hello@parsastudio.ir">hello@parsastudio.ir</a>
       </div>
+
       <form class="contact-form" id="contact-form" novalidate>
         <div style="flex:1 1 180px;">
           <label for="cf-name" class="visually-hidden">نام شما</label>
@@ -709,25 +1053,29 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
       <path d="M20 50q4-8 8 0t8-10 8 6" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
     </svg>
   </div>
-  <div class="container"><div class="footer-bottom"><span>© ۲۰۲۶ استودیو پارسا — شیراز، ایران</span><span>طراحی و توسعه: پارسا رضائی خسروی</span></div></div>
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© ۲۰۲۶ استودیو پارسا — شیراز، ایران</span>
+      <span>طراحی و توسعه: پارسا رضائی خسروی</span>
+    </div>
+  </div>
 </footer>
 
-<!-- ============================================================
-     دکمه‌ی بازگشت به بالا
-     ============================================================ -->
+<!-- BACK TO TOP -->
 <button class="back-to-top" id="back-to-top" aria-label="بازگشت به بالای صفحه">
   <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h16z"/><path d="M4 20h16"/></svg>
 </button>
 
-<!-- ============================================================
-     اسکریپت‌ها
-     ============================================================ -->
 <script>
-/* ============================================================
-   تمام ماژول‌های قبلی (از initNav تا initHeroRain) با همان
-   منطق قبلی، فقط چند اصلاح جزئی برای قابلیت‌های جدید.
-   ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
+
+  // ====== PAGE LOADER ======
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      var loader = document.getElementById('pageLoader');
+      if(loader) loader.classList.add('is-hidden');
+    }, 400);
+  });
 
   // تابع مرکزی ردیابی
   function trackEvent(name, params){
@@ -893,7 +1241,7 @@ document.addEventListener('DOMContentLoaded', function () {
     render();
   })();
 
-  // --- ماژول ۶: ماشین‌حساب هزینه ---
+  // --- ماژول ۶: ماشین‌حساب هزینه (ریزش) ---
   function runWhenIdle(fn){
     if('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 1500 });
     else setTimeout(fn, 200);
@@ -922,7 +1270,40 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   runWhenIdle(initCostCalculator);
 
-  // --- ماژول ۷: فرم تماس ---
+  // --- ماژول ۷: ماشین‌حساب قیمت (جدید) ---
+  (function initPriceCalculator(){
+    var pagesRange = document.getElementById('pagesRange');
+    var logoRange = document.getElementById('logoRange');
+    var identityRange = document.getElementById('identityRange');
+    var pagesValue = document.getElementById('pagesValue');
+    var logoValue = document.getElementById('logoValue');
+    var identityValue = document.getElementById('identityValue');
+    var calcTotal = document.getElementById('calcTotalPrice');
+    if(!pagesRange || !logoRange || !identityRange) return;
+
+    function toPersianNum(num){
+      var digits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+      return String(num).replace(/\d/g, function(d){ return digits[d]; });
+    }
+
+    function calculate(){
+      var pages = parseInt(pagesRange.value) || 0;
+      var logos = parseInt(logoRange.value) || 0;
+      var identities = parseInt(identityRange.value) || 0;
+      pagesValue.textContent = toPersianNum(pages);
+      logoValue.textContent = toPersianNum(logos);
+      identityValue.textContent = toPersianNum(identities);
+      var total = (pages * 800000) + (logos * 500000) + (identities * 300000);
+      calcTotal.textContent = toPersianNum(total.toLocaleString('en-US')) + ' تومان';
+    }
+
+    [pagesRange, logoRange, identityRange].forEach(function(input){
+      input.addEventListener('input', calculate);
+    });
+    calculate();
+  })();
+
+  // --- ماژول ۸: فرم تماس ---
   (function initContactForm(){
     var form = document.getElementById('contact-form');
     var status = document.getElementById('cf-status');
@@ -1011,7 +1392,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })();
 
-  // --- ماژول ۷ب: ردیابی کلیک‌ها و عمق اسکرول ---
+  // --- ماژول ۹: ردیابی ---
   (function initEngagementTracking(){
     document.querySelectorAll('.package-card').forEach(function(card){
       var title = card.querySelector('h3');
@@ -1042,7 +1423,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })();
 
-  // --- ماژول ۸: کرسر اختصاصی ---
+  // --- ماژول ۱۰: کرسر ---
   (function initCursor(){
     if(!window.matchMedia('(pointer: fine)').matches) return;
     var ring = document.createElement('div');
@@ -1060,7 +1441,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   })();
 
-  // --- ماژول ۹: شمارنده‌های آمار ---
+  // --- ماژول ۱۱: شمارنده‌های آمار ---
   function initStatCounters(){
     var numbers = document.querySelectorAll('.stat-number');
     if(!numbers.length) return;
@@ -1094,7 +1475,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   runWhenIdle(initStatCounters);
 
-  // --- ماژول ۱۰: کانواس بارش طلایی ---
+  // --- ماژول ۱۲: کانواس بارش طلایی ---
   (function initHeroRain(){
     var canvas = document.getElementById('hero-rain');
     var hero = canvas ? canvas.closest('.hero') : null;
@@ -1152,9 +1533,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })();
 
-  // =============================================================
-  // ماژول جدید ۱۱: Testimonials Carousel (با آواتار SVG به‌جای ایموجی)
-  // =============================================================
+  // --- ماژول ۱۳: Testimonials Carousel ---
   (function initTestimonials(){
     var grid = document.getElementById('testimonials-grid');
     var prevBtn = document.getElementById('testimonial-prev');
@@ -1242,9 +1621,7 @@ document.addEventListener('DOMContentLoaded', function () {
     renderPage(0);
   })();
 
-  // =============================================================
-  // ماژول جدید ۱۲: Service Worker + Offline Fallback
-  // =============================================================
+  // --- ماژول ۱۴: Service Worker ---
   (function initServiceWorker(){
     if (!('serviceWorker' in navigator)) return;
     if (window.location.protocol === 'file:') return;
@@ -1259,9 +1636,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('offline', function(){ offlineMsg.style.display = 'block'; if (typeof trackEvent === 'function') { trackEvent('offline_detected'); } });
   })();
 
-  // =============================================================
-  // ماژول جدید ۱۳: Local Error Tracker + Debug Panel
-  // =============================================================
+  // --- ماژول ۱۵: Error Tracker ---
   (function initErrorTracker(){
     var STORAGE_KEY = 'studio_errors';
     var MAX_ERRORS = 50;
@@ -1367,14 +1742,11 @@ document.addEventListener('DOMContentLoaded', function () {
     showDebugPanel();
   })();
 
-  // =============================================================
-  // ماژول ۱۴: کوچک‌شدن هدر هنگام اسکرول + دکمه‌ی بازگشت به بالا
-  // =============================================================
+  // --- ماژول ۱۶: هدر اسکرول + Back to Top ---
   (function initHeaderScroll(){
     var header = document.getElementById('site-header');
     var backBtn = document.getElementById('back-to-top');
     if (!header) return;
-    var lastScroll = 0;
     window.addEventListener('scroll', function(){
       var scrollY = window.scrollY;
       if (scrollY > 80) {
