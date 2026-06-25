@@ -1,0 +1,16 @@
+{
+  "name": "استودیو پارسا",
+  "short_name": "پارسا",
+  "description": "طراحی سایت اختصاصی و لوکس برای پزشکان، وکلا و برندهای حرفه‌ای",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0c0c",
+  "theme_color": "#0c0c0c",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='36' fill='%23D4AF37'/%3E%3Cpath d='M40 48A22 22 0 0 1 62 26L170 26L170 70L62 70A22 22 0 0 0 40 48Z' fill='%230c0c0c'/%3E%3Cpath d='M40 92A22 22 0 0 1 62 70L136 70L136 114L62 114A22 22 0 0 0 40 92Z' fill='%230c0c0c'/%3E%3Cpath d='M40 136A22 22 0 0 1 62 114L86 114L86 158L62 158A22 22 0 0 1 40 136Z' fill='%230c0c0c'/%3E%3C/svg%3E",
+      "sizes": "200x200",
+      "type": "image/svg+xml"
+    }
+  ]
+}
