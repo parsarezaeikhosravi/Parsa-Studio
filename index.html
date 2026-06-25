@@ -16,7 +16,6 @@
 <meta property="og:description" content="طراحی سایت اختصاصی و لوکس برای پزشکان، وکلا و برندهای حرفه‌ای در شیراز. سرعت لود زیر ۰.۴ ثانیه، امنیت کامل در برابر فیلترینگ — بدون قالب آماده و بدون وردپرس.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://parsastudio.ir/">
-<!-- تصویر پیش‌نمایش (حتماً یک تصویر با ابعاد ۱۲۰۰x۶۳۰ پیکسل در هاست خودت قرار بده) -->
 <meta property="og:image" content="https://parsastudio.ir/images/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -153,7 +152,7 @@ section{padding:5.5rem 0;}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:1px;}
 
 /* اصلاح لنگر اسکرول */
-#chera, #services, #packages, #testimonials, #sandbox, #cost-calculator, #price-calculator, #faq, #contact{
+#chera, #services, #packages, #packages-extra, #testimonials, #sandbox, #cost-calculator, #price-calculator, #faq, #contact{
   scroll-margin-top: 80px;
 }
 
@@ -349,7 +348,7 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 .morph-card[data-style="retro"] .morph-cta{color:#0a0a0a;}
 
 /* ============================================================
-   ۰۸ — پکیج‌ها
+   ۰۸ — پکیج‌های اصلی
    ============================================================ */
 .packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:2.2rem;}
 .package-card{
@@ -420,7 +419,7 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 .sandbox-code{margin-top:1.2rem;background:#000;color:#9fe6b0;font-family:var(--font-mono);font-size:.8rem;padding:1rem 1.2rem;border-radius:6px;direction:ltr;text-align:left;overflow-x:auto;border:1px solid var(--line);}
 
 /* ============================================================
-   ۱۱ — ماشین‌حساب هزینه
+   ۱۱ — ماشین‌حساب هزینه (ریزش بازدید)
    ============================================================ */
 .calc-card{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;align-items:center;border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:2.4rem;background:linear-gradient(150deg,rgba(255,255,255,.04),rgba(255,255,255,.01));-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));margin-top:2rem;}
 .calc-field{margin-bottom:1.5rem;}
@@ -437,7 +436,7 @@ html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 .calc-benchmark strong{color:var(--accent);}
 
 /* ============================================================
-   ۱۲ — ماشین‌حساب قیمت
+   ۱۲ — ماشین‌حساب قیمت (ویجت جدید)
    ============================================================ */
 .price-calc-wrapper{
   margin-top:2rem;
@@ -598,7 +597,7 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
     </a>
 
     <nav class="main-nav" id="main-nav" aria-label="منوی اصلی">
-      <a href="#" class="nav-about">
+      <a href="about.html" class="nav-about">
         <svg class="nav-about-icon" viewBox="0 0 32 32" aria-hidden="true">
           <circle cx="16" cy="16" r="14" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
           <circle cx="16" cy="12.5" r="5" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
@@ -827,7 +826,9 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
 
   <div class="section-divider reveal" aria-hidden="true"></div>
 
-  <!-- PACKAGES -->
+  <!-- ============================================================
+       پکیج‌های اصلی (۳ پکیج اول)
+       ============================================================ -->
   <section id="packages" class="section-bg-deep reveal">
     <div class="container">
       <span class="eyebrow">پکیج‌های آتلیه</span>
@@ -873,6 +874,167 @@ html{scrollbar-width:thin;scrollbar-color:var(--accent) var(--bg-deep);}
           <p>هویت بصری کامل (لوگو و برندبوک)، صفحات نامحدود، فونت انحصاری و CRM ابری مجهز به پیش‌بینی رفتار مشتری.</p>
           <div class="package-price">توافقی / VIP</div>
           <a href="#contact" class="btn btn-ghost">ثبت درخواست مشاوره حضوری</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       پکیج‌های جدید (از لندینگ‌پیج)
+       ============================================================ -->
+  <section id="packages-extra" class="section-bg-deep reveal">
+    <div class="container">
+      <span class="eyebrow">خدمات تخصصی</span>
+      <h2>خدمات تکمیلی استودیو پارسا</h2>
+      <p>خدمات تخصصی‌تر برای برندهایی که به دنبال تمایز مطلق هستند.</p>
+      <div class="packages-grid" style="margin-top:2rem;">
+
+        <!-- لندینگ‌پیج -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="8" y="12" width="48" height="40" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <path d="M8 24h48M20 12v40" style="stroke:var(--accent)" stroke-width="1.6" stroke-opacity=".5"/>
+            <circle cx="14" cy="18" r="1.6" style="fill:var(--accent)"/>
+            <circle cx="20" cy="18" r="1.6" style="fill:var(--accent)"/>
+            <circle cx="26" cy="18" r="1.6" style="fill:var(--accent)"/>
+          </svg>
+          <h3>لندینگ‌پیج تک‌صفحه‌ای مدرن</h3>
+          <p class="package-audience">کمپین‌های فروش و معرفی برند</p>
+          <p>طراحی و کدنویسی یک صفحه فرود شیک، ۱۰۰٪ واکنش‌گرا و سریع برای معرفی یا کمپین‌های فروش محصول شما.</p>
+          <div class="package-price">۷,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+        <!-- پورتفولیو -->
+        <div class="package-card is-featured">
+          <span class="package-badge">★ محبوب</span>
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="8" y="8" width="48" height="48" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <rect x="16" y="16" width="14" height="14" rx="2" style="fill:var(--accent)" opacity=".3"/>
+            <rect x="34" y="16" width="14" height="14" rx="2" style="fill:var(--accent)" opacity=".3"/>
+            <rect x="16" y="34" width="14" height="14" rx="2" style="fill:var(--accent)" opacity=".3"/>
+            <rect x="34" y="34" width="14" height="14" rx="2" style="fill:var(--accent)" opacity=".3"/>
+          </svg>
+          <h3>سایت پورتفولیو اختصاصی</h3>
+          <p class="package-audience">فریلنسرها و طراحان طراز اول</p>
+          <p>یک سایت گالری و معرفی شخصی خیره‌کننده با انواع افکت‌های حرکتی و تغییر پوسته برای نمایش حرفه‌ای کارهای شما.</p>
+          <div class="package-price">۸,۵۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-ghost">سفارش آنلاین</a>
+        </div>
+
+        <!-- سایت شرکتی -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="4" y="20" width="56" height="40" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <rect x="16" y="4" width="32" height="16" rx="2" style="fill:var(--accent)" opacity=".2"/>
+            <rect x="24" y="8" width="16" height="8" rx="1" style="fill:var(--accent)" opacity=".5"/>
+            <path d="M16 28h32M16 36h24M16 44h18" style="stroke:var(--accent)" stroke-width="1.6" stroke-opacity=".5" stroke-linecap="round"/>
+          </svg>
+          <h3>سایت شرکتی و معرفی خدمات</h3>
+          <p class="package-audience">کسب‌وکارهای حرفه‌ای و سازمانی</p>
+          <p>وب‌سایت چندصفحه‌ای فوقالعاده سبک با سئوی تضمین‌شده برای معرفی کسب‌وکار شما بدون محدودیت‌های قالب وردپرس.</p>
+          <div class="package-price">۳۰,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+      </div>
+
+      <!-- ردیف دوم پکیج‌ها -->
+      <div class="packages-grid" style="margin-top:1.8rem;">
+
+        <!-- لوگو -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="24" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <path d="M32 8v48M8 32h48" style="stroke:var(--accent)" stroke-width="1.2" stroke-opacity=".3"/>
+            <circle cx="32" cy="32" r="8" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
+            <path d="M32 16v32M16 32h32" style="stroke:var(--accent)" stroke-width="1.2" stroke-opacity=".3"/>
+          </svg>
+          <h3>طراحی لوگو اختصاصی برند</h3>
+          <p class="package-audience">برندهای در حال شکل‌گیری</p>
+          <p>خلق یک نشان تجاری و لوگوی بین‌ظیر، کاملاً اختصاصی و متناسب با روانشناسی بازار مخاطب شما.</p>
+          <div class="package-price">۷,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+        <!-- پالت رنگ -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="20" cy="20" r="10" style="fill:var(--accent)" opacity=".8"/>
+            <circle cx="44" cy="20" r="10" style="fill:var(--accent)" opacity=".5"/>
+            <circle cx="20" cy="44" r="10" style="fill:var(--accent)" opacity=".3"/>
+            <circle cx="44" cy="44" r="10" style="fill:var(--accent)" opacity=".6"/>
+          </svg>
+          <h3>طراحی پالت رنگ سازمانی</h3>
+          <p class="package-audience">برندهای با هویت بصری</p>
+          <p>طراحی و پیاده‌سازی هویت رنگی و روانشناسی رنگ‌های برند برای همخوانی ۱۰۰٪ کارت ویزیت، سایت و شبکه‌های اجتماعی.</p>
+          <div class="package-price">۶,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+        <!-- درگاه پرداخت -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="8" y="18" width="48" height="28" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <path d="M8 26h48" style="stroke:var(--accent)" stroke-width="1.2" stroke-opacity=".3"/>
+            <circle cx="44" cy="32" r="2" style="fill:var(--accent)"/>
+            <path d="M16 36h10" style="stroke:var(--accent)" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h3>اتصال به درگاه پرداخت آنلاین</h3>
+          <p class="package-audience">سایت‌های فروشگاهی و خدماتی</p>
+          <p>اتصال انواع درگاه‌های پرداخت بانکی مستقیم یا واسط (زرین‌پال، نکست‌پی و...) به کدهای سایت اختصاصی شما.</p>
+          <div class="package-price">۵,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+      </div>
+
+      <!-- ردیف سوم پکیج‌ها -->
+      <div class="packages-grid" style="margin-top:1.8rem;">
+
+        <!-- فونت اختصاصی -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <text x="32" y="40" text-anchor="middle" style="font-family:Georgia,serif;font-size:28px;fill:var(--accent);font-weight:700;">Aa</text>
+            <path d="M16 16h32M20 48h24" style="stroke:var(--accent)" stroke-width="1.2" stroke-opacity=".3"/>
+          </svg>
+          <h3>طراحی فونت اختصاصی</h3>
+          <p class="package-audience">برندهای با هویت تایپوگرافی منحصربه‌فرد</p>
+          <p>خلق و بهینه‌سازی یک تایپ‌فیس و فونت اختصاصی برای متون وب‌سایت و بنرهای برند شما جهت متمایز شدن مطلق از رقبا.</p>
+          <div class="package-price">۱۵,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+        <!-- عکاسی محصول -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="8" y="12" width="48" height="40" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <circle cx="32" cy="32" r="12" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
+            <circle cx="32" cy="32" r="4" style="fill:var(--accent)" opacity=".4"/>
+            <path d="M44 18l6-6" style="stroke:var(--accent)" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h3>عکاسی و ادیت فیزیکی محصول</h3>
+          <p class="package-audience">وب‌سایت‌های فروشگاهی لوکس</p>
+          <p>حضور در آتلیه تخصصی، نورپردازی حرفه‌ای و عکاسی صنعتی به همراه روتوش کامل برای وب‌سایت‌های فروشگاهی لوکس.</p>
+          <div class="package-price">۲,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+        <!-- عکس با AI -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="12" y="12" width="40" height="40" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <path d="M20 20l6 6-6 6M44 20l-6 6 6 6" style="stroke:var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="32" cy="32" r="4" style="fill:var(--accent)" opacity=".3"/>
+          </svg>
+          <h3>تولید و ادیت عکس محصول با AI</h3>
+          <p class="package-audience">برندهای دیجیتال و تبلیغاتی</p>
+          <p>تولید تصاویر ۳بعدی واقع‌گرایانه تبلیغاتی، بازسازی محیطی و ادیت نئونی پیشرفته محصولات بدون نیاز به عکاسی فیزیکی.</p>
+          <div class="package-price">۳,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
         </div>
 
       </div>
@@ -1420,13 +1582,13 @@ document.addEventListener('DOMContentLoaded', function () {
         cta.addEventListener('click', function(){ trackEvent('package_cta_click', { package: label }); });
       });
     });
-    ['packages', 'contact'].forEach(function(id){
+    ['packages', 'packages-extra', 'contact'].forEach(function(id){
       document.querySelectorAll('a[href="#' + id + '"]').forEach(function(a){
         a.addEventListener('click', function(){ trackEvent('cta_click', { target: id }); });
       });
     });
     if('IntersectionObserver' in window){
-      var depthTargets = ['services', 'packages', 'faq', 'contact'];
+      var depthTargets = ['services', 'packages', 'packages-extra', 'faq', 'contact'];
       var obs = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
           if(entry.isIntersecting){
