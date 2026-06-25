@@ -3,671 +3,830 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>درباره من | پارسا رضائی خسروی — استودیو پارسا</title>
-<meta name="description" content="پارسا رضائی خسروی، توسعه‌دهنده فرانت‌اند، متخصص هوش مصنوعی و طراحی سایت‌های اختصاصی لوکس. دانشجوی مدیریت بازرگانی و علاقه‌مند به بهینه‌سازی انرژی و مصرف آب با AI.">
+<title>استودیو پارسا | طراحی سایت اختصاصی لوکس برای پزشکان و وکلا شیراز</title>
+<meta name="description" content="طراحی سایت اختصاصی و لوکس برای پزشکان، وکلا و برندهای حرفه‌ای در شیراز. سرعت لود زیر ۰.۴ ثانیه، امنیت کامل در برابر فیلترینگ و طراحی دژ دیجیتال طلایی — بدون قالب آماده، بدون وردپرس.">
 <meta name="theme-color" content="#0c0c0c">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://parsastudio.ir/">
+
+<meta property="og:title" content="استودیو پارسا | طراحی سایت اختصاصی لوکس برای پزشکان و وکلا شیراز">
+<meta property="og:description" content="طراحی سایت اختصاصی و لوکس برای پزشکان، وکلا و برندهای حرفه‌ای در شیراز. سرعت لود زیر ۰.۴ ثانیه، امنیت کامل در برابر فیلترینگ — بدون قالب آماده و بدون وردپرس.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parsastudio.ir/">
+<meta property="og:image" content="https://parsastudio.ir/images/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="استودیو پارسا | طراحی سایت اختصاصی لوکس برای پزشکان و وکلا شیراز">
+<meta name="twitter:description" content="طراحی سایت اختصاصی و لوکس برای پزشکان، وکلا و برندهای حرفه‌ای در شیراز. سرعت لود زیر ۰.۴ ثانیه.">
+
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' rx='36' fill='%23D4AF37'/%3E%3Cpath d='M40 48A22 22 0 0 1 62 26L170 26L170 70L62 70A22 22 0 0 0 40 48Z' fill='%230c0c0c'/%3E%3Cpath d='M40 92A22 22 0 0 1 62 70L136 70L136 114L62 114A22 22 0 0 0 40 92Z' fill='%230c0c0c'/%3E%3Cpath d='M40 136A22 22 0 0 1 62 114L86 114L86 158L62 158A22 22 0 0 1 40 136Z' fill='%230c0c0c'/%3E%3C/svg%3E">
 
 <style>
 /* ============================================================
-   استایل‌های صفحه‌ی درباره من — هم‌اهنگ با سایت اصلی
+   ۰۱ — ریشه‌های طراحی (Design Tokens)
    ============================================================ */
-:root {
-  --bg: #0c0c0c;
-  --bg-deep: #141210;
-  --bg-footer: #080705;
-  --ink: #ECE7DC;
-  --ink-soft: rgba(236,231,220,.6);
-  --line: rgba(212,175,55,.16);
-  --accent: #D4AF37;
-  --accent-soft: #F1D375;
-  --accent-10: rgba(212,175,55,.08);
-  --accent-20: rgba(212,175,55,.18);
-  --on-accent: #14110A;
-  --glass-bg: rgba(255,255,255,.035);
-  --glass-bg-strong: rgba(255,255,255,.05);
-  --glass-border: rgba(212,175,55,.22);
-  --glass-blur: 18px;
-  --font-display: Georgia, 'Times New Roman', serif;
-  --font-body: Tahoma, 'Segoe UI', Arial, sans-serif;
-  --font-mono: ui-monospace, 'SFMono-Regular', 'Courier New', monospace;
-  --fs-h1: clamp(2.2rem, 5.4vw, 3.6rem);
-  --fs-h2: clamp(1.7rem, 3.2vw, 2.5rem);
-  --fs-h3: 1.35rem;
-  --radius-md: 14px;
-  --radius-sm: 4px;
-  --container: 1180px;
-  --ease-elastic: cubic-bezier(.68, -0.55, .27, 1.55);
+:root{
+  --bg:#0c0c0c;
+  --bg-deep:#141210;
+  --bg-footer:#080705;
+  --ink:#ECE7DC;
+  --ink-soft:rgba(236,231,220,.6);
+  --line:rgba(212,175,55,.16);
+
+  --accent:#D4AF37;
+  --accent-soft:#F1D375;
+  --accent-10:rgba(212,175,55,.08);
+  --accent-20:rgba(212,175,55,.18);
+  --on-accent:#14110A;
+
+  --accent-cool:#3E6FE0;
+  --accent-cool-soft:#6E91F2;
+  --on-accent-cool:#FAFAFA;
+
+  --glass-bg:rgba(255,255,255,.035);
+  --glass-bg-strong:rgba(255,255,255,.05);
+  --glass-border:rgba(212,175,55,.22);
+  --glass-blur:18px;
+
+  --font-display:Georgia,'Times New Roman',serif;
+  --font-body:Tahoma,'Segoe UI',Arial,sans-serif;
+  --font-mono:ui-monospace,'SFMono-Regular','Courier New',monospace;
+
+  --fs-h1:clamp(2.2rem,5.4vw,4rem);
+  --fs-h2:clamp(1.7rem,3.2vw,2.5rem);
+  --fs-h3:1.35rem;
+  --fs-h4:1.05rem;
+  --fs-eyebrow:.78rem;
+
+  --gap:1.5rem;
+  --radius-sm:4px;
+  --radius-md:14px;
+  --container:1180px;
+  --ease-elastic:cubic-bezier(.68,-0.55,.27,1.55);
 }
 
-html[data-theme="light"] {
-  --bg: #FAF7F1;
-  --bg-deep: #F0EAE0;
-  --bg-footer: #11100C;
-  --ink: #171410;
-  --ink-soft: rgba(23,20,16,.64);
-  --line: rgba(170,128,30,.22);
-  --on-accent: #FAF6F0;
-  --glass-bg: rgba(17,16,12,.035);
-  --glass-bg-strong: rgba(17,16,12,.05);
-  --glass-border: rgba(170,128,30,.28);
+/* ۰۱ب — تم روشن */
+html[data-theme="light"]{
+  --bg:#FAF7F1;
+  --bg-deep:#F0EAE0;
+  --bg-footer:#11100C;
+  --ink:#171410;
+  --ink-soft:rgba(23,20,16,.64);
+  --line:rgba(170,128,30,.22);
+  --on-accent:#FAF6F0;
+  --glass-bg:rgba(17,16,12,.035);
+  --glass-bg-strong:rgba(17,16,12,.05);
+  --glass-border:rgba(170,128,30,.28);
+}
+html[data-theme="light"] body{
+  background:radial-gradient(circle at 50% -10%, rgba(212,175,55,.12), transparent 55%), var(--bg);
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* ===================== PAGE LOADER ===================== */
+.page-loader {
+  position: fixed; inset: 0; z-index: 99999;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
+.page-loader.is-hidden { opacity: 0; }
+.page-loader .loader-logo {
+  width: 48px; height: 48px;
+  border: 3px solid var(--glass-border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
-html {
-  scroll-behavior: smooth;
-}
+/* یوتیلیتی‌ها */
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+body.no-scroll{overflow:hidden;}
 
-body {
-  margin: 0;
-  background: radial-gradient(circle at 50% -10%, rgba(212, 175, 55, .07), transparent 55%), var(--bg);
-  color: var(--ink);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.75;
-  -webkit-font-smoothing: antialiased;
-  opacity: 0;
-  animation: pageFadeIn 0.6s ease forwards;
-}
-
-@keyframes pageFadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-img,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  margin: 0 0 .6em;
-  color: var(--ink);
-}
-
-h1 {
-  font-size: var(--fs-h1);
-  line-height: 1.18;
-}
-h2 {
-  font-size: var(--fs-h2);
-  line-height: 1.25;
-}
-h3 {
-  font-size: var(--fs-h3);
-}
-
-p {
-  margin: 0 0 1.1em;
-  color: var(--ink-soft);
-  max-width: 62ch;
-}
-
-.eyebrow {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: .78rem;
-  letter-spacing: .06em;
-  color: var(--accent);
-  margin-bottom: .9em;
-}
-
-.container {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 1.6rem;
-}
-
-section {
-  padding: 5.5rem 0;
-}
-
-.section-bg-deep {
-  background: var(--bg-deep);
-}
-
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 1px;
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
 }
 
 /* ============================================================
-   هدر — همانند سایت اصلی
+   ۰۲ — ریست پایه و تایپوگرافی
    ============================================================ */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(12, 12, 12, .78);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
-  transition: padding .3s ease, backdrop-filter .3s ease;
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:radial-gradient(circle at 50% -10%, rgba(212,175,55,.07), transparent 55%), var(--bg);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:1rem;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  opacity:0;
+  animation:pageFadeIn 0.6s ease forwards;
+}
+@keyframes pageFadeIn{ to{ opacity:1; } }
+img,svg{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+ul{margin:0;padding:0;list-style:none;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;margin:0 0 .6em;color:var(--ink);}
+h1{font-size:var(--fs-h1);line-height:1.18;}
+h2{font-size:var(--fs-h2);line-height:1.25;}
+h3{font-size:var(--fs-h3);}
+h4{font-size:var(--fs-h4);font-family:var(--font-body);font-weight:700;}
+p{margin:0 0 1.1em;color:var(--ink-soft);max-width:62ch;}
+.eyebrow{
+  display:inline-block;font-family:var(--font-mono);font-size:var(--fs-eyebrow);
+  letter-spacing:.06em;color:var(--accent);margin-bottom:.9em;
+}
+.container{max-width:var(--container);margin:0 auto;padding:0 1.6rem;}
+section{padding:5.5rem 0;}
+.section-bg-deep{background:var(--bg-deep);}
+
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:1px;}
+
+/* اصلاح لنگر اسکرول */
+#chera, #services, #packages, #packages-extra, #testimonials, #sandbox, #cost-calculator, #price-calculator, #faq, #contact{
+  scroll-margin-top: 80px;
 }
 
-.site-header.scrolled {
-  padding-top: 0.2rem;
-  padding-bottom: 0.2rem;
-  backdrop-filter: blur(18px);
+.skip-link{
+  position:absolute;right:-999px;top:0;background:var(--accent);color:var(--on-accent);
+  padding:.6em 1em;z-index:200;
 }
+.skip-link:focus{right:1rem;top:1rem;}
 
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1.6rem;
-  max-width: var(--container);
-  margin: 0 auto;
+/* دکمه‌های عمومی */
+.btn{
+  display:inline-flex;align-items:center;gap:.5em;
+  padding:.85em 1.6em;border:1px solid var(--line);border-radius:var(--radius-sm);
+  font-size:.95rem;font-weight:700;cursor:pointer;background:transparent;color:var(--ink);
+  transition:background .25s ease,color .25s ease,border-color .25s ease,box-shadow .25s ease,transform .15s ease;
 }
+.btn:active{transform:scale(0.97);}
+.btn-primary{background:var(--accent);color:var(--on-accent);border-color:var(--accent);}
+.btn-primary:hover{background:var(--accent-soft);box-shadow:0 0 0 4px var(--accent-10);}
+.btn-ghost{border-color:var(--accent);color:var(--accent);}
+.btn-ghost:hover{background:var(--accent);color:var(--on-accent);}
+.btn-cool{background:var(--accent-cool);color:var(--on-accent-cool);border-color:var(--accent-cool);}
+.btn-cool:hover{background:var(--accent-cool-soft);}
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: .7rem;
-  font-family: var(--font-display);
-  font-size: 1.15rem;
+/* ============================================================
+   ۰۳ — هدر و ناوبری
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:100;background:rgba(12,12,12,.78);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  transition:padding .3s ease, backdrop-filter .3s ease;
 }
+.site-header.scrolled{
+  padding-top:0.2rem;padding-bottom:0.2rem;
+  backdrop-filter:blur(18px);
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.6rem;max-width:var(--container);margin:0 auto;}
+.brand{display:flex;align-items:center;gap:.7rem;font-family:var(--font-display);font-size:1.15rem;}
+.brand-mark{width:34px;height:34px;}
+.main-nav{display:flex;align-items:center;gap:2.1rem;}
+.main-nav a{font-size:.92rem;color:var(--ink-soft);transition:color .2s ease;}
+.main-nav a:hover{color:var(--accent);}
+.nav-about{display:inline-flex !important;align-items:center;gap:.45rem;}
+.nav-about-icon{width:18px;height:18px;flex-shrink:0;}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:.4rem;}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:transform .25s ease,opacity .25s ease;}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-.brand-mark {
-  width: 34px;
-  height: 34px;
+.theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;
+  border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer;
+  margin-right:.6rem;transition:border-color .2s ease;flex-shrink:0;
 }
-
-.logo-bg {
-  transform-box: fill-box;
-  transform-origin: center;
-  fill: var(--accent);
-  animation: logoPop .45s var(--ease-elastic) both;
-}
-
-.logo-path {
-  fill-opacity: 0;
-  stroke: var(--bg);
-  stroke-width: 4;
-  stroke-linejoin: round;
-  fill: var(--bg);
-  stroke-dasharray: 500;
-  stroke-dashoffset: 500;
-  animation-fill-mode: forwards;
-}
-
-.logo-path-1 {
-  animation: logoDraw .7s ease forwards .25s, logoFillIn .4s ease forwards .95s;
-}
-.logo-path-2 {
-  animation: logoDraw .7s ease forwards .4s, logoFillIn .4s ease forwards 1.1s;
-}
-.logo-path-3 {
-  animation: logoDraw .7s ease forwards .55s, logoFillIn .4s ease forwards 1.25s;
-}
-
-@keyframes logoPop {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-@keyframes logoDraw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes logoFillIn {
-  to {
-    fill-opacity: 1;
-  }
-}
-
-.brand-mark {
-  animation: logoGlowPulse 3.4s ease-in-out 1.4s infinite;
-}
-
-@keyframes logoGlowPulse {
-  0%,
-  100% {
-    filter: drop-shadow(0 0 2px rgba(212, 175, 55, .25));
-  }
-  50% {
-    filter: drop-shadow(0 0 10px rgba(212, 175, 55, .65));
-  }
-}
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  gap: 2.1rem;
-}
-
-.main-nav a {
-  font-size: .92rem;
-  color: var(--ink-soft);
-  transition: color .2s ease;
-}
-
-.main-nav a:hover {
-  color: var(--accent);
-}
-
-.main-nav a.active {
-  color: var(--accent);
-}
-
-.nav-about {
-  display: inline-flex !important;
-  align-items: center;
-  gap: .45rem;
-}
-
-.nav-about-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: 0;
-  cursor: pointer;
-  padding: .4rem;
-}
-
-.nav-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--ink);
-  margin: 5px 0;
-  transition: transform .25s ease, opacity .25s ease;
-}
-
-.nav-toggle[aria-expanded="true"] span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.nav-toggle[aria-expanded="true"] span:nth-child(2) {
-  opacity: 0;
-}
-.nav-toggle[aria-expanded="true"] span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-.theme-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: transparent;
-  cursor: pointer;
-  margin-right: .6rem;
-  transition: border-color .2s ease;
-  flex-shrink: 0;
-}
-
-.theme-toggle:hover {
-  border-color: var(--accent);
-}
-
-.theme-toggle svg {
-  width: 18px;
-  height: 18px;
-}
-
-.theme-toggle .icon-sun {
-  display: none;
-}
-
-html[data-theme="light"] .theme-toggle .icon-moon {
-  display: none;
-}
-html[data-theme="light"] .theme-toggle .icon-sun {
-  display: block;
-}
+.theme-toggle:hover{border-color:var(--accent);}
+.theme-toggle svg{width:18px;height:18px;}
+.theme-toggle .icon-sun{display:none;}
+html[data-theme="light"] .theme-toggle .icon-moon{display:none;}
+html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 
 /* منوی موبایل */
-@media (max-width:900px) {
-  .main-nav {
-    position: fixed;
-    inset: 0 0 auto 0;
-    top: 64px;
-    background: var(--bg);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem 1.6rem;
-    gap: 1.3rem;
-    border-bottom: 1px solid var(--line);
-    transform: translateY(-110%);
-    transition: transform .3s ease;
-    z-index: 99;
+@media (max-width:900px){
+  .main-nav{
+    position:fixed;inset:0 0 auto 0;top:64px;background:var(--bg);
+    flex-direction:column;align-items:flex-start;padding:1.5rem 1.6rem;gap:1.3rem;
+    border-bottom:1px solid var(--line);transform:translateY(-110%);transition:transform .3s ease;
+    z-index:99;
   }
-  .main-nav.is-open {
-    transform: translateY(0);
+  .main-nav.is-open{transform:translateY(0);}
+  .main-nav.is-open::before{
+    content:"";position:fixed;inset:0;top:64px;background:rgba(0,0,0,.6);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    z-index:-1;
   }
-  .main-nav.is-open::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    top: 64px;
-    background: rgba(0, 0, 0, .6);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    z-index: -1;
-  }
-  .nav-toggle {
-    display: block;
-  }
+  .nav-toggle{display:block;}
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: .5em;
-  padding: .85em 1.6em;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  font-size: .95rem;
-  font-weight: 700;
-  cursor: pointer;
-  background: transparent;
-  color: var(--ink);
-  transition: background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease, transform .15s ease;
-}
+/* ============================================================
+   ۰۴ — هرو
+   ============================================================ */
+.hero{padding-top:4.5rem;position:relative;overflow:hidden;}
+#hero-rain{position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:none;}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:3.5rem;align-items:center;}
+.terminal-wrap{position:relative;}
+.hero-decor{position:absolute;top:-120px;right:-90px;width:380px;z-index:0;opacity:.92;pointer-events:none;animation:floatY 7s ease-in-out infinite;filter:drop-shadow(0 0 36px rgba(212,175,55,.25));}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+.ring-a{transform-box:fill-box;transform-origin:center;animation:ringRotateCW 26s linear infinite;}
+.ring-b{transform-box:fill-box;transform-origin:center;animation:ringRotateCCW 18s linear infinite;}
+@keyframes ringRotateCW{to{transform:rotate(360deg);}}
+@keyframes ringRotateCCW{to{transform:rotate(-360deg);}}
+.core-pulse{transform-box:fill-box;transform-origin:center;animation:corePulse 3.6s ease-in-out infinite;}
+@keyframes corePulse{0%,100%{opacity:.7;transform:scale(1);}50%{opacity:1;transform:scale(1.08);}}
+.hero-glow-blob{position:absolute;top:8%;right:36%;width:480px;height:480px;z-index:0;background:radial-gradient(circle,rgba(212,175,55,.16),transparent 70%);filter:blur(10px);pointer-events:none;animation:blobBreathe 9s ease-in-out infinite;}
+@keyframes blobBreathe{0%,100%{transform:scale(1) translateY(0);opacity:.8;}50%{transform:scale(1.12) translateY(-12px);opacity:1;}}
+.hero-trail{position:absolute;z-index:0;height:1px;width:60%;background:linear-gradient(90deg,transparent,rgba(212,175,55,.55),transparent);pointer-events:none;mix-blend-mode:screen;}
+.hero-trail-1{top:18%;right:-20%;animation:trailSweep 7s ease-in-out infinite;}
+.hero-trail-2{top:64%;right:-30%;animation:trailSweep 9s ease-in-out 2.4s infinite;}
+@keyframes trailSweep{0%{transform:translateX(0) rotate(-6deg);opacity:0;}10%{opacity:1;}90%{opacity:1;}100%{transform:translateX(-140%) rotate(-6deg);opacity:0;}}
+.hero-cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.6rem;}
 
-.btn:active {
-  transform: scale(0.97);
-}
+/* نوار اعتماد */
+.trust-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-deep);}
+.trust-strip ul{display:flex;justify-content:center;gap:0;flex-wrap:wrap;}
+.trust-strip li{padding:1.1rem 1.8rem;font-size:.85rem;color:var(--ink-soft);border-right:1px solid var(--line);}
+.trust-strip li:first-child{border-right:0;}
 
-.btn-primary {
+/* ============================================================
+   ۰۵ — آمار
+   ============================================================ */
+.stats-row{padding:3.6rem 0;position:relative;overflow:hidden;}
+.stats-row .stats-decor{position:absolute;left:-40px;top:50%;width:200px;transform:translateY(-50%);opacity:.18;pointer-events:none;}
+.stats-heading{text-align:center;margin-bottom:2.2rem;}
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  gap:20px;
+  position:relative;z-index:1;
+}
+.stat-card{
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-md);
+  padding:28px 24px;
+  text-align:center;
+  transition:all .3s ease;
+}
+.stat-card:hover{
+  border-color:var(--accent);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(0,0,0,.15);
+}
+.stat-value{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,3.2rem);color:var(--accent);direction:ltr;display:inline-block;}
+.stat-suffix{font-size:.5em;color:var(--ink-soft);margin-right:.15em;}
+.stat-label{display:block;margin-top:.4rem;font-size:.85rem;color:var(--ink-soft);}
+
+/* ترمینال */
+.terminal{position:relative;z-index:1;background:linear-gradient(150deg,rgba(255,255,255,.045),rgba(255,255,255,.01));border:1px solid var(--glass-border);-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));border-radius:var(--radius-md);padding:1.4rem 1.5rem;font-family:var(--font-mono);font-size:.85rem;min-height:230px;box-shadow:0 30px 60px -28px rgba(0,0,0,.7),0 0 46px -12px rgba(212,175,55,.18);}
+.terminal-bar{display:flex;gap:.4rem;margin-bottom:1rem;}
+.terminal-bar span{width:9px;height:9px;border-radius:50%;background:rgba(212,175,55,.3);}
+.terminal-log{line-height:1.9;white-space:pre-wrap;direction:ltr;text-align:left;min-height:160px;}
+.terminal-log .ok{color:#6BE39A;}
+.terminal-log .muted{color:rgba(236,231,220,.45);}
+.terminal-cursor{display:inline-block;width:7px;height:1em;background:var(--accent);vertical-align:middle;animation:blink 1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+.terminal-caption{font-size:.85rem;color:var(--ink-soft);margin-top:1rem;}
+
+/* ============================================================
+   ۰۶ — متن اقناعی و خدمات
+   ============================================================ */
+.prose-section .container{max-width:1000px;display:flex;align-items:center;gap:3rem;justify-content:space-between;}
+.prose-decor{width:min(160px,40%);flex-shrink:0;opacity:.9;animation:floatY 6.5s ease-in-out infinite;}
+@media (max-width:900px){.prose-section .container{flex-direction:column;}}
+.services-section h3{margin-top:2.6rem;border-right:3px solid var(--accent);padding-right:1rem;}
+.services-section h4{margin-top:1.4rem;}
+.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2.4rem 3rem;margin-top:1.6rem;}
+
+/* ============================================================
+   ۰۷ — کارت متامورف
+   ============================================================ */
+.morph-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:center;}
+.morph-swatches{display:flex;gap:.7rem;margin-bottom:1.4rem;}
+.morph-swatch{flex:1;height:64px;border-radius:10px;padding:.55rem .6rem;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--line);opacity:.5;transform:scale(.94);transition:opacity .3s ease,transform .3s var(--ease-elastic),border-color .3s ease,box-shadow .3s ease;}
+.morph-swatch[data-style="luxe"]{background:linear-gradient(150deg,rgba(212,175,55,.24),rgba(212,175,55,.04));}
+.morph-swatch[data-style="holo"]{background:linear-gradient(135deg,#E9F3FF,#F6E9FF 45%,#FFF3E0);}
+.morph-swatch[data-style="retro"]{background:#0a0a0a;}
+.morph-swatch-dot{width:8px;height:8px;border-radius:50%;display:block;}
+.morph-swatch[data-style="luxe"] .morph-swatch-dot{background:#D4AF37;}
+.morph-swatch[data-style="holo"] .morph-swatch-dot{background:#7C3AED;}
+.morph-swatch[data-style="retro"] .morph-swatch-dot{background:#FFB000;}
+.morph-swatch-bar{height:6px;border-radius:3px;width:70%;display:block;}
+.morph-swatch[data-style="luxe"] .morph-swatch-bar{background:rgba(212,175,55,.55);}
+.morph-swatch[data-style="holo"] .morph-swatch-bar{background:rgba(124,58,237,.45);}
+.morph-swatch[data-style="retro"] .morph-swatch-bar{background:#39FF6A;}
+.morph-swatch.is-active{opacity:1;transform:scale(1);border-color:var(--accent);box-shadow:0 10px 22px -10px rgba(212,175,55,.45);}
+.morph-controls{display:flex;flex-direction:column;gap:.8rem;}
+.morph-btn{text-align:right;padding:.9em 1.2em;border:1px solid var(--line);border-radius:var(--radius-sm);background:transparent;font-family:var(--font-body);font-size:.92rem;font-weight:700;cursor:pointer;color:var(--ink-soft);transition:border-color .2s ease,color .2s ease,transform .15s ease;}
+.morph-btn:active{transform:scale(0.97);}
+.morph-btn[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);}
+.morph-card .morph-icon{display:none;width:42px;height:42px;margin-bottom:.8rem;}
+.morph-card[data-style="luxe"] .morph-icon-luxe{display:block;}
+.morph-card[data-style="holo"] .morph-icon-holo{display:block;}
+.morph-card[data-style="retro"] .morph-icon-retro{display:block;}
+.morph-card{--mc-bg:linear-gradient(150deg,rgba(212,175,55,.12),rgba(212,175,55,.02));--mc-fg:var(--ink);--mc-accent:var(--accent);--mc-radius:var(--radius-md);--mc-border:1px solid var(--glass-border);--mc-shadow:0 30px 60px -28px rgba(212,175,55,.22);--mc-font:var(--font-display);background:var(--mc-bg);color:var(--mc-fg);border:var(--mc-border);border-radius:var(--mc-radius);box-shadow:var(--mc-shadow);padding:2.4rem;-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));transition:background .4s ease,color .4s ease,border-color .4s ease,border-radius .55s var(--ease-elastic),box-shadow .4s ease;}
+.morph-card h3{font-family:var(--mc-font);color:var(--mc-fg);transition:color .4s ease;}
+.morph-card p{color:var(--mc-fg);opacity:.78;}
+.morph-card .morph-tag{font-family:var(--font-mono);font-size:.78rem;color:var(--mc-accent);}
+.morph-card .morph-cta{display:inline-block;margin-top:1rem;padding:.7em 1.4em;background:var(--mc-accent);color:var(--on-accent);border-radius:var(--mc-radius);font-size:.85rem;font-weight:700;transition:border-radius .55s var(--ease-elastic);}
+.morph-card[data-style="holo"]{--mc-bg:linear-gradient(135deg,#E9F3FF,#F6E9FF 45%,#FFF3E0);--mc-fg:#241B3D;--mc-accent:#7C3AED;--mc-radius:26px;--mc-border:1px solid rgba(124,58,237,.25);--mc-shadow:0 30px 60px -30px rgba(124,58,237,.45);--mc-font:var(--font-body);}
+.morph-card[data-style="holo"] .morph-cta{color:#FAF6F0;}
+.morph-card[data-style="retro"]{--mc-bg:#0a0a0a;--mc-fg:#39FF6A;--mc-accent:#FFB000;--mc-radius:0px;--mc-border:1px dashed #FFB000;--mc-shadow:none;--mc-font:var(--font-mono);}
+.morph-card[data-style="retro"] .morph-cta{color:#0a0a0a;}
+
+/* ============================================================
+   ۰۸ — پکیج‌های اصلی
+   ============================================================ */
+.packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:2.2rem;}
+.package-card{
+  position:relative;
+  border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:2.2rem 1.8rem;
+  background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+  -webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));
+  display:flex;flex-direction:column;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+.package-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 30px 60px -20px rgba(212,175,55,.3);
+}
+.package-card.is-featured{border-color:var(--accent);box-shadow:0 30px 60px -30px rgba(212,175,55,.4),0 0 0 1px var(--accent-20) inset;}
+.package-card:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-10);}
+.package-badge{
+  position:absolute;top:16px;left:16px;
+  background:var(--accent);color:var(--on-accent);
+  font-size:.72rem;font-weight:700;
+  padding:4px 14px;border-radius:99px;
+  text-transform:uppercase;letter-spacing:.05em;
+}
+.package-audience{font-size:.82rem;color:var(--ink-soft);margin-bottom:1rem;}
+.package-icon{width:56px;height:56px;margin-bottom:.6rem;}
+.package-price{font-family:var(--font-display);font-size:1.8rem;margin:1.2rem 0;color:var(--accent);text-shadow:0 0 20px rgba(212,175,55,0.2);font-weight:700;border-bottom:1px solid var(--accent-20);padding-bottom:.4rem;display:inline-block;}
+.package-card .btn{margin-top:auto;justify-content:center;width:100%;}
+.package-card::before{
+  content:"";position:absolute;top:0;right:0;width:3px;height:0;background:var(--accent);
+  transition:height .35s ease;
+}
+.package-card:hover::before{height:100%;}
+
+/* ============================================================
+   ۰۹ — نظرات مشتریان
+   ============================================================ */
+.testimonials-section{background:var(--bg-deep);position:relative;overflow:hidden;}
+.testimonials-section .container{position:relative;z-index:1;}
+.testimonials-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin:2.5rem 0 2rem;}
+.testimonial-card{background:var(--glass-bg-strong);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:1.8rem 1.4rem;-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));transition:transform 0.3s ease,border-color 0.3s ease;display:flex;flex-direction:column;gap:0.6rem;}
+.testimonial-card:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-10);}
+.testimonial-card .client-row{display:flex;align-items:center;gap:0.8rem;}
+.testimonial-card .avatar-svg{width:44px;height:44px;border-radius:50%;flex-shrink:0;background:var(--accent-10);border:1.5px solid var(--accent-20);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--accent);}
+.testimonial-card .client-name{font-weight:700;font-size:.95rem;color:var(--ink);}
+.testimonial-card .client-title{font-size:.78rem;color:var(--ink-soft);}
+.testimonial-card .stars{color:var(--accent);font-size:1.1rem;letter-spacing:.1em;direction:ltr;display:inline-block;}
+.testimonial-card .quote{font-size:.92rem;color:var(--ink-soft);line-height:1.7;margin:.2rem 0 .2rem;font-style:italic;border-right:2px solid var(--accent-20);padding-right:.8rem;}
+.testimonial-card .quote::before{content:"“";color:var(--accent);opacity:.5;margin-left:.2rem;}
+.testimonial-card .quote::after{content:"”";color:var(--accent);opacity:.5;margin-right:.2rem;}
+.testimonial-nav{display:flex;justify-content:center;gap:1rem;margin-top:.8rem;}
+.testimonial-nav button{background:transparent;border:1px solid var(--line);color:var(--ink-soft);width:44px;height:44px;border-radius:50%;font-size:1.2rem;cursor:pointer;transition:border-color .2s ease,color .2s ease,background .2s ease;display:inline-flex;align-items:center;justify-content:center;}
+.testimonial-nav button:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-10);}
+.testimonial-nav button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;}
+.testimonial-dots{display:flex;justify-content:center;gap:.6rem;margin-top:.6rem;}
+.testimonial-dots button{width:10px;height:10px;border-radius:50%;border:1px solid var(--line);background:transparent;padding:0;cursor:pointer;transition:background .2s ease,border-color .2s ease;}
+.testimonial-dots button.is-active{background:var(--accent);border-color:var(--accent);}
+
+/* ============================================================
+   ۱۰ — سندباکس
+   ============================================================ */
+.sandbox-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+.sandbox-decor{width:min(220px,70%);margin-top:1.6rem;opacity:.95;animation:floatY 6s ease-in-out infinite;}
+.sandbox-controls label{display:block;font-size:.85rem;font-weight:700;margin-bottom:.4rem;}
+.sandbox-field{margin-bottom:1.4rem;}
+.sandbox-field input[type="range"]{width:100%;accent-color:var(--accent);height:4px;}
+.sandbox-preview-wrap{display:flex;align-items:center;justify-content:center;min-height:160px;border:1px solid var(--glass-border);border-radius:var(--radius-md);background:var(--bg-deep);}
+#sb-preview{border:0;cursor:pointer;font-family:var(--font-body);color:#fff;padding:.9em 1.8em;background:var(--accent-cool);border-radius:4px;font-size:16px;font-weight:700;transition:border-radius .3s var(--ease-elastic);}
+.sandbox-code{margin-top:1.2rem;background:#000;color:#9fe6b0;font-family:var(--font-mono);font-size:.8rem;padding:1rem 1.2rem;border-radius:6px;direction:ltr;text-align:left;overflow-x:auto;border:1px solid var(--line);}
+
+/* ============================================================
+   ۱۱ — ماشین‌حساب هزینه (ریزش بازدید)
+   ============================================================ */
+.calc-card{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem;align-items:center;border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:2.4rem;background:linear-gradient(150deg,rgba(255,255,255,.04),rgba(255,255,255,.01));-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));margin-top:2rem;}
+.calc-field{margin-bottom:1.5rem;}
+.calc-field label{display:block;font-size:.85rem;font-weight:700;margin-bottom:.5rem;}
+.calc-field input[type="range"]{width:100%;accent-color:var(--accent);height:4px;}
+.calc-field input[type="number"]{width:100%;background:var(--bg-deep);border:1px solid var(--line);color:var(--ink);padding:.6em .8em;border-radius:var(--radius-sm);font-family:var(--font-mono);direction:ltr;text-align:left;appearance:textfield;}
+.calc-field input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
+.calc-readout{display:flex;justify-content:space-between;font-size:.8rem;color:var(--ink-soft);margin-top:.3rem;direction:ltr;}
+.calc-result{text-align:center;}
+.calc-loss-number{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.4rem);color:var(--accent);direction:ltr;}
+.calc-bar-track{height:10px;border-radius:99px;background:var(--bg-deep);overflow:hidden;margin:1rem 0;}
+.calc-bar-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent-soft));border-radius:99px;transition:width .5s var(--ease-elastic);}
+.calc-benchmark{font-size:.85rem;color:var(--ink-soft);}
+.calc-benchmark strong{color:var(--accent);}
+
+/* ============================================================
+   ۱۲ — ماشین‌حساب قیمت (ویجت جدید)
+   ============================================================ */
+.price-calc-wrapper{
+  margin-top:2rem;
+  background:var(--glass-bg-strong);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-md);
+  padding:2rem 1.8rem;
+  max-width:560px;
+}
+.price-calc-group{margin-bottom:1.5rem;}
+.price-calc-label{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.9rem;font-weight:600;
+  margin-bottom:.6rem;
+}
+.price-calc-value{color:var(--accent);font-weight:700;}
+.price-calc-total{
+  padding:1.2rem;
+  background:var(--accent-10);
+  border:1px solid var(--accent-20);
+  border-radius:var(--radius-sm);
+  text-align:center;
+}
+.price-calc-total-label{font-size:.85rem;color:var(--ink-soft);margin-bottom:.5rem;}
+.price-calc-total-price{font-size:1.8rem;font-weight:800;color:var(--accent);}
+
+/* ============================================================
+   ۱۳ — سوالات متداول
+   ============================================================ */
+.faq-item{
+  border:1px solid var(--glass-border);border-radius:var(--radius-md);margin-bottom:.9rem;
+  background:linear-gradient(150deg,rgba(255,255,255,.03),rgba(255,255,255,.005));
+  padding:0 1.4rem;-webkit-backdrop-filter:blur(var(--glass-blur));backdrop-filter:blur(var(--glass-blur));
+}
+.faq-item summary{
+  cursor:pointer;list-style:none;padding:1.3rem 0;font-family:var(--font-display);
+  font-size:1.05rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  width:100%;user-select:none;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:"+";font-family:var(--font-mono);font-size:1.8rem;color:var(--accent);transition:transform .25s ease;flex-shrink:0;line-height:1;}
+.faq-item[open] summary::after{transform:rotate(45deg);}
+.faq-item .faq-answer{padding-bottom:1.5rem;}
+
+/* ============================================================
+   ۱۴ — فوتر و تماس
+   ============================================================ */
+.site-footer{background:var(--bg-footer);color:var(--ink);padding:5rem 0 2.5rem;border-top:1px solid var(--line);}
+.site-footer h2{color:var(--ink);}
+.site-footer p{color:var(--ink-soft);}
+.footer-top{display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:center;}
+.footer-decor{width:200px;opacity:.95;animation:floatY 7s ease-in-out infinite;filter:drop-shadow(0 0 28px rgba(212,175,55,.22));}
+.contact-channels{display:flex;gap:1rem;flex-wrap:wrap;margin:2rem 0 1.6rem;}
+.contact-channels a{border:1px solid var(--line);padding:.85em 1.5em;border-radius:var(--radius-sm);font-size:.9rem;transition:background .2s ease,border-color .2s ease;}
+.contact-channels a:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent);}
+.contact-form{display:flex;gap:.8rem;flex-wrap:wrap;max-width:520px;}
+.contact-form input{flex:1 1 180px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--ink);padding:.85em 1em;border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.9rem;}
+.contact-form input::placeholder{color:var(--ink-soft);}
+.contact-form input:focus{border-color:var(--accent-cool);}
+.contact-form input[type="email"]{direction:ltr;text-align:left;}
+.contact-form button{flex:0 0 auto;position:relative;}
+.contact-form button[disabled]{opacity:.6;cursor:wait;}
+.contact-form button .spinner{display:none;width:20px;height:20px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin 0.8s linear infinite;margin-left:0.5rem;}
+.contact-form button.loading .spinner{display:inline-block;}
+.contact-form-note{font-size:.78rem;color:var(--ink-soft);margin-top:.6rem;}
+.contact-form input[aria-invalid="true"]{border-color:#E0584F;}
+.contact-form-error{display:block;font-size:.76rem;color:#FF8A80;margin-top:.3rem;}
+.form-status{font-size:.85rem;margin-top:.8rem;min-height:1.2em;}
+.form-status[data-state="success"]{color:#6BE39A;}
+.form-status[data-state="error"]{color:#FF8A80;}
+.footer-bottom{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.6rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.78rem;color:var(--ink-soft);}
+
+/* ============================================================
+   ۱۵ — دکمه‌ی بازگشت به بالا
+   ============================================================ */
+.back-to-top{
+  position:fixed;bottom:2rem;left:2rem;z-index:300;
+  width:50px;height:50px;border-radius:50%;
+  background:var(--accent);color:var(--on-accent);
+  border:none;cursor:pointer;font-size:1.6rem;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transform:translateY(20px);
+  transition:opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow:0 8px 24px rgba(212,175,55,0.3);
+}
+.back-to-top.visible{opacity:1;pointer-events:auto;transform:translateY(0);}
+.back-to-top:hover{box-shadow:0 8px 32px rgba(212,175,55,0.5);transform:scale(1.05);}
+.back-to-top:active{transform:scale(0.95);}
+.back-to-top svg{width:24px;height:24px;fill:currentColor;}
+
+/* ============================================================
+   ۱۶ — دستیار هوشمند (AI Assistant)
+   ============================================================ */
+.ai-toggle {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 500;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   background: var(--accent);
   color: var(--on-accent);
-  border-color: var(--accent);
-}
-
-.btn-primary:hover {
-  background: var(--accent-soft);
-  box-shadow: 0 0 0 4px var(--accent-10);
-}
-
-/* ============================================================
-   بخش درباره من — اصلی
-   ============================================================ */
-.about-hero {
-  padding-top: 3rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 3.5rem;
-  align-items: start;
-}
-
-.about-image-wrap {
-  position: relative;
-}
-
-.about-image {
-  width: 100%;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .7), 0 0 46px -12px rgba(212, 175, 55, .18);
-  background: var(--glass-bg-strong);
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  overflow: hidden;
-}
-
-.about-image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.about-image-ring {
-  position: absolute;
-  inset: -12px;
-  border: 1px solid var(--accent-20);
-  border-radius: calc(var(--radius-md) + 12px);
-  pointer-events: none;
-  animation: ringPulse 4s ease-in-out infinite;
-}
-
-@keyframes ringPulse {
-  0%,
-  100% {
-    opacity: .3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: .8;
-    transform: scale(1.03);
-  }
-}
-
-.about-content h1 {
-  margin-bottom: .3em;
-}
-
-.about-content .subtitle {
-  font-size: 1.1rem;
-  color: var(--accent);
-  font-family: var(--font-mono);
-  margin-bottom: 1.2rem;
-}
-
-.about-content .bio {
-  font-size: 1rem;
-  line-height: 2;
-  color: var(--ink-soft);
-}
-
-.about-content .bio strong {
-  color: var(--accent);
-}
-
-/* Skills */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.2rem;
-  margin-top: 1.8rem;
-}
-
-.skill-tag {
-  background: var(--glass-bg-strong);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-sm);
-  padding: .6rem 1rem;
-  font-size: .85rem;
-  color: var(--ink-soft);
-  text-align: center;
-  transition: all .3s ease;
-  font-family: var(--font-mono);
-}
-
-.skill-tag:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(212, 175, 55, .12);
-}
-
-.skill-tag .highlight {
-  color: var(--accent);
-}
-
-/* ============================================================
-   بخش آمار
-   ============================================================ */
-.about-stats {
-  background: var(--bg-deep);
-}
-
-.stats-grid-about {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  text-align: center;
-}
-
-.stat-item-about .number {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 2.8rem);
-  color: var(--accent);
-  display: block;
-  line-height: 1.2;
-}
-
-.stat-item-about .label {
-  font-size: .85rem;
-  color: var(--ink-soft);
-  margin-top: .3rem;
-}
-
-/* ============================================================
-   بخش فعالیت‌ها
-   ============================================================ */
-.activities-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.8rem;
-  margin-top: 2rem;
-}
-
-.activity-card {
-  background: var(--glass-bg-strong);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-md);
-  padding: 2rem 1.6rem;
-  backdrop-filter: blur(var(--glass-blur));
-  -webkit-backdrop-filter: blur(var(--glass-blur));
-  transition: all .3s ease;
-}
-
-.activity-card:hover {
-  border-color: var(--accent);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -20px rgba(212, 175, 55, .2);
-}
-
-.activity-card .icon {
-  font-size: 2rem;
-  margin-bottom: .6rem;
-  display: block;
-}
-
-.activity-card h3 {
-  font-size: 1.05rem;
-  margin-bottom: .4rem;
-  color: var(--ink);
-}
-
-.activity-card p {
-  font-size: .9rem;
-  color: var(--ink-soft);
-  margin-bottom: 0;
-}
-
-/* ============================================================
-   فوتر
-   ============================================================ */
-.site-footer {
-  background: var(--bg-footer);
-  color: var(--ink);
-  padding: 3rem 0 2.5rem;
-  border-top: 1px solid var(--line);
-}
-
-.footer-bottom {
-  border-top: 1px solid var(--line);
-  margin-top: 2rem;
-  padding-top: 1.6rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+.ai-toggle:hover {
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.6);
+}
+.ai-toggle:active {
+  transform: scale(0.95);
+}
+.ai-toggle::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  opacity: 0;
+  animation: aiPulse 2.4s ease-in-out infinite;
+}
+@keyframes aiPulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(1.3); opacity: 0; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+.ai-chat {
+  position: fixed;
+  bottom: 6rem;
+  right: 2rem;
+  z-index: 501;
+  width: 380px;
+  max-width: calc(100vw - 2.4rem);
+  height: 520px;
+  max-height: 70vh;
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(212, 175, 55, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.7) translateY(40px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              opacity 0.3s ease,
+              visibility 0.3s ease;
+  visibility: hidden;
+}
+.ai-chat.is-open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.ai-header {
+  padding: 1rem 1.4rem;
+  background: var(--accent-10);
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  font-size: .78rem;
+  flex-shrink: 0;
+}
+.ai-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent);
+}
+.ai-header-title .sparkle {
+  display: inline-block;
+  animation: sparkleSpin 4s linear infinite;
+}
+@keyframes sparkleSpin {
+  to { transform: rotate(360deg); }
+}
+.ai-close {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+  line-height: 1;
+  padding: 0 0.2rem;
+}
+.ai-close:hover {
+  color: var(--accent);
+  transform: rotate(90deg);
+}
+
+.ai-messages {
+  flex: 1;
+  padding: 1rem 1.2rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  scroll-behavior: smooth;
+}
+.ai-messages::-webkit-scrollbar {
+  width: 4px;
+}
+.ai-messages::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 99px;
+}
+
+.ai-msg {
+  max-width: 88%;
+  padding: 0.7rem 1rem;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  animation: msgFadeIn 0.4s ease both;
+  word-wrap: break-word;
+}
+.ai-msg.user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-bottom-right-radius: 4px;
+}
+.ai-msg.bot {
+  align-self: flex-start;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  color: var(--ink);
+  border-bottom-left-radius: 4px;
+}
+.ai-msg.bot a {
+  color: var(--accent);
+  text-decoration: underline;
+  font-weight: 500;
+}
+.ai-msg.bot a:hover {
+  color: var(--accent-soft);
+}
+@keyframes msgFadeIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ai-typing {
+  align-self: flex-start;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  border-bottom-left-radius: 4px;
+  padding: 0.7rem 1.2rem;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  min-height: 40px;
+}
+.ai-typing span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: typingBounce 1.4s ease-in-out infinite both;
+}
+.ai-typing span:nth-child(1) { animation-delay: 0s; }
+.ai-typing span:nth-child(2) { animation-delay: 0.2s; }
+.ai-typing span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-10px); opacity: 1; }
+}
+
+.ai-input-area {
+  padding: 0.8rem 1.2rem 1.2rem;
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  gap: 0.6rem;
+  flex-shrink: 0;
+  background: var(--glass-bg);
+}
+.ai-input-area input {
+  flex: 1;
+  background: var(--bg-deep);
+  border: 1px solid var(--glass-border);
+  border-radius: 99px;
+  padding: 0.6rem 1.2rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.ai-input-area input::placeholder {
   color: var(--ink-soft);
 }
+.ai-input-area input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-10);
+}
+.ai-input-area button {
+  background: var(--accent);
+  color: var(--on-accent);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ai-input-area button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+.ai-input-area button:active {
+  transform: scale(0.95);
+}
 
-/* ============================================================
-   واکنش‌گرایی
-   ============================================================ */
-@media (max-width:900px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+.ai-quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0 1.2rem 0.8rem;
+  border-top: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+}
+.ai-quick-btn {
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  border-radius: 99px;
+  padding: 0.4rem 1rem;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+.ai-quick-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-10);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .ai-chat {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    border-radius: 0;
+    transform: scale(0.95) translateY(20px);
   }
-  .about-image {
-    max-width: 320px;
-    margin: 0 auto;
+  .ai-chat.is-open {
+    transform: scale(1) translateY(0);
   }
-  .about-image-ring {
-    display: none;
+  .ai-toggle {
+    bottom: 1.2rem;
+    right: 1.2rem;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5rem;
   }
-  .skills-grid {
-    grid-template-columns: 1fr 1fr;
+  .ai-input-area input {
+    font-size: 0.85rem;
   }
-  .stats-grid-about {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.8rem;
-  }
-  .activities-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  section {
-    padding: 3.6rem 0;
+  .ai-quick-btn {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.8rem;
   }
 }
 
-@media (max-width:640px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
-  .stats-grid-about {
-    grid-template-columns: 1fr 1fr;
-  }
-  .activities-grid {
-    grid-template-columns: 1fr;
-  }
-  .about-image {
-    max-width: 220px;
-  }
-}
-
-/* اسکرول‌بار */
+/* استایل اسکرول‌بار */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -687,22 +846,105 @@ html {
   scrollbar-color: var(--accent) var(--bg-deep);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: .001ms !important;
-    transition-duration: .001ms !important;
+/* استایل‌های لمسی */
+@media (pointer:coarse) {
+  input[type="range"] {
+    height: 6px !important;
+  }
+}
+
+/* واکنش‌گرایی */
+@media (max-width:1024px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width:900px) {
+  .hero-grid,
+  .morph-wrap,
+  .sandbox-grid,
+  .calc-card {
+    grid-template-columns: 1fr;
+  }
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+  .trust-strip li {
+    border-right: 0;
+    border-top: 1px solid var(--line);
+    width: 100%;
+    text-align: center;
+  }
+  .trust-strip li:first-child {
+    border-top: 0;
+  }
+  .stats-row li {
+    border-right: 0;
+    border-top: 1px solid var(--line);
+    width: 100%;
+    padding: 1rem 0;
+  }
+  .stats-row li:first-child {
+    border-top: 0;
+  }
+  .stats-row .stats-decor {
+    display: none;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+  .footer-decor {
+    width: 110px;
+  }
+  .hero-decor {
+    width: 110px;
+    top: -20px;
+    right: -12px;
+  }
+  section {
+    padding: 3.6rem 0;
+  }
+  .testimonials-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width:640px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
   }
 }
 </style>
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "Organization", "@id": "https://parsastudio.ir/#organization", "name": "استودیو پارسا", "alternateName": "Parsa Studio", "url": "https://parsastudio.ir", "description": "طراحی سایت اختصاصی و لوکس برای پزشکان، وکلا و برندهای حرفه‌ای در شیراز.", "email": "hello@parsastudio.ir", "founder": { "@type": "Person", "name": "پارسا رضائی خسروی" }, "areaServed": "IR" },
+    { "@type": "ProfessionalService", "@id": "https://parsastudio.ir/#localbusiness", "name": "استودیو پارسا", "image": "https://parsastudio.ir/og-image.jpg", "priceRange": "۷,۰۰۰,۰۰۰ - توافقی", "address": { "@type": "PostalAddress", "addressLocality": "شیراز", "addressRegion": "فارس", "addressCountry": "IR" }, "areaServed": "IR", "url": "https://parsastudio.ir", "telephone": "+98-XX-XXXXXXXX", "parentOrganization": { "@id": "https://parsastudio.ir/#organization" } },
+    { "@type": "Service", "name": "امضای دیجیتال", "serviceType": "طراحی لندینگ پیج اختصاصی", "provider": { "@id": "https://parsastudio.ir/#localbusiness" }, "areaServed": "IR", "offers": { "@type": "Offer", "price": "7000000", "priceCurrency": "IRT" } },
+    { "@type": "Service", "name": "قلعه حرفه‌ای", "serviceType": "طراحی وب‌سایت اختصاصی به‌همراه CRM ابری", "provider": { "@id": "https://parsastudio.ir/#localbusiness" }, "areaServed": "IR", "offers": { "@type": "Offer", "price": "30000000", "priceCurrency": "IRT" } },
+    { "@type": "Service", "name": "اکسیر جامع", "serviceType": "هویت بصری کامل و CRM ابری سازمانی", "provider": { "@id": "https://parsastudio.ir/#localbusiness" }, "areaServed": "IR" }
+  ]
+}
+</script>
 </head>
 <body>
 
-<!-- ============================================================
-     هدر
-     ============================================================ -->
+<!-- PAGE LOADER -->
+<div class="page-loader" id="pageLoader">
+  <div class="loader-logo"></div>
+</div>
+
+<a class="skip-link" href="#main">پرش به محتوای اصلی</a>
+
+<!-- HEADER -->
 <header class="site-header" id="site-header">
   <div class="header-inner">
-    <a href="index.html" class="brand" aria-label="استودیو پارسا - بازگشت به صفحه اصلی">
+    <a href="#" class="brand" aria-label="استودیو پارسا - بازگشت به ابتدای صفحه">
       <svg class="brand-mark" viewBox="0 0 200 200" aria-hidden="true">
         <rect class="logo-bg" width="200" height="200" rx="36"/>
         <path class="logo-path logo-path-1" d="M40 48A22 22 0 0 1 62 26L170 26L170 70L62 70A22 22 0 0 0 40 48Z"/>
@@ -713,8 +955,7 @@ html {
     </a>
 
     <nav class="main-nav" id="main-nav" aria-label="منوی اصلی">
-      <a href="index.html">خانه</a>
-      <a href="#" class="nav-about active">
+      <a href="about.html" class="nav-about">
         <svg class="nav-about-icon" viewBox="0 0 32 32" aria-hidden="true">
           <circle cx="16" cy="16" r="14" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
           <circle cx="16" cy="12.5" r="5" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
@@ -722,10 +963,11 @@ html {
         </svg>
         درباره من
       </a>
-      <a href="index.html#services">خدمات</a>
-      <a href="index.html#packages">پکیج‌ها</a>
-      <a href="index.html#faq">سوالات</a>
-      <a href="index.html#contact" class="btn btn-primary">ثبت درخواست مشاوره</a>
+      <a href="#chera">چرا ما</a>
+      <a href="#services">خدمات</a>
+      <a href="#packages">پکیج‌ها</a>
+      <a href="#faq">سوالات</a>
+      <a href="#contact" class="btn btn-primary">ثبت درخواست مشاوره</a>
     </nav>
 
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="تغییر به تم روشن">
@@ -742,135 +984,615 @@ html {
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <!-- ============================================================
-       بخش درباره من
-       ============================================================ -->
-  <section class="about-hero">
-    <div class="container about-grid">
-      <!-- تصویر -->
-      <div class="about-image-wrap">
-        <div class="about-image">
-          <img src="photo_2026-04-09_05-33-47.jpg" alt="پارسا رضائی خسروی — توسعه‌دهنده فرانت‌اند و طراح سایت‌های لوکس" loading="lazy">
+  <!-- HERO -->
+  <section class="hero">
+    <canvas id="hero-rain" aria-hidden="true"></canvas>
+    <div class="hero-glow-blob" aria-hidden="true"></div>
+    <div class="hero-trail hero-trail-1" aria-hidden="true"></div>
+    <div class="hero-trail hero-trail-2" aria-hidden="true"></div>
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">معمار دیجیتال برندهای طراز اول</span>
+        <h1 class="clip-reveal">فراتر از وردپرس؛ آن‌سوی انتظار.</h1>
+        <p>من پارسا رضائی خسروی هستم. در استودیو پارسا، وب‌سایت طراحی نمی‌کنیم؛ ما «دژهای دیجیتال» خلق می‌کنیم. سازه‌های فوق‌سریع (زیر ۰.۴ ثانیه)، ایمن در برابر فیلترینگ، و آغشته به هوش مصنوعی. این یک سایت نیست، یک بیانیه است.</p>
+        <div class="hero-cta-row">
+          <a href="#packages" class="btn btn-primary">ورود به استودیو پارسا</a>
+          <a href="#contact" class="btn btn-ghost">درخواست جلسه پرستیژ</a>
         </div>
-        <div class="about-image-ring" aria-hidden="true"></div>
       </div>
-
-      <!-- متن -->
-      <div class="about-content">
-        <span class="eyebrow">معمار دیجیتال</span>
-        <h1>پارسا رضائی خسروی</h1>
-        <p class="subtitle">توسعه‌دهنده فرانت‌اند | متخصص هوش مصنوعی | طراح سایت‌های اختصاصی لوکس</p>
-
-        <div class="bio">
-          <p>
-            من <strong>پارسا رضائی خسروی</strong> هستم. دانشجوی <strong>مدیریت بازرگانی</strong> (ترم ۳) و عاشق کدنویسی.
-            با <strong>JavaScript، فرانت‌اند و Python</strong> کار می‌کنم و عاشق خلق چیزهایی هستم که هم زیبا باشن، هم کاربردی.
-          </p>
-          <p>
-            فراتر از وب‌سایت، به <strong>سیستم‌های هوشمند</strong> برای بهینه‌سازی مصرف انرژی و آب با استفاده از
-            <strong>AI و سنسورها</strong> علاقه دارم. پروژه‌هایی برای <strong>کارخانه‌ها و گلخانه‌ها</strong>
-            انجام دادم که مصرف رو بهینه می‌کنن و هزینه‌ها رو کاهش می‌دن.
-          </p>
-          <p>
-            در کنار همه این‌ها، <strong>ادیت تصویر، عکاسی صنعتی و تولید محتوای بصری با AI</strong> رو هم
-            به‌خوبی بلدم و توی استودیو پارسا، همه‌ی این مهارت‌ها رو کنار هم می‌ذارم تا برند شما رو
-            به سطح بعدی ببرم.
-          </p>
-        </div>
-
-        <!-- مهارت‌ها -->
-        <div class="skills-grid">
-          <span class="skill-tag"><span class="highlight">◈</span> JavaScript / ES6+</span>
-          <span class="skill-tag"><span class="highlight">◈</span> React / Vue / Next.js</span>
-          <span class="skill-tag"><span class="highlight">◈</span> Python / AI / ML</span>
-          <span class="skill-tag"><span class="highlight">◈</span> UI/UX &amp; Design Systems</span>
-          <span class="skill-tag"><span class="highlight">◈</span> IoT / Sensor Integration</span>
-          <span class="skill-tag"><span class="highlight">◈</span> Photo Editing &amp; AI Graphics</span>
-          <span class="skill-tag"><span class="highlight">◈</span> Industrial Photography</span>
-          <span class="skill-tag"><span class="highlight">◈</span> Brand Identity &amp; Logo Design</span>
+      <div class="terminal-wrap reveal">
+        <svg class="hero-decor" viewBox="0 0 200 200" aria-hidden="true">
+          <defs><radialGradient id="circuitCore" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:var(--accent);stop-opacity:.55"/><stop offset="100%" style="stop-color:var(--accent);stop-opacity:0"/></radialGradient></defs>
+          <g class="core-pulse"><circle cx="100" cy="100" r="92" fill="url(#circuitCore)"/></g>
+          <circle class="ring-a" cx="100" cy="100" r="70" fill="none" style="stroke:var(--accent)" stroke-opacity=".4" stroke-width="1.2" stroke-dasharray="4 9"/>
+          <circle class="ring-b" cx="100" cy="100" r="46" fill="none" style="stroke:var(--accent)" stroke-opacity=".6" stroke-width="1.2" stroke-dasharray="2 6"/>
+          <g style="stroke:var(--accent)" stroke-width="1.4" stroke-linecap="round">
+            <path d="M100 30V8M100 192v-22M30 100H8M192 100h-22M52 52L36 36M148 52l16-16M52 148l-16 16M148 148l16 16"/>
+          </g>
+          <g style="fill:var(--accent)">
+            <circle cx="100" cy="8" r="3"/><circle cx="100" cy="192" r="3"/>
+            <circle cx="8" cy="100" r="3"/><circle cx="192" cy="100" r="3"/>
+            <circle cx="36" cy="36" r="2.4"/><circle cx="164" cy="36" r="2.4"/>
+            <circle cx="36" cy="164" r="2.4"/><circle cx="164" cy="164" r="2.4"/>
+            <circle cx="100" cy="100" r="6"/>
+          </g>
+        </svg>
+        <div class="terminal" id="perf-terminal" aria-label="ترمینال نمایش زنده‌ی نتایج سرعت">
+          <div class="terminal-bar"><span></span><span></span><span></span></div>
+          <div class="terminal-log" id="terminal-log"></div>
+          <span class="terminal-cursor" aria-hidden="true"></span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       آمار
-       ============================================================ -->
-  <section class="about-stats">
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
     <div class="container">
-      <div class="stats-grid-about">
-        <div class="stat-item-about">
-          <span class="number">۱۲۰+</span>
-          <span class="label">پروژه‌ی موفق</span>
+      <ul>
+        <li>سرعت لود زیر ۰.۴ ثانیه</li>
+        <li>ریشه مستقل از CDN و فیلترینگ</li>
+        <li>بدون افزونه، بدون باگ امنیتی وردپرس</li>
+      </ul>
+    </div>
+    <p class="terminal-caption" style="text-align:center;padding:0 1.6rem 1.2rem;">هر ۱ ثانیه تاخیر بیشتر، یعنی ریزش ۱۵ درصدی مراجعین مطب شما قبل از نوبت‌گیری.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row reveal">
+    <div class="container">
+      <svg class="stats-decor" viewBox="0 0 200 200" aria-hidden="true">
+        <circle class="ring-a" cx="100" cy="100" r="70" fill="none" style="stroke:var(--accent)" stroke-width="1.2" stroke-dasharray="4 9"/>
+        <circle class="ring-b" cx="100" cy="100" r="46" fill="none" style="stroke:var(--accent)" stroke-width="1.2" stroke-dasharray="2 6"/>
+        <circle cx="100" cy="100" r="6" style="fill:var(--accent)"/>
+      </svg>
+      <div class="stats-heading">
+        <span class="eyebrow">شفافیت کامل</span>
+        <h2>مرز عملکرد</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value"><span class="stat-number" data-target="0.4" data-decimals="1">0</span><span class="stat-suffix">s</span></div>
+          <div class="stat-label">سرعت لود واقعی</div>
         </div>
-        <div class="stat-item-about">
-          <span class="number">۴۰٪</span>
-          <span class="label">افزایش نرخ تبدیل</span>
+        <div class="stat-card">
+          <div class="stat-value"><span class="stat-number" data-target="100" data-decimals="0">0</span><span class="stat-suffix">/100</span></div>
+          <div class="stat-label">امتیاز PageSpeed</div>
         </div>
-        <div class="stat-item-about">
-          <span class="number">۱۰۰٪</span>
-          <span class="label">رضایت مشتری</span>
+        <div class="stat-card">
+          <div class="stat-value"><span class="stat-number" data-target="40" data-decimals="0">0</span><span class="stat-suffix">%</span></div>
+          <div class="stat-label">رشد نرخ نوبت‌دهی با CRM پارسا</div>
         </div>
-        <div class="stat-item-about">
-          <span class="number">۰.۴s</span>
-          <span class="label">سرعت لود تضمینی</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
+  <!-- CHERA -->
+  <section id="chera" class="prose-section reveal">
+    <div class="container">
+      <div>
+        <span class="eyebrow">چرا کد اختصاصی</span>
+        <h2>مرز باریک بین «بودن» و «دیده شدن» در اقتصاد دیجیتال</h2>
+        <p>دکتر یا وکیلی را تصور کنید که در گران‌ترین برج شهر مطب دارد، اما بیمارانش را با یک پراید مدل ۸۲ جابه‌جا می‌کند. این دقیقاً همان تضاد مخربی است که استفاده از قالب‌های آماده وردپرس برای برند شخصی شما ایجاد می‌کند. وردپرس یک سیستم عامل عمومی است؛ برای وبلاگ‌نویسان ساخته شده، نه برای نخبگانی که یک اشتباه در برندینگ دیجیتال، برایشان گران تمام می‌شود.</p>
+      </div>
+      <svg class="prose-decor" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M50 8v62" style="stroke:var(--accent)" stroke-width="2"/>
+        <path d="M18 26h64" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M18 26l-11 27h22Z" fill="none" style="stroke:var(--accent)" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M82 26l9 18h-18Z" fill="none" style="stroke:var(--accent)" stroke-opacity=".5" stroke-width="1.6" stroke-linejoin="round"/>
+        <rect x="38" y="70" width="24" height="9" rx="2" style="fill:var(--accent)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="services-section section-bg-deep reveal">
+    <div class="container">
+      <span class="eyebrow">خدمات تخصصی</span>
+      <h2>طراحی سایت اختصاصی و لوکس برای برندهای حرفه‌ای</h2>
+      <p>هر پروژه از صفر و بر اساس هویت بصری همان کارفرما ساخته می‌شود؛ نه از روی یک قالب مشترک با هزاران سایت دیگر.</p>
+
+      <h3>طراحی سایت برای پزشکان و کلینیک‌های شیراز</h3>
+      <div class="services-grid">
+        <div>
+          <h4>طراحی سایت نوبت‌دهی آنلاین پزشکان</h4>
+          <p>سیستم نوبت‌دهی متصل به CRM شما، بدون فرم‌های کند و بدون افتادن نوبت بیمار در ایمیل گم‌شده.</p>
+        </div>
+        <div>
+          <h4>طراحی سایت برای کلینیک‌های زیبایی</h4>
+          <p>لندینگ پیجی که اعتبار پزشکی و جذابیت بصری را همزمان منتقل می‌کند، بدون افت سرعت روی موبایل بیمار.</p>
+        </div>
+      </div>
+
+      <h3>طراحی سایت حرفه‌ای برای وکلا و دفاتر حقوقی</h3>
+      <div class="services-grid">
+        <div>
+          <h4>طراحی سایت وکیل پایه یک دادگستری</h4>
+          <p>اعتمادسازی فوری برای موکل، با اتوریته بصری متناسب با شأن حرفه‌ای شما.</p>
+        </div>
+        <div></div>
+      </div>
+
+      <h3>چرا استودیو پارسا؟</h3>
+      <div class="services-grid">
+        <div>
+          <h4>طراحی اختصاصی بدون قالب آماده</h4>
+          <p>هر سبک بصری که نیاز داشته باشید، از صفر طراحی و کدنویسی می‌شود — این را در بخش بعدی به‌چشم خودتان می‌بینید.</p>
+        </div>
+        <div>
+          <h4>سرعت بالا و بهینه‌سازی Core Web Vitals</h4>
+          <p>همان عددی که در ترمینال بالا دیدید؛ نه شعار، یک اندازه‌گیری واقعی.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============================================================
-       فعالیت‌ها
-       ============================================================ -->
-  <section>
-    <div class="container">
-      <span class="eyebrow">حوزه‌های فعالیت</span>
-      <h2>چیزی که من به‌خوبی بلدم</h2>
-      <p style="max-width:70ch;">از کدنویسی فرانت‌اند تا سیستم‌های هوشمند و طراحی بصری — همه‌چیز در یک استودیو.</p>
+  <div class="section-divider reveal" aria-hidden="true"></div>
 
-      <div class="activities-grid">
-        <div class="activity-card">
-          <span class="icon">💻</span>
-          <h3>توسعه فرانت‌اند</h3>
-          <p>سایت‌های اختصاصی، فوق‌سریع و واکنش‌گرا با مدرن‌ترین کدهای JavaScript و فریم‌ورک‌های روز.</p>
+  <!-- STYLE PROOF -->
+  <section id="style-proof" class="reveal">
+    <div class="container morph-wrap">
+      <div>
+        <div class="morph-swatches" role="img" aria-label="پیش‌نمایش سه سبک کارت">
+          <div class="morph-swatch is-active" data-style="luxe">
+            <span class="morph-swatch-dot"></span>
+            <span class="morph-swatch-bar"></span>
+          </div>
+          <div class="morph-swatch" data-style="holo">
+            <span class="morph-swatch-dot"></span>
+            <span class="morph-swatch-bar"></span>
+          </div>
+          <div class="morph-swatch" data-style="retro">
+            <span class="morph-swatch-dot"></span>
+            <span class="morph-swatch-bar"></span>
+          </div>
         </div>
-        <div class="activity-card">
-          <span class="icon">🤖</span>
-          <h3>هوش مصنوعی و بهینه‌سازی</h3>
-          <p>طراحی سیستم‌های کنترل هوشمند برای کاهش مصرف انرژی و آب در کارخانه‌ها و گلخانه‌ها با AI و سنسورها.</p>
-        </div>
-        <div class="activity-card">
-          <span class="icon">🎨</span>
-          <h3>طراحی بصری و برندینگ</h3>
-          <p>لوگو، هویت بصری، ادیت تصویر، عکاسی صنعتی و تولید محتوای تبلیغاتی با هوش مصنوعی.</p>
-        </div>
-        <div class="activity-card">
-          <span class="icon">📱</span>
-          <h3>سیستم‌های IoT</h3>
-          <p>اتصال سنسورها، پردازش داده‌های محیطی و ساخت داشبوردهای مدیریتی برای صنایع مختلف.</p>
-        </div>
-        <div class="activity-card">
-          <span class="icon">⚡</span>
-          <h3>بهینه‌سازی مصرف</h3>
-          <p>تحلیل داده‌های مصرف و پیاده‌سازی الگوریتم‌های کاهش هزینه برای کسب‌وکارهای صنعتی و کشاورزی.</p>
-        </div>
-        <div class="activity-card">
-          <span class="icon">📸</span>
-          <h3>تولید محتوای بصری</h3>
-          <p>عکاسی حرفه‌ای، ادیت تصاویر محصول، روتوش و تولید تصاویر ۳بعدی با AI برای وب‌سایت‌های فروشگاهی.</p>
+        <span class="eyebrow">اثبات بدون قالب</span>
+        <h2>یک کارت، سه هویت کاملاً متفاوت</h2>
+        <p>این یک کارت محصول واقعی است. با کلیک روی هر دکمه، کل رنگ، فونت، مرز و انحنای کارت در صدم‌ثانیه عوض می‌شود — همان قدرتی که برای برند شما هم به‌کار می‌گیریم.</p>
+        <div class="morph-controls" role="group" aria-label="انتخاب سبک کارت">
+          <button class="morph-btn" data-style="luxe" aria-pressed="true">طلایی لوکس</button>
+          <button class="morph-btn" data-style="holo" aria-pressed="false">لایت هولوگرافیک</button>
+          <button class="morph-btn" data-style="retro" aria-pressed="false">ترمینال رترو</button>
         </div>
       </div>
+
+      <div class="morph-card" id="morph-card" data-style="luxe">
+        <span class="morph-tag">نمونه محصول</span>
+        <svg class="morph-icon morph-icon-luxe" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M8 14 20 4 32 14 20 36Z" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M8 14h24M14 14 20 36M26 14 20 36" style="stroke:var(--accent)" stroke-width="1.1" stroke-opacity=".6"/>
+        </svg>
+        <svg class="morph-icon morph-icon-holo" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M20 6 34 32H6Z" fill="none" style="stroke:var(--mc-accent)" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M20 6v26M11 32l9-26M29 32l-9-26" style="stroke:var(--mc-accent)" stroke-width="1" stroke-opacity=".5"/>
+        </svg>
+        <svg class="morph-icon morph-icon-retro" viewBox="0 0 40 40" aria-hidden="true">
+          <rect x="4" y="8" width="32" height="24" rx="2" fill="none" style="stroke:var(--mc-accent)" stroke-width="2"/>
+          <path d="M10 16l6 4-6 4M20 24h10" style="stroke:var(--mc-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>دژ دیجیتال شما</h3>
+        <p>یک سازه‌ی فرانت‌اند فوق‌سریع، طراحی‌شده برای اعتبار، نه برای شباهت به بقیه.</p>
+        <span class="morph-cta">مشاهده جزئیات</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       پکیج‌های اصلی (۳ پکیج اول)
+       ============================================================ -->
+  <section id="packages" class="section-bg-deep reveal">
+    <div class="container">
+      <span class="eyebrow">پکیج‌های آتلیه</span>
+      <h2>مجموعه آتلیه — سرمایه‌گذاری بر اساس ارزش</h2>
+      <div class="packages-grid">
+
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="14" y="8" width="36" height="50" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <rect x="24" y="4" width="16" height="8" rx="2" style="fill:var(--accent)"/>
+            <path d="M20 24h24M20 32h24M20 40h14" style="stroke:var(--ink-soft)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M20 50q4-8 8 0t8-10 8 6" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>امضای دیجیتال</h3>
+          <p class="package-audience">پزشکان مستقل و وکلای تک‌ستاره</p>
+          <p>فقط یک لندینگ پیج نیست؛ «رساله شخصیت» شماست. صفحه‌ای فوق‌سریع با طراحی انحصاری مینی‌مال سوئیسی که اتوریته شما را در نگاه اول قفل می‌کند.</p>
+          <div class="package-price">۷,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">پرداخت آنلاین و رزرو</a>
+        </div>
+
+        <div class="package-card is-featured">
+          <span class="package-badge">★ بهترین ارزش</span>
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="26" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <circle cx="32" cy="32" r="14" fill="none" style="stroke:var(--accent)" stroke-width="1.4" stroke-opacity=".6"/>
+            <circle cx="32" cy="32" r="3.4" style="fill:var(--accent)"/>
+            <path d="M32 6v8M32 50v8M6 32h8M50 32h8" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>قلعه حرفه‌ای</h3>
+          <p class="package-audience">کلینیک‌های زیبایی تخصصی و موسسات حقوقی بزرگ</p>
+          <p>دفتر مرکزی مجازی شما. ترکیب طراحی هنری مینی‌مال با سیستم مدیریت ابری مشتریان (CRM) که با هوش مصنوعی نرخ نوبت‌دهی را تا ۴۰٪ افزایش می‌دهد.</p>
+          <div class="package-price">۳۰,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-ghost">درخواست پیش‌نویس قرارداد دیجیتال</a>
+        </div>
+
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 6 56 18v16c0 16-10 24-24 28C18 58 8 50 8 34V18Z" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M22 32l8 8 14-16" fill="none" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>اکسیر جامع</h3>
+          <p class="package-audience">سازمان‌ها و برندهای به‌دنبال انحصار مطلق تکنولوژیک</p>
+          <p>هویت بصری کامل (لوگو و برندبوک)، صفحات نامحدود، فونت انحصاری و CRM ابری مجهز به پیش‌بینی رفتار مشتری.</p>
+          <div class="package-price">توافقی / VIP</div>
+          <a href="#contact" class="btn btn-ghost">ثبت درخواست مشاوره حضوری</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       پکیج‌های جدید (از لندینگ‌پیج)
+       ============================================================ -->
+  <section id="packages-extra" class="section-bg-deep reveal">
+    <div class="container">
+      <span class="eyebrow">خدمات تخصصی</span>
+      <h2>خدمات تکمیلی استودیو پارسا</h2>
+      <p>خدمات تخصصی‌تر برای برندهایی که به دنبال تمایز مطلق هستند.</p>
+      <div class="packages-grid" style="margin-top:2rem;">
+
+        <!-- لندینگ‌پیج -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="8" y="12" width="48" height="40" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <path d="M8 24h48M20 12v40" style="stroke:var(--accent)" stroke-width="1.6" stroke-opacity=".5"/>
+            <circle cx="14" cy="18" r="1.6" style="fill:var(--accent)"/>
+            <circle cx="20" cy="18" r="1.6" style="fill:var(--accent)"/>
+            <circle cx="26" cy="18" r="1.6" style="fill:var(--accent)"/>
+          </svg>
+          <h3>لندینگ‌پیج تک‌صفحه‌ای مدرن</h3>
+          <p class="package-audience">کمپین‌های فروش و معرفی برند</p>
+          <p>طراحی و کدنویسی یک صفحه فرود شیک، ۱۰۰٪ واکنش‌گرا و سریع برای معرفی یا کمپین‌های فروش محصول شما.</p>
+          <div class="package-price">۷,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+        <!-- پورتفولیو -->
+        <div class="package-card is-featured">
+          <span class="package-badge">★ محبوب</span>
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="8" y="8" width="48" height="48" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <rect x="16" y="16" width="14" height="14" rx="2" style="fill:var(--accent)" opacity=".3"/>
+            <rect x="34" y="16" width="14" height="14" rx="2" style="fill:var(--accent)" opacity=".3"/>
+            <rect x="16" y="34" width="14" height="14" rx="2" style="fill:var(--accent)" opacity=".3"/>
+            <rect x="34" y="34" width="14" height="14" rx="2" style="fill:var(--accent)" opacity=".3"/>
+          </svg>
+          <h3>سایت پورتفولیو اختصاصی</h3>
+          <p class="package-audience">فریلنسرها و طراحان طراز اول</p>
+          <p>یک سایت گالری و معرفی شخصی خیره‌کننده با انواع افکت‌های حرکتی و تغییر پوسته برای نمایش حرفه‌ای کارهای شما.</p>
+          <div class="package-price">۸,۵۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-ghost">سفارش آنلاین</a>
+        </div>
+
+        <!-- سایت شرکتی -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="4" y="20" width="56" height="40" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <rect x="16" y="4" width="32" height="16" rx="2" style="fill:var(--accent)" opacity=".2"/>
+            <rect x="24" y="8" width="16" height="8" rx="1" style="fill:var(--accent)" opacity=".5"/>
+            <path d="M16 28h32M16 36h24M16 44h18" style="stroke:var(--accent)" stroke-width="1.6" stroke-opacity=".5" stroke-linecap="round"/>
+          </svg>
+          <h3>سایت شرکتی و معرفی خدمات</h3>
+          <p class="package-audience">کسب‌وکارهای حرفه‌ای و سازمانی</p>
+          <p>وب‌سایت چندصفحه‌ای فوقالعاده سبک با سئوی تضمین‌شده برای معرفی کسب‌وکار شما بدون محدودیت‌های قالب وردپرس.</p>
+          <div class="package-price">۳۰,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+      </div>
+
+      <!-- ردیف دوم پکیج‌ها -->
+      <div class="packages-grid" style="margin-top:1.8rem;">
+
+        <!-- لوگو -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="32" cy="32" r="24" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <path d="M32 8v48M8 32h48" style="stroke:var(--accent)" stroke-width="1.2" stroke-opacity=".3"/>
+            <circle cx="32" cy="32" r="8" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
+            <path d="M32 16v32M16 32h32" style="stroke:var(--accent)" stroke-width="1.2" stroke-opacity=".3"/>
+          </svg>
+          <h3>طراحی لوگو اختصاصی برند</h3>
+          <p class="package-audience">برندهای در حال شکل‌گیری</p>
+          <p>خلق یک نشان تجاری و لوگوی بین‌ظیر، کاملاً اختصاصی و متناسب با روانشناسی بازار مخاطب شما.</p>
+          <div class="package-price">۷,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+        <!-- پالت رنگ -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <circle cx="20" cy="20" r="10" style="fill:var(--accent)" opacity=".8"/>
+            <circle cx="44" cy="20" r="10" style="fill:var(--accent)" opacity=".5"/>
+            <circle cx="20" cy="44" r="10" style="fill:var(--accent)" opacity=".3"/>
+            <circle cx="44" cy="44" r="10" style="fill:var(--accent)" opacity=".6"/>
+          </svg>
+          <h3>طراحی پالت رنگ سازمانی</h3>
+          <p class="package-audience">برندهای با هویت بصری</p>
+          <p>طراحی و پیاده‌سازی هویت رنگی و روانشناسی رنگ‌های برند برای همخوانی ۱۰۰٪ کارت ویزیت، سایت و شبکه‌های اجتماعی.</p>
+          <div class="package-price">۶,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+        <!-- درگاه پرداخت -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="8" y="18" width="48" height="28" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <path d="M8 26h48" style="stroke:var(--accent)" stroke-width="1.2" stroke-opacity=".3"/>
+            <circle cx="44" cy="32" r="2" style="fill:var(--accent)"/>
+            <path d="M16 36h10" style="stroke:var(--accent)" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h3>اتصال به درگاه پرداخت آنلاین</h3>
+          <p class="package-audience">سایت‌های فروشگاهی و خدماتی</p>
+          <p>اتصال انواع درگاه‌های پرداخت بانکی مستقیم یا واسط (زرین‌پال، نکست‌پی و...) به کدهای سایت اختصاصی شما.</p>
+          <div class="package-price">۵,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+      </div>
+
+      <!-- ردیف سوم پکیج‌ها -->
+      <div class="packages-grid" style="margin-top:1.8rem;">
+
+        <!-- فونت اختصاصی -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <text x="32" y="40" text-anchor="middle" style="font-family:Georgia,serif;font-size:28px;fill:var(--accent);font-weight:700;">Aa</text>
+            <path d="M16 16h32M20 48h24" style="stroke:var(--accent)" stroke-width="1.2" stroke-opacity=".3"/>
+          </svg>
+          <h3>طراحی فونت اختصاصی</h3>
+          <p class="package-audience">برندهای با هویت تایپوگرافی منحصربه‌فرد</p>
+          <p>خلق و بهینه‌سازی یک تایپ‌فیس و فونت اختصاصی برای متون وب‌سایت و بنرهای برند شما جهت متمایز شدن مطلق از رقبا.</p>
+          <div class="package-price">۱۵,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+        <!-- عکاسی محصول -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="8" y="12" width="48" height="40" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <circle cx="32" cy="32" r="12" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
+            <circle cx="32" cy="32" r="4" style="fill:var(--accent)" opacity=".4"/>
+            <path d="M44 18l6-6" style="stroke:var(--accent)" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <h3>عکاسی و ادیت فیزیکی محصول</h3>
+          <p class="package-audience">وب‌سایت‌های فروشگاهی لوکس</p>
+          <p>حضور در آتلیه تخصصی، نورپردازی حرفه‌ای و عکاسی صنعتی به همراه روتوش کامل برای وب‌سایت‌های فروشگاهی لوکس.</p>
+          <div class="package-price">۲,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+        <!-- عکس با AI -->
+        <div class="package-card">
+          <svg class="package-icon" viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="12" y="12" width="40" height="40" rx="6" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+            <path d="M20 20l6 6-6 6M44 20l-6 6 6 6" style="stroke:var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="32" cy="32" r="4" style="fill:var(--accent)" opacity=".3"/>
+          </svg>
+          <h3>تولید و ادیت عکس محصول با AI</h3>
+          <p class="package-audience">برندهای دیجیتال و تبلیغاتی</p>
+          <p>تولید تصاویر ۳بعدی واقع‌گرایانه تبلیغاتی، بازسازی محیطی و ادیت نئونی پیشرفته محصولات بدون نیاز به عکاسی فیزیکی.</p>
+          <div class="package-price">۳,۰۰۰,۰۰۰ تومان</div>
+          <a href="#contact" class="btn btn-primary">سفارش آنلاین</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="testimonials-section reveal" aria-label="نظرات مشتریان">
+    <div class="container">
+      <span class="eyebrow">اعتماد حرفه‌ای‌ها</span>
+      <h2>آنچه هم‌صنفان شما می‌گویند</h2>
+      <p style="max-width: 70ch;">۴ برند و متخصص معتبر شیراز، تجربه‌ی همکاری با استودیو پارسا را با ما به اشتراک گذاشته‌اند.</p>
+      <div class="testimonials-grid" id="testimonials-grid" role="list"></div>
+      <div class="testimonial-nav" role="group" aria-label="کنترل‌های کاروسل">
+        <button id="testimonial-prev" aria-label="قبلی">‹</button>
+        <button id="testimonial-next" aria-label="بعدی">›</button>
+      </div>
+      <div class="testimonial-dots" id="testimonial-dots" role="tablist" aria-label="نشانگرهای اسلاید"></div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
+  <!-- SANDBOX -->
+  <section id="sandbox" class="reveal">
+    <div class="container sandbox-grid">
+      <div>
+        <span class="eyebrow">حس کنید، نه فقط بخوانید</span>
+        <h2>دکمه‌ی زیر، دست خودتان است</h2>
+        <p>رنگ، اندازه فونت و انحنای گوشه را تغییر دهید و ببینید کد CSS واقعی همین لحظه چطور زنده می‌شود — بدون هیچ جادویی، فقط فرانت‌اند خالص.</p>
+        <svg class="sandbox-decor" viewBox="0 0 120 90" aria-hidden="true">
+          <rect x="4" y="4" width="112" height="82" rx="8" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+          <circle cx="16" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/>
+          <circle cx="26" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/>
+          <circle cx="36" cy="16" r="2.6" style="fill:var(--accent)" opacity=".5"/>
+          <path d="M16 36l14 8-14 8M40 52h20" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="70" y="34" width="34" height="28" rx="4" style="fill:var(--accent)" opacity=".12"/>
+          <rect x="70" y="34" width="34" height="28" rx="4" fill="none" style="stroke:var(--accent-cool)" stroke-width="1.6"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="sandbox-controls">
+          <div class="sandbox-field">
+            <label for="sb-color">رنگ اصلی</label>
+            <input type="color" id="sb-color" value="#3E6FE0">
+          </div>
+          <div class="sandbox-field">
+            <label for="sb-radius">انحنای گوشه (px)</label>
+            <input type="range" id="sb-radius" min="0" max="40" value="4">
+          </div>
+          <div class="sandbox-field">
+            <label for="sb-size">اندازه فونت (px)</label>
+            <input type="range" id="sb-size" min="13" max="22" value="16">
+          </div>
+        </div>
+        <div class="sandbox-preview-wrap">
+          <button id="sb-preview" type="button">دکمه نمونه شما</button>
+        </div>
+        <pre class="sandbox-code"><code id="sb-code"></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
+  <!-- COST CALCULATOR (Loss) -->
+  <section id="cost-calculator" class="section-bg-deep reveal">
+    <div class="container">
+      <span class="eyebrow">واقعیت، نه فرضیات</span>
+      <h2>سایت فعلی شما هر ماه چقدر مشتری از دست می‌دهد؟</h2>
+      <p>دو عدد را وارد کنید: سرعت لود فعلی سایت‌تان و میانگین بازدیدکننده‌ی ماهانه‌اش. عدد ریزش، بر همان نرخ ۱۵٪ به‌ازای هر ۱ ثانیه تاخیر محاسبه می‌شود.</p>
+
+      <div class="calc-card">
+        <div>
+          <div class="calc-field">
+            <label for="calc-speed">سرعت لود فعلی سایت شما</label>
+            <input type="range" id="calc-speed" min="0.4" max="5" step="0.1" value="2.6">
+            <div class="calc-readout"><span id="calc-speed-value">2.6s</span><span>0.4s — 5s</span></div>
+          </div>
+          <div class="calc-field">
+            <label for="calc-visitors">میانگین بازدیدکننده ماهانه</label>
+            <input type="number" id="calc-visitors" min="0" step="50" value="1200">
+          </div>
+        </div>
+
+        <div class="calc-result">
+          <span class="eyebrow">ریزش تخمینی ماهانه</span>
+          <div class="calc-loss-number"><span id="calc-loss-visitors">0</span> نفر</div>
+          <div class="calc-bar-track"><div class="calc-bar-fill" id="calc-bar-fill"></div></div>
+          <p class="calc-benchmark">با ساختار استودیو پارسا (<strong>0.4s</strong>) همین تعداد بازدیدکننده، تقریباً صفر مورد را از دست می‌دهد.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
+  <!-- PRICE CALCULATOR -->
+  <section id="price-calculator" class="reveal" style="background:var(--bg-deep);">
+    <div class="container" style="max-width:700px;">
+      <span class="eyebrow">شفافیت قیمت</span>
+      <h2>هزینه‌ی تقریبی پروژه‌ات رو محاسبه کن</h2>
+      <p>با حرکت اسلایدرها، برآورد اولیه‌ی هزینه رو دریافت کن.</p>
+      <div class="price-calc-wrapper">
+        <div class="price-calc-group">
+          <div class="price-calc-label">
+            <span>تعداد صفحات وب‌سایت</span>
+            <span class="price-calc-value" id="pagesValue">۵</span>
+          </div>
+          <input type="range" id="pagesRange" min="1" max="20" value="5">
+        </div>
+        <div class="price-calc-group">
+          <div class="price-calc-label">
+            <span>تعداد طرح‌های لوگو</span>
+            <span class="price-calc-value" id="logoValue">۳</span>
+          </div>
+          <input type="range" id="logoRange" min="1" max="10" value="3">
+        </div>
+        <div class="price-calc-group">
+          <div class="price-calc-label">
+            <span>تعداد آیتم هویت بصری</span>
+            <span class="price-calc-value" id="identityValue">۵</span>
+          </div>
+          <input type="range" id="identityRange" min="0" max="15" value="5">
+        </div>
+        <div class="price-calc-total">
+          <div class="price-calc-total-label">تخمین هزینه</div>
+          <div class="price-calc-total-price" id="calcTotalPrice">۸,۵۰۰,۰۰۰ تومان</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider reveal" aria-hidden="true"></div>
+
+  <!-- FAQ -->
+  <section id="faq" class="reveal">
+    <div class="container" style="max-width:860px;">
+      <span class="eyebrow">پرسش‌های پرستیژی</span>
+      <h2>سوالات متداول</h2>
+
+      <details class="faq-item">
+        <summary>سایت اختصاصی برای من ۵۰ میلیون آب می‌خورد، اما وردپرس ۲۰ میلیون! چرا؟</summary>
+        <div class="faq-answer">
+          <p>تفاوت در «هزینه» و «سرمایه‌گذاری» است. شما با وردپرس یک نرم‌افزار کرایه می‌کنید که هر شب باید دعا کنید هک نشود یا با اولین نوسان اینترنت ایران قطع نشود. کد اختصاصی استودیو پارسا، یک «ملک دیجیتال» است. شما مالک یک اثر هنری مهندسی‌شده هستید که تا سال‌ها نه ری‌دیزاین می‌خواهد، نه خیانت امنیتی می‌کند و نه گوگل آن را به‌خاطر کندی تحریم می‌کند.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>اینترنت ایران فیلتر است و نوسان دارد، تضمین شما چیست؟</summary>
+        <div class="faq-answer">
+          <p>ما معماری «ریشه مستقل» (Root Isolation) را پیاده می‌کنیم. سایت‌های وردپرسی به CDN‌ها و فونت‌های گوگل معتاد هستند؛ در فیلترینگ‌های سراسری، این وابستگی باعث فروپاشی ظاهری سایت می‌شود. کد ما یک سازه خودکفا و درون‌زا است. هر آنچه برای اجرا نیاز دارد، در دل کد و سرور داخلی شما تعبیه شده است. ما سیستمی طراحی می‌کنیم که با اینترنت نیمه‌جان هم تپش قلب داشته باشد.</p>
+        </div>
+      </details>
     </div>
   </section>
 
 </main>
 
-<!-- ============================================================
-     فوتر
-     ============================================================ -->
-<footer class="site-footer">
+<!-- FOOTER -->
+<footer id="contact" class="site-footer reveal">
+  <div class="container footer-top">
+    <div>
+      <h2>بیانیه دیجیتال خودتان را امروز شروع کنید</h2>
+      <p>طبق اصل بومی‌سازی بازار ایران، سریع‌ترین مسیر ارتباطی برای شما کانال‌های زیر است؛ نه فرم‌های ایمیلی که گاهی در صف اسپم گم می‌شوند.</p>
+      <div class="contact-channels">
+        <a href="https://t.me/parsastudio" target="_blank" rel="noopener">تلگرام</a>
+        <a href="https://wa.me/989000000000" target="_blank" rel="noopener">واتساپ</a>
+        <a href="mailto:hello@parsastudio.ir">hello@parsastudio.ir</a>
+      </div>
+
+      <form class="contact-form" id="contact-form" novalidate>
+        <div style="flex:1 1 180px;">
+          <label for="cf-name" class="visually-hidden">نام شما</label>
+          <input type="text" id="cf-name" name="name" placeholder="نام شما" aria-describedby="cf-name-error" required minlength="2">
+          <span class="contact-form-error visually-hidden" id="cf-name-error"></span>
+        </div>
+        <div style="flex:1 1 180px;">
+          <label for="cf-email" class="visually-hidden">ایمیل شما</label>
+          <input type="email" id="cf-email" name="email" placeholder="ایمیل شما" aria-describedby="cf-email-error" required>
+          <span class="contact-form-error visually-hidden" id="cf-email-error"></span>
+        </div>
+        <button type="submit" class="btn btn-cool" id="cf-submit">
+          ارسال پیام
+          <span class="spinner"></span>
+        </button>
+      </form>
+      <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
+      <p class="contact-form-note">با ارسال، اپ ایمیل پیش‌فرض شما با پیام آماده باز می‌شود.</p>
+    </div>
+    <svg class="footer-decor" viewBox="0 0 64 64" aria-hidden="true">
+      <rect x="14" y="8" width="36" height="50" rx="4" fill="none" style="stroke:var(--accent)" stroke-width="2"/>
+      <rect x="24" y="4" width="16" height="8" rx="2" style="fill:var(--accent)"/>
+      <path d="M20 24h24M20 32h24M20 40h14" style="stroke:var(--ink-soft)" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 50q4-8 8 0t8-10 8 6" fill="none" style="stroke:var(--accent)" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
   <div class="container">
     <div class="footer-bottom">
       <span>© ۲۰۲۶ استودیو پارسا — شیراز، ایران</span>
@@ -879,92 +1601,912 @@ html {
   </div>
 </footer>
 
+<!-- BACK TO TOP -->
+<button class="back-to-top" id="back-to-top" aria-label="بازگشت به بالای صفحه">
+  <svg viewBox="0 0 24 24"><path d="M12 4l-8 8h16z"/><path d="M4 20h16"/></svg>
+</button>
+
 <!-- ============================================================
-     اسکریپت‌ها
+     دستیار هوشمند پارسا
      ============================================================ -->
+<button class="ai-toggle" id="aiToggle" aria-label="دستیار هوشمند">
+  ✨
+</button>
+
+<div class="ai-chat" id="aiChat" role="dialog" aria-label="دستیار هوشمند استودیو پارسا">
+  <div class="ai-header">
+    <div class="ai-header-title">
+      <span class="sparkle">✨</span>
+      <span>دستیار هوشمند پارسا</span>
+    </div>
+    <button class="ai-close" id="aiClose" aria-label="بستن چت">&times;</button>
+  </div>
+  <div class="ai-messages" id="aiMessages">
+    <!-- پیام‌ها به‌صورت داینامیک اضافه می‌شوند -->
+  </div>
+  <div class="ai-quick-replies" id="aiQuickReplies">
+    <button class="ai-quick-btn" data-question="معرفی استودیو">معرفی استودیو</button>
+    <button class="ai-quick-btn" data-question="پکیج‌ها">پکیج‌ها</button>
+    <button class="ai-quick-btn" data-question="قیمت قلعه حرفه‌ای">قیمت قلعه حرفه‌ای</button>
+    <button class="ai-quick-btn" data-question="چرا کد اختصاصی">چرا کد اختصاصی</button>
+    <button class="ai-quick-btn" data-question="تماس">تماس</button>
+  </div>
+  <div class="ai-input-area">
+    <input type="text" id="aiInput" placeholder="سوال خود را بپرسید..." autocomplete="off">
+    <button id="aiSend" aria-label="ارسال">➤</button>
+  </div>
+</div>
+
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-    // --- دکمه‌ی تغییر تم ---
-    (function initThemeToggle() {
-      var btn = document.getElementById('theme-toggle');
-      if (!btn) return;
-      var root = document.documentElement;
-      var saved = null;
-      try {
-        saved = localStorage.getItem('parsa-theme');
-      } catch (err) {}
-      var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      var initial = saved || (prefersLight ? 'light' : 'dark');
-      if (initial === 'light') root.setAttribute('data-theme', 'light');
-
-      function updateLabel() {
-        var isLight = root.getAttribute('data-theme') === 'light';
-        btn.setAttribute('aria-label', isLight ? 'تغییر به تم تیره' : 'تغییر به تم روشن');
-      }
-      updateLabel();
-
-      btn.addEventListener('click', function() {
-        var isLight = root.getAttribute('data-theme') === 'light';
-        var next = isLight ? 'dark' : 'light';
-        if (next === 'dark') root.removeAttribute('data-theme');
-        else root.setAttribute('data-theme', 'light');
-        try {
-          localStorage.setItem('parsa-theme', next);
-        } catch (err) {}
-        updateLabel();
-      });
-    })();
-
-    // --- منوی موبایل ---
-    (function initNav() {
-      var toggle = document.getElementById('nav-toggle');
-      var nav = document.getElementById('main-nav');
-      if (!toggle || !nav) return;
-
-      function setOpen(isOpen) {
-        nav.classList.toggle('is-open', isOpen);
-        toggle.setAttribute('aria-expanded', String(isOpen));
-        document.body.classList.toggle('no-scroll', isOpen && window.matchMedia('(max-width:900px)').matches);
-      }
-
-      toggle.addEventListener('click', function() {
-        setOpen(!nav.classList.contains('is-open'));
-      });
-
-      nav.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          setOpen(false);
-        });
-      });
-
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && nav.classList.contains('is-open')) setOpen(false);
-      });
-
-      document.addEventListener('click', function(e) {
-        if (!nav.classList.contains('is-open')) return;
-        if (nav.contains(e.target) || toggle.contains(e.target)) return;
-        setOpen(false);
-      });
-    })();
-
-    // --- کوچک‌شدن هدر هنگام اسکرول ---
-    (function initHeaderScroll() {
-      var header = document.getElementById('site-header');
-      if (!header) return;
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 80) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      }, {
-        passive: true
-      });
-    })();
-
+  // ====== PAGE LOADER ======
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      var loader = document.getElementById('pageLoader');
+      if(loader) loader.classList.add('is-hidden');
+    }, 400);
   });
+
+  function trackEvent(name, params){
+    if(typeof window.gtag === 'function'){
+      window.gtag('event', name, params || {});
+    }
+  }
+
+  // --- NAV ---
+  (function initNav(){
+    var toggle = document.getElementById('nav-toggle');
+    var nav = document.getElementById('main-nav');
+    if(!toggle || !nav) return;
+    function setOpen(isOpen){
+      nav.classList.toggle('is-open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('no-scroll', isOpen && window.matchMedia('(max-width:900px)').matches);
+      trackEvent(isOpen ? 'mobile_menu_open' : 'mobile_menu_close');
+    }
+    toggle.addEventListener('click', function(){ setOpen(!nav.classList.contains('is-open')); });
+    nav.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){ setOpen(false); });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && nav.classList.contains('is-open')) setOpen(false);
+    });
+    document.addEventListener('click', function(e){
+      if(!nav.classList.contains('is-open')) return;
+      if(nav.contains(e.target) || toggle.contains(e.target)) return;
+      setOpen(false);
+    });
+  })();
+
+  // --- THEME TOGGLE ---
+  (function initThemeToggle(){
+    var btn = document.getElementById('theme-toggle');
+    if(!btn) return;
+    var root = document.documentElement;
+    var saved = null;
+    try { saved = localStorage.getItem('parsa-theme'); } catch(err){}
+    var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    var initial = saved || (prefersLight ? 'light' : 'dark');
+    if(initial === 'light') root.setAttribute('data-theme', 'light');
+    function updateLabel(){
+      var isLight = root.getAttribute('data-theme') === 'light';
+      btn.setAttribute('aria-label', isLight ? 'تغییر به تم تیره' : 'تغییر به تم روشن');
+    }
+    updateLabel();
+    btn.addEventListener('click', function(){
+      var isLight = root.getAttribute('data-theme') === 'light';
+      var next = isLight ? 'dark' : 'light';
+      if(next === 'dark') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('parsa-theme', next); } catch(err){}
+      updateLabel();
+      trackEvent('theme_toggle', { theme: next });
+    });
+  })();
+
+  // --- REVEAL ---
+  (function initReveal(){
+    var items = document.querySelectorAll('.reveal');
+    if(!items.length || !('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .15 });
+    items.forEach(function(el){ observer.observe(el); });
+  })();
+
+  // --- TERMINAL ---
+  (function initPerformanceTerminal(){
+    var box = document.getElementById('perf-terminal');
+    var log = document.getElementById('terminal-log');
+    if(!box || !log) return;
+    var lines = [
+      { text: '$ scanning parsa-studio.dev ...', cls: 'muted' },
+      { text: '✓ DOM payload: 11kb (gzip)', cls: 'ok' },
+      { text: '✓ Largest Contentful Paint: 0.31s', cls: 'ok' },
+      { text: '✓ PageSpeed Score: 100 / 100', cls: 'ok' },
+      { text: '✓ Filtering resistance: PASS (Root Isolation)', cls: 'ok' },
+      { text: '$ نتیجه: این یک ادعا نیست، یک لاگ زنده‌ست.', cls: 'muted' }
+    ];
+    var hasRun = false;
+    function typeLines(){
+      if(hasRun) return;
+      hasRun = true;
+      var lineIndex = 0;
+      function nextLine(){
+        if(lineIndex >= lines.length) return;
+        var item = lines[lineIndex];
+        var lineEl = document.createElement('div');
+        lineEl.className = item.cls;
+        log.appendChild(lineEl);
+        var charIndex = 0;
+        function typeChar(){
+          if(charIndex <= item.text.length){
+            lineEl.textContent = item.text.slice(0, charIndex);
+            charIndex++;
+            setTimeout(typeChar, 18);
+          } else {
+            lineIndex++;
+            setTimeout(nextLine, 260);
+          }
+        }
+        typeChar();
+      }
+      nextLine();
+    }
+    if('IntersectionObserver' in window){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting) typeLines(); });
+      }, { threshold: .4 });
+      obs.observe(box);
+    } else {
+      typeLines();
+    }
+  })();
+
+  // --- MORPH ---
+  (function initStyleMorph(){
+    var card = document.getElementById('morph-card');
+    var buttons = document.querySelectorAll('.morph-btn');
+    var swatches = document.querySelectorAll('.morph-swatch');
+    if(!card || !buttons.length) return;
+    buttons.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        card.setAttribute('data-style', btn.dataset.style);
+        buttons.forEach(function(b){ b.setAttribute('aria-pressed', String(b === btn)); });
+        swatches.forEach(function(s){ s.classList.toggle('is-active', s.dataset.style === btn.dataset.style); });
+      });
+    });
+  })();
+
+  // --- SANDBOX ---
+  (function initSandbox(){
+    var preview = document.getElementById('sb-preview');
+    var code = document.getElementById('sb-code');
+    var color = document.getElementById('sb-color');
+    var radius = document.getElementById('sb-radius');
+    var size = document.getElementById('sb-size');
+    if(!preview || !code || !color || !radius || !size) return;
+    function render(){
+      preview.style.background = color.value;
+      preview.style.borderRadius = radius.value + 'px';
+      preview.style.fontSize = size.value + 'px';
+      code.textContent =
+        '.btn-demo {\n' +
+        '  background: ' + color.value + ';\n' +
+        '  border-radius: ' + radius.value + 'px;\n' +
+        '  font-size: ' + size.value + 'px;\n' +
+        '}';
+    }
+    [color, radius, size].forEach(function(input){
+      input.addEventListener('input', render);
+    });
+    render();
+  })();
+
+  // --- COST CALCULATOR (Loss) ---
+  function runWhenIdle(fn){
+    if('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 1500 });
+    else setTimeout(fn, 200);
+  }
+
+  function initCostCalculator(){
+    var speed = document.getElementById('calc-speed');
+    var visitors = document.getElementById('calc-visitors');
+    var speedValue = document.getElementById('calc-speed-value');
+    var lossNumber = document.getElementById('calc-loss-visitors');
+    var barFill = document.getElementById('calc-bar-fill');
+    if(!speed || !visitors || !speedValue || !lossNumber || !barFill) return;
+    function calculate(){
+      var loadTime = parseFloat(speed.value) || 0.4;
+      var monthlyVisitors = parseFloat(visitors.value) || 0;
+      var lossPercent = Math.min(90, Math.max(0, (loadTime - 0.4) * 15));
+      var lostVisitors = Math.round((lossPercent / 100) * monthlyVisitors);
+      speedValue.textContent = loadTime.toFixed(1) + 's';
+      lossNumber.textContent = lostVisitors.toLocaleString('fa-IR');
+      barFill.style.width = lossPercent + '%';
+    }
+    [speed, visitors].forEach(function(input){
+      input.addEventListener('input', calculate);
+    });
+    calculate();
+  }
+  runWhenIdle(initCostCalculator);
+
+  // --- PRICE CALCULATOR ---
+  (function initPriceCalculator(){
+    var pagesRange = document.getElementById('pagesRange');
+    var logoRange = document.getElementById('logoRange');
+    var identityRange = document.getElementById('identityRange');
+    var pagesValue = document.getElementById('pagesValue');
+    var logoValue = document.getElementById('logoValue');
+    var identityValue = document.getElementById('identityValue');
+    var calcTotal = document.getElementById('calcTotalPrice');
+    if(!pagesRange || !logoRange || !identityRange) return;
+
+    function toPersianNum(num){
+      var digits = ['۰','۱','۲','۳','۴','۵','۶','۷','۸','۹'];
+      return String(num).replace(/\d/g, function(d){ return digits[d]; });
+    }
+
+    function calculate(){
+      var pages = parseInt(pagesRange.value) || 0;
+      var logos = parseInt(logoRange.value) || 0;
+      var identities = parseInt(identityRange.value) || 0;
+      pagesValue.textContent = toPersianNum(pages);
+      logoValue.textContent = toPersianNum(logos);
+      identityValue.textContent = toPersianNum(identities);
+      var total = (pages * 800000) + (logos * 500000) + (identities * 300000);
+      calcTotal.textContent = toPersianNum(total.toLocaleString('en-US')) + ' تومان';
+    }
+
+    [pagesRange, logoRange, identityRange].forEach(function(input){
+      input.addEventListener('input', calculate);
+    });
+    calculate();
+  })();
+
+  // --- CONTACT FORM ---
+  (function initContactForm(){
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('cf-status');
+    var submitBtn = document.getElementById('cf-submit');
+    if(!form || !status || !submitBtn) return;
+    var nameInput = document.getElementById('cf-name');
+    var emailInput = document.getElementById('cf-email');
+    var nameError = document.getElementById('cf-name-error');
+    var emailError = document.getElementById('cf-email-error');
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var hasTrackedFocus = false;
+
+    function setError(input, errorEl, message){
+      if(message){
+        input.setAttribute('aria-invalid', 'true');
+        errorEl.textContent = message;
+        errorEl.classList.remove('visually-hidden');
+      } else {
+        input.removeAttribute('aria-invalid');
+        errorEl.textContent = '';
+        errorEl.classList.add('visually-hidden');
+      }
+    }
+
+    function validate(){
+      var ok = true;
+      var name = nameInput.value.trim();
+      var email = emailInput.value.trim();
+      if(name.length < 2){ setError(nameInput, nameError, 'نام باید حداقل ۲ حرف باشد.'); ok = false; }
+      else setError(nameInput, nameError, '');
+      if(!emailPattern.test(email)){ setError(emailInput, emailError, 'ایمیل را به‌صورت صحیح وارد کنید.'); ok = false; }
+      else setError(emailInput, emailError, '');
+      return ok;
+    }
+
+    function sendToBackend(payload){
+      return new Promise(function(resolve){
+        var subject = encodeURIComponent('درخواست مشاوره از طریق سایت — ' + payload.name);
+        var body = encodeURIComponent('نام: ' + payload.name + '\nایمیل: ' + payload.email + '\n\nسلام پارسا، لطفاً برای دریافت مشاوره با من تماس بگیرید.');
+        setTimeout(function(){
+          window.location.href = 'mailto:hello@parsastudio.ir?subject=' + subject + '&body=' + body;
+          resolve({ ok: true });
+        }, 450);
+      });
+    }
+
+    [nameInput, emailInput].forEach(function(input){
+      input.addEventListener('focus', function(){
+        if(!hasTrackedFocus){ hasTrackedFocus = true; trackEvent('contact_form_focus'); }
+      });
+      input.addEventListener('blur', function(){
+        if(!form.contains(document.activeElement) && (nameInput.value || emailInput.value)){
+          trackEvent('contact_form_abandon');
+        }
+      });
+    });
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!validate()){
+        status.dataset.state = 'error';
+        status.textContent = 'لطفاً خطاهای فرم را برطرف کنید.';
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.classList.add('loading');
+      submitBtn.textContent = 'در حال ارسال...';
+      status.dataset.state = '';
+      status.textContent = '';
+
+      sendToBackend({ name: nameInput.value.trim(), email: emailInput.value.trim() })
+        .then(function(){
+          status.dataset.state = 'success';
+          status.textContent = 'اپ ایمیل شما باز شد — پیام آماده‌ی ارسال است.';
+          trackEvent('contact_form_submit');
+        })
+        .catch(function(){
+          status.dataset.state = 'error';
+          status.textContent = 'مشکلی پیش آمد، لطفاً مستقیم ایمیل بزنید: hello@parsastudio.ir';
+        })
+        .finally(function(){
+          submitBtn.disabled = false;
+          submitBtn.classList.remove('loading');
+          submitBtn.textContent = 'ارسال پیام';
+        });
+    });
+  })();
+
+  // --- ENGAGEMENT TRACKING ---
+  (function initEngagementTracking(){
+    document.querySelectorAll('.package-card').forEach(function(card){
+      var title = card.querySelector('h3');
+      var label = title ? title.textContent.trim() : 'unknown';
+      card.querySelectorAll('a.btn').forEach(function(cta){
+        cta.addEventListener('click', function(){ trackEvent('package_cta_click', { package: label }); });
+      });
+    });
+    ['packages', 'packages-extra', 'contact'].forEach(function(id){
+      document.querySelectorAll('a[href="#' + id + '"]').forEach(function(a){
+        a.addEventListener('click', function(){ trackEvent('cta_click', { target: id }); });
+      });
+    });
+    if('IntersectionObserver' in window){
+      var depthTargets = ['services', 'packages', 'packages-extra', 'faq', 'contact'];
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            trackEvent('scroll_depth', { section: entry.target.id });
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .3 });
+      depthTargets.forEach(function(id){
+        var el = document.getElementById(id);
+        if(el) obs.observe(el);
+      });
+    }
+  })();
+
+  // --- CURSOR ---
+  (function initCursor(){
+    if(!window.matchMedia('(pointer: fine)').matches) return;
+    var ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    ring.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ring);
+    document.addEventListener('mousemove', function(e){
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    });
+    var hoverSelector = 'a, button, summary, input[type="range"], input[type="color"], .morph-btn';
+    document.querySelectorAll(hoverSelector).forEach(function(el){
+      el.addEventListener('mouseenter', function(){ ring.classList.add('is-active'); });
+      el.addEventListener('mouseleave', function(){ ring.classList.remove('is-active'); });
+    });
+  })();
+
+  // --- STAT COUNTERS ---
+  function initStatCounters(){
+    var numbers = document.querySelectorAll('.stat-number');
+    if(!numbers.length) return;
+    function animateOne(el){
+      var target = parseFloat(el.dataset.target);
+      var decimals = parseInt(el.dataset.decimals || '0', 10);
+      var duration = 2000;
+      var start = null;
+      function step(timestamp){
+        if(!start) start = timestamp;
+        var progress = Math.min((timestamp - start) / duration, 1);
+        var value = target * progress;
+        el.textContent = decimals ? value.toFixed(decimals) : Math.round(value);
+        if(progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if('IntersectionObserver' in window){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            animateOne(entry.target);
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .6 });
+      numbers.forEach(function(el){ obs.observe(el); });
+    } else {
+      numbers.forEach(animateOne);
+    }
+  }
+  runWhenIdle(initStatCounters);
+
+  // --- HERO RAIN ---
+  (function initHeroRain(){
+    var canvas = document.getElementById('hero-rain');
+    var hero = canvas ? canvas.closest('.hero') : null;
+    if(!canvas || !hero) return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(navigator.connection && navigator.connection.saveData) return;
+    var ctx = canvas.getContext('2d');
+    var drops = [];
+    var rafId = null;
+    var running = false;
+
+    function resize(){
+      canvas.width = hero.clientWidth;
+      canvas.height = hero.clientHeight;
+      var count = Math.max(18, Math.floor(canvas.width / 60));
+      drops = [];
+      for(var i = 0; i < count; i++){
+        drops.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, len: 18 + Math.random() * 38, speed: 0.4 + Math.random() * 0.9, alpha: 0.08 + Math.random() * 0.18 });
+      }
+    }
+    function tick(){
+      if(!running) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = '#D4AF37';
+      ctx.lineCap = 'round';
+      drops.forEach(function(d){
+        ctx.globalAlpha = d.alpha;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x, d.y - d.len);
+        ctx.stroke();
+        d.y += d.speed;
+        if(d.y - d.len > canvas.height){
+          d.y = -d.len;
+          d.x = Math.random() * canvas.width;
+        }
+      });
+      ctx.globalAlpha = 1;
+      rafId = requestAnimationFrame(tick);
+    }
+    function start(){ if(running) return; running = true; rafId = requestAnimationFrame(tick); }
+    function stop(){ running = false; if(rafId) cancelAnimationFrame(rafId); }
+    resize();
+    var resizeTimer = null;
+    window.addEventListener('resize', function(){ clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 150); });
+    document.addEventListener('visibilitychange', function(){ if(document.hidden) stop(); else start(); });
+    if('IntersectionObserver' in window){
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){ if(entry.isIntersecting) start(); else stop(); });
+      }, { threshold: .1 });
+      obs.observe(hero);
+    } else {
+      start();
+    }
+  })();
+
+  // --- TESTIMONIALS ---
+  (function initTestimonials(){
+    var grid = document.getElementById('testimonials-grid');
+    var prevBtn = document.getElementById('testimonial-prev');
+    var nextBtn = document.getElementById('testimonial-next');
+    var dotsContainer = document.getElementById('testimonial-dots');
+    if (!grid || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    var testimonials = [
+      { name: 'دکتر علیرضا حسن‌پور', title: 'دندانپزشک – شیراز', avatarLetter: 'د', stars: 5, quote: 'سایت من قبلاً در گوشی بیماران خراب می‌شد، اما این سازه‌ی اختصاصی همیشه روان است. نوبت‌دهی آنلاین ما ۴۰٪ رشد داشته.' },
+      { name: 'وکیل محمد مهدی زارع', title: 'وکیل پایه یک دادگستری', avatarLetter: 'و', stars: 5, quote: 'اعتبار دیجیتال من وابسته به زیبایی و سرعت سایت است. پارسا استودیو این را درک می‌کند، برخلاف طراحان قالب‌محور.' },
+      { name: 'کلینیک زیبایی آسا', title: 'مرکز تخصصی پوست و مو', avatarLetter: 'آ', stars: 5, quote: 'بیماران ما از همان نگاه اول به سایت، اعتماد می‌کنند. این همان ارزشی است که ما دنبالش بودیم.' },
+      { name: 'موسسه حقوقی نور', title: 'دفتر حقوقی بین‌المللی', avatarLetter: 'ن', stars: 5, quote: 'مدارک و پرونده‌های ما با سیستم CRM ابری پارسا، امن و در دسترس است. دیگر نگران گم‌شدن اطلاعات نیستیم.' }
+    ];
+
+    var currentIndex = 0;
+    var itemsPerPage = 4;
+    var totalPages = Math.ceil(testimonials.length / itemsPerPage);
+
+    function renderPage(index){
+      var start = index * itemsPerPage;
+      var end = Math.min(start + itemsPerPage, testimonials.length);
+      var pageItems = testimonials.slice(start, end);
+      grid.innerHTML = '';
+      pageItems.forEach(function(item){
+        var card = document.createElement('div');
+        card.className = 'testimonial-card';
+        card.setAttribute('role', 'listitem');
+        card.setAttribute('tabindex', '0');
+        card.innerHTML = `
+          <div class="client-row">
+            <div class="avatar-svg">${item.avatarLetter}</div>
+            <div>
+              <div class="client-name">${item.name}</div>
+              <div class="client-title">${item.title}</div>
+            </div>
+          </div>
+          <div class="stars" aria-label="${item.stars} از ۵ ستاره">${'⭐'.repeat(item.stars)}</div>
+          <p class="quote">${item.quote}</p>
+        `;
+        grid.appendChild(card);
+      });
+      dotsContainer.querySelectorAll('button').forEach(function(btn, i){
+        btn.classList.toggle('is-active', i === index);
+        btn.setAttribute('aria-selected', i === index ? 'true' : 'false');
+      });
+      var firstCard = grid.querySelector('.testimonial-card');
+      if (firstCard) firstCard.focus();
+    }
+
+    function goTo(index){
+      if (index < 0) index = totalPages - 1;
+      if (index >= totalPages) index = 0;
+      currentIndex = index;
+      renderPage(currentIndex);
+      if (typeof trackEvent === 'function') {
+        trackEvent('testimonial_page_change', { page: currentIndex + 1, total: totalPages });
+      }
+    }
+
+    for (var i = 0; i < totalPages; i++){
+      var dot = document.createElement('button');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'اسلاید ' + (i + 1));
+      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      dot.addEventListener('click', function(idx){ return function(){ goTo(idx); }; }(i));
+      dotsContainer.appendChild(dot);
+    }
+
+    prevBtn.addEventListener('click', function(){ goTo(currentIndex - 1); });
+    nextBtn.addEventListener('click', function(){ goTo(currentIndex + 1); });
+
+    document.addEventListener('keydown', function(e){
+      var isFocused = grid.contains(document.activeElement);
+      if (!isFocused) return;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        if (e.key === 'ArrowLeft') goTo(currentIndex - 1);
+        else goTo(currentIndex + 1);
+      }
+      if (e.key === 'Escape') {
+        var hero = document.querySelector('.hero h1');
+        if (hero) hero.focus();
+      }
+    });
+    renderPage(0);
+  })();
+
+  // --- SERVICE WORKER ---
+  (function initServiceWorker(){
+    if (!('serviceWorker' in navigator)) return;
+    if (window.location.protocol === 'file:') return;
+    navigator.serviceWorker.register('/sw.js')
+      .then(function(reg){ console.log('SW registered successfully:', reg); })
+      .catch(function(err){ console.warn('SW registration failed:', err); });
+    var offlineMsg = document.createElement('div');
+    offlineMsg.style.cssText = 'position:fixed;bottom:1rem;right:1rem;background:var(--accent);color:var(--on-accent);padding:0.8rem 1.2rem;border-radius:var(--radius-sm);font-weight:700;z-index:400;display:none;box-shadow:0 8px 24px rgba(0,0,0,0.4);';
+    offlineMsg.textContent = '⚠️ شما آفلاین هستید — محتوای کش‌شده در دسترس است.';
+    document.body.appendChild(offlineMsg);
+    window.addEventListener('online', function(){ offlineMsg.style.display = 'none'; });
+    window.addEventListener('offline', function(){ offlineMsg.style.display = 'block'; if (typeof trackEvent === 'function') { trackEvent('offline_detected'); } });
+  })();
+
+  // --- ERROR TRACKER ---
+  (function initErrorTracker(){
+    var STORAGE_KEY = 'studio_errors';
+    var MAX_ERRORS = 50;
+    var RETENTION_DAYS = 7;
+
+    function storeError(errorData){
+      try {
+        var existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        existing.unshift({ timestamp: Date.now(), message: errorData.message || 'Unknown error', stack: errorData.stack || '', userAgent: navigator.userAgent, url: window.location.href });
+        var cutoff = Date.now() - RETENTION_DAYS * 24 * 60 * 60 * 1000;
+        existing = existing.filter(function(e){ return e.timestamp > cutoff; });
+        if (existing.length > MAX_ERRORS) existing = existing.slice(0, MAX_ERRORS);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(existing));
+      } catch (err) {}
+    }
+
+    window.addEventListener('error', function(event){
+      storeError({ message: event.message, stack: event.error ? event.error.stack : '' });
+      if (typeof trackEvent === 'function') { trackEvent('js_error', { message: event.message.slice(0, 60) }); }
+    });
+    window.addEventListener('unhandledrejection', function(event){
+      var reason = event.reason;
+      storeError({ message: 'Unhandled Promise Rejection: ' + (reason && reason.message ? reason.message : String(reason)), stack: reason && reason.stack ? reason.stack : '' });
+    });
+
+    var DEBUG_PASSWORD = 'parsa-debug-2026';
+    function simpleHash(str){
+      var hash = 0;
+      for (var i = 0; i < str.length; i++){ var char = str.charCodeAt(i); hash = ((hash << 5) - hash) + char; hash |= 0; }
+      return 'h' + Math.abs(hash).toString(16);
+    }
+    var expectedHash = simpleHash(DEBUG_PASSWORD);
+
+    function showDebugPanel(){
+      var params = new URLSearchParams(window.location.search);
+      var provided = params.get('debug');
+      if (!provided) return;
+      if (provided !== expectedHash) {
+        document.body.innerHTML = '<h1 style="color:red;text-align:center;margin-top:4rem;">🔒 دسترسی غیرمجاز</h1>';
+        return;
+      }
+      var errors = [];
+      try { errors = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch (e) {}
+      var metrics = { fcp: '—', lcp: '—', cls: '—' };
+      if (window.performance && window.performance.getEntriesByType) {
+        var paintEntries = performance.getEntriesByType('paint');
+        paintEntries.forEach(function(entry){ if (entry.name === 'first-contentful-paint') metrics.fcp = entry.startTime.toFixed(2) + 'ms'; });
+        var lcpEntries = performance.getEntriesByType('largest-contentful-paint');
+        if (lcpEntries.length) { metrics.lcp = lcpEntries[lcpEntries.length - 1].startTime.toFixed(2) + 'ms'; }
+        try {
+          var clsObserver = new PerformanceObserver(function(list){
+            var cumulative = 0;
+            list.getEntries().forEach(function(entry){ if (!entry.hadRecentInput) cumulative += entry.value; });
+            metrics.cls = cumulative.toFixed(3);
+          });
+          clsObserver.observe({ type: 'layout-shift', buffered: true });
+          setTimeout(function(){}, 500);
+        } catch (e) {}
+      }
+      var panel = document.createElement('div');
+      panel.className = 'debug-panel';
+      panel.innerHTML = `
+        <h2>🧪 پنل دیباگ — استودیو پارسا</h2>
+        <div class="metrics-grid">
+          <div class="metric"><div class="value">${metrics.fcp}</div><div class="label">FCP</div></div>
+          <div class="metric"><div class="value">${metrics.lcp}</div><div class="label">LCP</div></div>
+          <div class="metric"><div class="value">${metrics.cls}</div><div class="label">CLS</div></div>
+          <div class="metric"><div class="value">${errors.length}</div><div class="label">خطاهای ثبت‌شده</div></div>
+        </div>
+        <div class="actions">
+          <button id="export-json">📥 خروجی JSON</button>
+          <button id="clear-errors" class="danger">🗑️ پاک‌سازی خطاها</button>
+          <button id="back-to-site">↩️ بازگشت به سایت</button>
+        </div>
+        <div id="error-list">
+          ${errors.length === 0 ? '<p style="color:var(--ink-soft);">✅ هیچ خطایی ثبت نشده است.</p>' :
+            errors.map(function(e){ return `<div class="error-item"><div class="meta">${new Date(e.timestamp).toLocaleString('fa-IR')} — ${e.userAgent}</div><div class="msg">${e.message}</div>${e.stack ? `<div class="stack">${e.stack}</div>` : ''}</div>`; }).join('')
+          }
+        </div>
+      `;
+      document.body.innerHTML = '';
+      document.body.appendChild(panel);
+      document.getElementById('export-json').addEventListener('click', function(){
+        var data = JSON.stringify({ errors: errors, metrics: metrics, exportedAt: new Date().toISOString() }, null, 2);
+        var blob = new Blob([data], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'studio-debug-' + new Date().toISOString().slice(0,10) + '.json';
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+      document.getElementById('clear-errors').addEventListener('click', function(){
+        if (confirm('همه‌ی خطاهای ذخیره‌شده پاک می‌شوند. ادامه می‌دهید؟')) {
+          localStorage.removeItem(STORAGE_KEY);
+          location.reload();
+        }
+      });
+      document.getElementById('back-to-site').addEventListener('click', function(){
+        window.location.href = window.location.pathname;
+      });
+    }
+    showDebugPanel();
+  })();
+
+  // --- HEADER SCROLL + BACK TO TOP ---
+  (function initHeaderScroll(){
+    var header = document.getElementById('site-header');
+    var backBtn = document.getElementById('back-to-top');
+    if (!header) return;
+    window.addEventListener('scroll', function(){
+      var scrollY = window.scrollY;
+      if (scrollY > 80) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      if (backBtn) {
+        if (scrollY > 600) {
+          backBtn.classList.add('visible');
+        } else {
+          backBtn.classList.remove('visible');
+        }
+      }
+    }, { passive: true });
+    if (backBtn) {
+      backBtn.addEventListener('click', function(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  })();
+
+  // =============================================================
+  // ماژول جدید ۱۷: دستیار هوشمند (AI Assistant)
+  // =============================================================
+  (function initAIAssistant() {
+    var toggle = document.getElementById('aiToggle');
+    var chat = document.getElementById('aiChat');
+    var close = document.getElementById('aiClose');
+    var messages = document.getElementById('aiMessages');
+    var input = document.getElementById('aiInput');
+    var sendBtn = document.getElementById('aiSend');
+    var quickBtns = document.querySelectorAll('.ai-quick-btn');
+    if (!toggle || !chat || !close || !messages || !input || !sendBtn) return;
+
+    var isOpen = false;
+    var isProcessing = false;
+
+    var knowledgeBase = [
+      {
+        keywords: ['سلام', 'درود', 'هی', 'سلامتی', 'چطوری'],
+        response: 'سلام! به استودیو پارسا خوش آمدید. من دستیار هوشمند پارسا هستم. چطور می‌توانم به شما کمک کنم؟'
+      },
+      {
+        keywords: ['معرفی', 'استودیو', 'پارسا', 'چه کار میکنید', 'درباره'],
+        response: 'استودیو پارسا یک آتلیه‌ی طراحی دیجیتال لوکس است که وب‌سایت‌های اختصاصی، هویت بصری و سیستم‌های هوشمند برای پزشکان، وکلا و برندهای حرفه‌ای طراحی می‌کند. همه‌ی پروژه‌ها از صفر و بدون قالب آماده کدنویسی می‌شوند.'
+      },
+      {
+        keywords: ['پکیج', 'خدمات', 'چه خدماتی', 'انواع پکیج'],
+        response: 'ما ۳ پکیج اصلی داریم:<br>• <strong>امضای دیجیتال</strong> (۷ میلیون) — لندینگ پیج اختصاصی<br>• <strong>قلعه حرفه‌ای</strong> (۳۰ میلیون) — سایت با CRM ابری<br>• <strong>اکسیر جامع</strong> (توافقی) — هویت کامل برند<br>همچنین ۹ خدمات تکمیلی مثل لوگو، فونت اختصاصی، عکاسی و ... داریم. برای دیدن همه‌ی پکیج‌ها به <a href="#packages">بخش پکیج‌ها</a> بروید.'
+      },
+      {
+        keywords: ['قیمت', 'هزینه', 'چقدر', 'تومان', 'قلعه حرفه‌ای', 'امضای دیجیتال'],
+        response: 'قیمت پکیج‌ها:<br>• <strong>امضای دیجیتال</strong> = ۷,۰۰۰,۰۰۰ تومان<br>• <strong>قلعه حرفه‌ای</strong> = ۳۰,۰۰۰,۰۰۰ تومان<br>• <strong>اکسیر جامع</strong> = توافقی / VIP<br>برای خدمات تکمیلی، به بخش <a href="#packages-extra">خدمات تکمیلی</a> مراجعه کنید.'
+      },
+      {
+        keywords: ['چرا کد اختصاصی', 'وردپرس', 'قالب آماده', 'تفاوت'],
+        response: 'کد اختصاصی مثل یک «ملک دیجیتال» است: امن، فوق‌سریع (زیر ۰.۴ ثانیه)، ضد فیلتر و کاملاً منحصربه‌فرد. وردپرس یک سیستم عمومی است که با هر به‌روزرسانی ممکن است کند یا آسیب‌پذیر شود. جزئیات بیشتر در <a href="#chera">بخش چرا ما</a>.'
+      },
+      {
+        keywords: ['تماس', 'ارتباط', 'پشتیبانی', 'راه ارتباطی', 'شماره'],
+        response: 'راه‌های ارتباطی:<br>• <strong>تلگرام</strong>: <a href="https://t.me/parsastudio" target="_blank">@parsastudio</a><br>• <strong>واتساپ</strong>: <a href="https://wa.me/989000000000" target="_blank">۰۹۰۰۰۰۰۰۰۰۰</a><br>• <strong>ایمیل</strong>: <a href="mailto:hello@parsastudio.ir">hello@parsastudio.ir</a><br>همچنین می‌توانید در انتهای صفحه، فرم تماس را پر کنید.'
+      },
+      {
+        keywords: ['درباره من', 'پارسا', 'رضائی', 'توسعه‌دهنده'],
+        response: 'پارسا رضائی خسروی هستم. دانشجوی مدیریت بازرگانی، توسعه‌دهنده فرانت‌اند و متخصص هوش مصنوعی. عاشق کدنویسی، طراحی لوکس و سیستم‌های هوشمند برای بهینه‌سازی انرژی. برای آشنایی بیشتر به <a href="about.html">صفحه‌ی درباره من</a> بروید.'
+      },
+      {
+        keywords: ['سوالات متداول', 'سوال', 'پرسش', 'faq'],
+        response: 'سوالات پرتکرار را در <a href="#faq">بخش سوالات متداول</a> مشاهده کنید. اگر پرسش شما در آنجا نبود، خوشحال می‌شوم که پاسخ دهم.'
+      },
+      {
+        keywords: ['سندباکس', 'دکمه نمونه', 'آزمایش'],
+        response: 'در بخش <a href="#sandbox">سندباکس</a> می‌توانید رنگ، انحنا و اندازه‌ی فونت یک دکمه را تغییر دهید و کد CSS زنده را ببینید. این نشان‌دهنده‌ی قدرت کد اختصاصی ماست.'
+      },
+      {
+        keywords: ['ماشین حساب', 'هزینه', 'ریزش', 'بازدیدکننده'],
+        response: 'با <a href="#cost-calculator">ماشین‌حساب ریزش بازدید</a> می‌توانید تخمین بزنید که سایت کند شما ماهانه چند مشتری از دست می‌دهد. همچنین <a href="#price-calculator">ماشین‌حساب قیمت</a> به شما برآورد اولیه‌ی هزینه‌ی پروژه می‌دهد.'
+      }
+    ];
+
+    function addMessage(text, sender) {
+      var div = document.createElement('div');
+      div.className = 'ai-msg ' + sender;
+      div.innerHTML = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function showTyping() {
+      var typing = document.createElement('div');
+      typing.className = 'ai-typing';
+      typing.id = 'aiTyping';
+      typing.innerHTML = '<span></span><span></span><span></span>';
+      messages.appendChild(typing);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function removeTyping() {
+      var typing = document.getElementById('aiTyping');
+      if (typing) typing.remove();
+    }
+
+    function getResponse(query) {
+      var lower = query.toLowerCase().trim();
+      for (var i = 0; i < knowledgeBase.length; i++) {
+        var item = knowledgeBase[i];
+        for (var j = 0; j < item.keywords.length; j++) {
+          if (lower.includes(item.keywords[j])) {
+            return typeof item.response === 'function' ? item.response() : item.response;
+          }
+        }
+      }
+      return 'سوال خوبی پرسیدید! متأسفانه پاسخ دقیقی در دانش‌نامه‌ی من موجود نیست. اما می‌توانید در بخش‌های مختلف سایت جستجو کنید یا با ما <a href="#contact">تماس</a> بگیرید.';
+    }
+
+    function sendMessage(text) {
+      if (!text.trim()) return;
+      if (isProcessing) return;
+
+      addMessage(text, 'user');
+      input.value = '';
+      input.focus();
+
+      isProcessing = true;
+      showTyping();
+
+      var delay = 400 + Math.random() * 600;
+      setTimeout(function() {
+        removeTyping();
+        var reply = getResponse(text);
+        addMessage(reply, 'bot');
+        isProcessing = false;
+      }, delay);
+    }
+
+    function toggleChat(open) {
+      isOpen = (open !== undefined) ? open : !isOpen;
+      chat.classList.toggle('is-open', isOpen);
+      if (isOpen) {
+        input.focus();
+        if (messages.children.length === 0) {
+          setTimeout(function() {
+            addMessage('سلام! ✨ من دستیار هوشمند پارسا هستم. درباره‌ی استودیو، پکیج‌ها، قیمت‌ها یا هر سوال دیگری بپرسید.', 'bot');
+            setTimeout(function() {
+              addMessage('💡 می‌توانید یکی از گزینه‌های زیر را انتخاب کنید یا سوال خود را بنویسید.', 'bot');
+            }, 300);
+          }, 500);
+        }
+      }
+    }
+
+    toggle.addEventListener('click', function() { toggleChat(); });
+    close.addEventListener('click', function() { toggleChat(false); });
+
+    sendBtn.addEventListener('click', function() { sendMessage(input.value); });
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendMessage(input.value);
+      }
+    });
+
+    quickBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var question = btn.getAttribute('data-question') || btn.textContent.trim();
+        sendMessage(question);
+      });
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && isOpen) toggleChat(false);
+    });
+
+    document.addEventListener('click', function(e) {
+      if (isOpen && !chat.contains(e.target) && e.target !== toggle) {
+        toggleChat(false);
+      }
+    });
+
+    chat.addEventListener('click', function(e) { e.stopPropagation(); });
+
+    if (typeof trackEvent === 'function') {
+      toggle.addEventListener('click', function() {
+        trackEvent('ai_assistant_toggle', { state: isOpen ? 'open' : 'close' });
+      });
+    }
+  })();
+
+});
 </script>
 </body>
 </html>
