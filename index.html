@@ -59,6 +59,34 @@
   --ease-elastic:cubic-bezier(.68,-0.55,.27,1.55);
 }
 
+/* ۰۱ب — تم روشن (اختیاری)
+   همکاران عزیز، برند اصلی پارسا استودیو همیشه «تیره/طلایی» می‌مونه؛
+   این فقط یه حالت دسترسی‌پذیری اضافه‌ست برای کاربرهایی که نور محیط
+   زیاده یا ترجیح شخصی روشن دارن. تمام انیمیشن‌ها و گرادیان‌ها چون از
+   همین متغیرها تغذیه می‌شن، بدون هیچ کد اضافه‌ای روی تم روشن هم درست
+   کار می‌کنن — این دقیقاً همون فایده‌ی واقعی توکن‌محور بودن CSS‌مونه. */
+html[data-theme="light"]{
+  --bg:#FAF7F1;
+  --bg-deep:#F0EAE0;
+  --bg-footer:#11100C;
+  --ink:#171410;
+  --ink-soft:rgba(23,20,16,.64);
+  --line:rgba(170,128,30,.22);
+  --on-accent:#FAF6F0;
+  --glass-bg:rgba(17,16,12,.035);
+  --glass-bg-strong:rgba(17,16,12,.05);
+  --glass-border:rgba(170,128,30,.28);
+}
+html[data-theme="light"] body{
+  background:radial-gradient(circle at 50% -10%, rgba(212,175,55,.12), transparent 55%), var(--bg);
+}
+html[data-theme="light"] .terminal-log .muted{color:rgba(23,20,16,.5);}
+html[data-theme="light"] .sandbox-code,html[data-theme="light"] .terminal{color:var(--ink);}
+
+/* یوتیلیتی‌های کوچک عمومی */
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+body.no-scroll{overflow:hidden;}
+
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
 }
@@ -133,8 +161,26 @@ section{padding:5.5rem 0;}
 .main-nav{display:flex;align-items:center;gap:2.1rem;}
 .main-nav a{font-size:.92rem;color:var(--ink-soft);transition:color .2s ease;}
 .main-nav a:hover{color:var(--accent);}
+.nav-about{display:inline-flex !important;align-items:center;gap:.45rem;}
+.nav-about-icon{width:18px;height:18px;flex-shrink:0;}
 .nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:.4rem;}
 .nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:transform .25s ease,opacity .25s ease;}
+/* همکاران عزیز، تبدیل همبرگر به ضربدر فقط با چرخش و جابه‌جایی دو خط
+   انجام می‌شه؛ خط وسط هم محو می‌شه. هیچ آیکون اضافه‌ای لازم نیست. */
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+.theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;
+  border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer;
+  margin-right:.6rem;transition:border-color .2s ease;flex-shrink:0;
+}
+.theme-toggle:hover{border-color:var(--accent);}
+.theme-toggle svg{width:18px;height:18px;}
+.theme-toggle .icon-sun{display:none;}
+html[data-theme="light"] .theme-toggle .icon-moon{display:none;}
+html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
 
 /* ============================================================
    ۰۳ب — کرسر اختصاصی
@@ -215,13 +261,13 @@ section{padding:5.5rem 0;}
   background:linear-gradient(90deg,transparent,rgba(212,175,55,.55),transparent);
   pointer-events:none;mix-blend-mode:screen;
 }
-.hero-trail-1{top:18%;left:-20%;animation:trailSweep 7s ease-in-out infinite;}
-.hero-trail-2{top:64%;left:-30%;animation:trailSweep 9s ease-in-out 2.4s infinite;}
+.hero-trail-1{top:18%;right:-20%;animation:trailSweep 7s ease-in-out infinite;}
+.hero-trail-2{top:64%;right:-30%;animation:trailSweep 9s ease-in-out 2.4s infinite;}
 @keyframes trailSweep{
   0%{transform:translateX(0) rotate(-6deg);opacity:0;}
   10%{opacity:1;}
   90%{opacity:1;}
-  100%{transform:translateX(140%) rotate(-6deg);opacity:0;}
+  100%{transform:translateX(-140%) rotate(-6deg);opacity:0;}
 }
 
 .hero-cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.6rem;}
@@ -287,7 +333,25 @@ section{padding:5.5rem 0;}
    شدن (هولوگرافیک روشن و ترمینال رترو) تا تضاد رو ملموس‌تر کنه.
    ============================================================ */
 .morph-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:center;}
-.morph-decor{width:min(220px,60%);margin-bottom:1.4rem;}
+.morph-swatches{display:flex;gap:.7rem;margin-bottom:1.4rem;}
+.morph-swatch{
+  flex:1;height:64px;border-radius:10px;padding:.55rem .6rem;display:flex;flex-direction:column;justify-content:space-between;
+  border:1px solid var(--line);opacity:.5;transform:scale(.94);
+  transition:opacity .3s ease,transform .3s var(--ease-elastic),border-color .3s ease,box-shadow .3s ease;
+}
+.morph-swatch[data-style="luxe"]{background:linear-gradient(150deg,rgba(212,175,55,.24),rgba(212,175,55,.04));}
+.morph-swatch[data-style="holo"]{background:linear-gradient(135deg,#E9F3FF,#F6E9FF 45%,#FFF3E0);}
+.morph-swatch[data-style="retro"]{background:#0a0a0a;}
+.morph-swatch-dot{width:8px;height:8px;border-radius:50%;display:block;}
+.morph-swatch[data-style="luxe"] .morph-swatch-dot{background:#D4AF37;}
+.morph-swatch[data-style="holo"] .morph-swatch-dot{background:#7C3AED;}
+.morph-swatch[data-style="retro"] .morph-swatch-dot{background:#FFB000;}
+.morph-swatch-bar{height:6px;border-radius:3px;width:70%;display:block;}
+.morph-swatch[data-style="luxe"] .morph-swatch-bar{background:rgba(212,175,55,.55);}
+.morph-swatch[data-style="holo"] .morph-swatch-bar{background:rgba(124,58,237,.45);}
+.morph-swatch[data-style="retro"] .morph-swatch-bar{background:#39FF6A;}
+.morph-swatch.is-active{opacity:1;transform:scale(1);border-color:var(--accent);box-shadow:0 10px 22px -10px rgba(212,175,55,.45);}
+
 .morph-controls{display:flex;flex-direction:column;gap:.8rem;}
 .morph-btn{
   text-align:right;padding:.9em 1.2em;border:1px solid var(--line);border-radius:var(--radius-sm);
@@ -346,6 +410,7 @@ section{padding:5.5rem 0;}
   display:flex;flex-direction:column;
 }
 .package-card.is-featured{border-color:var(--accent);box-shadow:0 30px 60px -30px rgba(212,175,55,.4),0 0 0 1px var(--accent-20) inset;}
+.package-card:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-10);}
 .package-audience{font-size:.82rem;color:var(--ink-soft);margin-bottom:1rem;}
 .package-icon{width:56px;height:56px;margin-bottom:.6rem;}
 .package-price{font-family:var(--font-display);font-size:1.5rem;margin:1.2rem 0;color:var(--accent);}
@@ -452,8 +517,15 @@ section{padding:5.5rem 0;}
 }
 .contact-form input::placeholder{color:var(--ink-soft);}
 .contact-form input:focus{border-color:var(--accent-cool);}
+.contact-form input[type="email"]{direction:ltr;text-align:left;}
 .contact-form button{flex:0 0 auto;}
 .contact-form-note{font-size:.78rem;color:var(--ink-soft);margin-top:.6rem;}
+.contact-form input[aria-invalid="true"]{border-color:#E0584F;}
+.contact-form-error{display:block;font-size:.76rem;color:#FF8A80;margin-top:.3rem;}
+.contact-form button[disabled]{opacity:.6;cursor:not-allowed;}
+.form-status{font-size:.85rem;margin-top:.8rem;min-height:1.2em;}
+.form-status[data-state="success"]{color:#6BE39A;}
+.form-status[data-state="error"]{color:#FF8A80;}
 
 .footer-bottom{
   border-top:1px solid var(--line);margin-top:3rem;padding-top:1.6rem;
@@ -498,6 +570,90 @@ section{padding:5.5rem 0;}
   section{padding:3.6rem 0;}
 }
 </style>
+<!-- ============================================================
+     داده‌ساختاریافته‌ی Schema.org — برای دیده‌شدن بهتر در نتایج گوگل
+     و موتورهای پاسخ‌گوی هوش مصنوعی. همکاران عزیز، عمداً همه‌چی رو در
+     یک @graph واحد گذاشتم تا entityهای مختلف (سازمان، کسب‌وکار محلی،
+     سرویس‌ها) به هم ارجاع بدن (sameAs/provider) — این برای موتورهای
+     جستجو خیلی قوی‌تر از چند JSON-LD پراکنده و بی‌ربط به همه. اگه
+     دامنه یا تلفن واقعی عوض شد، فقط همین بلوک رو ویرایش کن. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://parsastudio.ir/#organization",
+      "name": "استودیو پارسا",
+      "alternateName": "Parsa Studio",
+      "url": "https://parsastudio.ir",
+      "description": "طراحی سایت اختصاصی و لوکس برای پزشکان، وکلا و برندهای حرفه‌ای در شیراز.",
+      "email": "hello@parsastudio.ir",
+      "founder": { "@type": "Person", "name": "پارسا رضائی خسروی" },
+      "areaServed": "IR"
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://parsastudio.ir/#localbusiness",
+      "name": "استودیو پارسا",
+      "image": "https://parsastudio.ir/og-image.jpg",
+      "priceRange": "۷,۰۰۰,۰۰۰ - توافقی",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "شیراز",
+        "addressRegion": "فارس",
+        "addressCountry": "IR"
+      },
+      "areaServed": "IR",
+      "url": "https://parsastudio.ir",
+      "telephone": "+98-XX-XXXXXXXX",
+      "parentOrganization": { "@id": "https://parsastudio.ir/#organization" }
+    },
+    {
+      "@type": "Service",
+      "name": "امضای دیجیتال",
+      "serviceType": "طراحی لندینگ پیج اختصاصی",
+      "provider": { "@id": "https://parsastudio.ir/#localbusiness" },
+      "areaServed": "IR",
+      "offers": { "@type": "Offer", "price": "7000000", "priceCurrency": "IRT" }
+    },
+    {
+      "@type": "Service",
+      "name": "قلعه حرفه‌ای",
+      "serviceType": "طراحی وب‌سایت اختصاصی به‌همراه CRM ابری",
+      "provider": { "@id": "https://parsastudio.ir/#localbusiness" },
+      "areaServed": "IR",
+      "offers": { "@type": "Offer", "price": "30000000", "priceCurrency": "IRT" }
+    },
+    {
+      "@type": "Service",
+      "name": "اکسیر جامع",
+      "serviceType": "هویت بصری کامل و CRM ابری سازمانی",
+      "provider": { "@id": "https://parsastudio.ir/#localbusiness" },
+      "areaServed": "IR"
+    }
+  ]
+}
+</script>
+
+<!-- ============================================================
+     Google Analytics 4 — عمداً غیرفعال (کامنت) گذاشته شده.
+     پارسا جان، دلیل: gtag.js از دامنه‌ی گوگل بارگذاری می‌شه که در
+     ایران اغلب فیلتره؛ فعال کردنش دقیقاً همون وابستگی بیرونی‌ایه که
+     کل معماری «ریشه مستقل» این سایت قول داده وجود نداشته باشه.
+     اگه با همین آگاهی می‌خوای فعالش کنی، G-XXXXXXXXXX رو با ID
+     واقعی‌ت عوض کن و این دو خط رو از کامنت در بیار. تمام eventهای
+     ردیابی در script.js پایین صفحه پشت یک گارد امن نوشته شده‌ن؛
+     یعنی چه این تگ فعال باشه چه فیلتر شده باشه، هیچ‌چیز دیگه‌ای
+     از کار نمی‌افته.
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+-->
 </head>
 <body>
 <a class="skip-link" href="#main">پرش به محتوای اصلی</a>
@@ -518,12 +674,28 @@ section{padding:5.5rem 0;}
     </a>
 
     <nav class="main-nav" id="main-nav" aria-label="منوی اصلی">
+      <a href="about.html" class="nav-about">
+        <svg class="nav-about-icon" viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
+          <circle cx="16" cy="12.5" r="5" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
+          <path d="M6 25c1.5-5 5.5-8 10-8s8.5 3 10 8" fill="none" style="stroke:var(--accent)" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        درباره من
+      </a>
       <a href="#chera">چرا ما</a>
       <a href="#services">خدمات</a>
       <a href="#packages">پکیج‌ها</a>
       <a href="#faq">سوالات</a>
       <a href="#contact" class="btn btn-primary">ثبت درخواست مشاوره</a>
     </nav>
+
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="تغییر به تم روشن">
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z" fill="none" style="stroke:var(--accent)" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4.2" fill="none" style="stroke:var(--accent)" stroke-width="1.6"/>
+        <path d="M12 2.5v3M12 18.5v3M3.5 12h3M17.5 12h3M5.5 5.5l2 2M16.5 16.5l2 2M5.5 18.5l2-2M16.5 7.5l2-2" style="stroke:var(--accent)" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
 
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="باز و بسته کردن منو">
       <span></span><span></span><span></span>
@@ -708,22 +880,20 @@ section{padding:5.5rem 0;}
   <section id="style-proof" class="reveal">
     <div class="container morph-wrap">
       <div>
-        <svg class="morph-decor" viewBox="0 0 200 200" aria-hidden="true">
-          <defs>
-            <linearGradient id="glassA" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" style="stop-color:var(--accent);stop-opacity:.5"/>
-              <stop offset="100%" style="stop-color:var(--accent-cool);stop-opacity:.15"/>
-            </linearGradient>
-            <filter id="glassBlur" x="-30%" y="-30%" width="160%" height="160%">
-              <feGaussianBlur stdDeviation="9"/>
-            </filter>
-          </defs>
-          <g filter="url(#glassBlur)">
-            <ellipse cx="80" cy="70" rx="58" ry="46" fill="url(#glassA)"/>
-            <ellipse cx="135" cy="120" rx="42" ry="34" style="fill:var(--accent-cool)" opacity=".25"/>
-          </g>
-          <ellipse cx="100" cy="95" rx="70" ry="56" fill="none" style="stroke:var(--accent)" stroke-opacity=".4" stroke-width="1"/>
-        </svg>
+        <div class="morph-swatches" role="img" aria-label="پیش‌نمایش سه سبک کارت">
+          <div class="morph-swatch is-active" data-style="luxe">
+            <span class="morph-swatch-dot"></span>
+            <span class="morph-swatch-bar"></span>
+          </div>
+          <div class="morph-swatch" data-style="holo">
+            <span class="morph-swatch-dot"></span>
+            <span class="morph-swatch-bar"></span>
+          </div>
+          <div class="morph-swatch" data-style="retro">
+            <span class="morph-swatch-dot"></span>
+            <span class="morph-swatch-bar"></span>
+          </div>
+        </div>
         <span class="eyebrow">اثبات بدون قالب</span>
         <h2>یک کارت، سه هویت کاملاً متفاوت</h2>
         <p>این یک کارت محصول واقعی است. با کلیک روی هر دکمه، کل رنگ، فونت، مرز و انحنای کارت در صدم‌ثانیه عوض می‌شود — همان قدرتی که برای برند شما هم به‌کار می‌گیریم.</p>
@@ -936,11 +1106,20 @@ section{padding:5.5rem 0;}
       <!-- فرم کوتاه تماس — فعلاً با mailto هوشمند کار می‌کند (بدون بک‌اند)؛
            وقتی CRM ابری (crm.html) آنلاین شد، همین فرم رو به اندپوینت
            FastAPI وصل می‌کنیم، بدون نیاز به تغییر در HTML. -->
-      <form class="contact-form" id="contact-form">
-        <input type="text" id="cf-name" name="name" placeholder="نام شما" required>
-        <input type="email" id="cf-email" name="email" placeholder="ایمیل شما" required>
-        <button type="submit" class="btn btn-cool">ارسال پیام</button>
+      <form class="contact-form" id="contact-form" novalidate>
+        <div style="flex:1 1 180px;">
+          <label for="cf-name" class="visually-hidden">نام شما</label>
+          <input type="text" id="cf-name" name="name" placeholder="نام شما" aria-describedby="cf-name-error" required minlength="2">
+          <span class="contact-form-error visually-hidden" id="cf-name-error"></span>
+        </div>
+        <div style="flex:1 1 180px;">
+          <label for="cf-email" class="visually-hidden">ایمیل شما</label>
+          <input type="email" id="cf-email" name="email" placeholder="ایمیل شما" aria-describedby="cf-email-error" required>
+          <span class="contact-form-error visually-hidden" id="cf-email-error"></span>
+        </div>
+        <button type="submit" class="btn btn-cool" id="cf-submit">ارسال پیام</button>
       </form>
+      <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
       <p class="contact-form-note">با ارسال، اپ ایمیل پیش‌فرض شما با پیام آماده باز می‌شود.</p>
     </div>
     <svg class="footer-decor" viewBox="0 0 64 64" aria-hidden="true">
@@ -966,17 +1145,70 @@ section{padding:5.5rem 0;}
    ============================================================ */
 document.addEventListener('DOMContentLoaded', function () {
 
-  // --- ماژول ۱: منوی موبایل ---
+  // تابع مرکزی ردیابی — همکاران عزیز، همیشه از همین تابع استفاده کنید،
+  // نه مستقیم gtag(). اگه gtag.js لود نشده باشه (فیلتر شبکه، یا کامنت
+  // بودن تگش طبق توضیح بالای فایل)، این تابع فقط silently برمی‌گرده؛
+  // یعنی هیچ ماژول دیگه‌ای به‌خاطر آنالیتیکس خراب نمی‌شه.
+  function trackEvent(name, params){
+    if(typeof window.gtag === 'function'){
+      window.gtag('event', name, params || {});
+    }
+  }
+
+  // --- ماژول ۱: منوی موبایل (با قفل اسکرول، Escape و کلیک بیرون) ---
   (function initNav(){
     var toggle = document.getElementById('nav-toggle');
     var nav = document.getElementById('main-nav');
     if(!toggle || !nav) return;
-    toggle.addEventListener('click', function(){
-      var isOpen = nav.classList.toggle('is-open');
+
+    function setOpen(isOpen){
+      nav.classList.toggle('is-open', isOpen);
       toggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.classList.toggle('no-scroll', isOpen && window.matchMedia('(max-width:900px)').matches);
+      trackEvent(isOpen ? 'mobile_menu_open' : 'mobile_menu_close');
+    }
+
+    toggle.addEventListener('click', function(){
+      setOpen(!nav.classList.contains('is-open'));
     });
     nav.querySelectorAll('a').forEach(function(link){
-      link.addEventListener('click', function(){ nav.classList.remove('is-open'); });
+      link.addEventListener('click', function(){ setOpen(false); });
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && nav.classList.contains('is-open')) setOpen(false);
+    });
+    document.addEventListener('click', function(e){
+      if(!nav.classList.contains('is-open')) return;
+      if(nav.contains(e.target) || toggle.contains(e.target)) return;
+      setOpen(false);
+    });
+  })();
+
+  // --- ماژول ۱ب: دکمه‌ی تغییر تم (تیره/روشن) ---
+  // ترتیب اولویت: انتخاب ذخیره‌شده‌ی قبلی کاربر > ترجیح سیستم‌عامل > تیره (پیش‌فرض برند).
+  (function initThemeToggle(){
+    var btn = document.getElementById('theme-toggle');
+    if(!btn) return;
+    var root = document.documentElement;
+    var saved = null;
+    try { saved = localStorage.getItem('parsa-theme'); } catch(err){}
+    var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    var initial = saved || (prefersLight ? 'light' : 'dark');
+    if(initial === 'light') root.setAttribute('data-theme', 'light');
+
+    function updateLabel(){
+      var isLight = root.getAttribute('data-theme') === 'light';
+      btn.setAttribute('aria-label', isLight ? 'تغییر به تم تیره' : 'تغییر به تم روشن');
+    }
+    updateLabel();
+
+    btn.addEventListener('click', function(){
+      var isLight = root.getAttribute('data-theme') === 'light';
+      var next = isLight ? 'dark' : 'light';
+      if(next === 'dark') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('parsa-theme', next); } catch(err){}
+      updateLabel();
+      trackEvent('theme_toggle', { theme: next });
     });
   })();
 
@@ -1052,15 +1284,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   })();
 
-  // --- ماژول ۴: کارت متامورف ---
+  // --- ماژول ۴: کارت متامورف (سینک کامل دکمه‌ها با سواچ‌های پیش‌نمایش) ---
   (function initStyleMorph(){
     var card = document.getElementById('morph-card');
     var buttons = document.querySelectorAll('.morph-btn');
+    var swatches = document.querySelectorAll('.morph-swatch');
     if(!card || !buttons.length) return;
     buttons.forEach(function(btn){
       btn.addEventListener('click', function(){
         card.setAttribute('data-style', btn.dataset.style);
         buttons.forEach(function(b){ b.setAttribute('aria-pressed', String(b === btn)); });
+        swatches.forEach(function(s){ s.classList.toggle('is-active', s.dataset.style === btn.dataset.style); });
       });
     });
   })();
@@ -1092,7 +1326,15 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
   // --- ماژول ۶: ماشین‌حساب هزینه‌ی کندی ---
-  (function initCostCalculator(){
+  // ماژول‌های غیرحیاتی (محاسبه‌گر و شمارنده) با requestIdleCallback اجرا
+  // می‌شن تا اولویت رندر اولیه‌ی صفحه (LCP) رو نگیرن؛ مرورگرهای بدون
+  // پشتیبانی از این API، با setTimeout کوتاه فالبک می‌کنن.
+  function runWhenIdle(fn){
+    if('requestIdleCallback' in window) requestIdleCallback(fn, { timeout: 1500 });
+    else setTimeout(fn, 200);
+  }
+
+  function initCostCalculator(){
     var speed = document.getElementById('calc-speed');
     var visitors = document.getElementById('calc-visitors');
     var speedValue = document.getElementById('calc-speed-value');
@@ -1116,20 +1358,132 @@ document.addEventListener('DOMContentLoaded', function () {
       input.addEventListener('input', calculate);
     });
     calculate();
-  })();
+  }
+  runWhenIdle(initCostCalculator);
 
-  // --- ماژول ۷: فرم تماس کوتاه (mailto هوشمند، بدون بک‌اند) ---
+  // --- ماژول ۷: فرم تماس کوتاه ---
+  // همکاران عزیز، منطق ارسال واقعی توی sendToBackend جداشده؛ یعنی
+  // وقتی CRM ابری (crm.html) آنلاین شد، فقط همین یه تابع رو با یه
+  // fetch واقعی به اندپوینت FastAPI عوض می‌کنید — بقیه‌ی فرم (اعتبارسنجی،
+  // حالت لودینگ، پیام موفقیت) دست‌نخورده می‌مونه.
   (function initContactForm(){
     var form = document.getElementById('contact-form');
-    if(!form) return;
+    var status = document.getElementById('cf-status');
+    var submitBtn = document.getElementById('cf-submit');
+    if(!form || !status || !submitBtn) return;
+
+    var nameInput = document.getElementById('cf-name');
+    var emailInput = document.getElementById('cf-email');
+    var nameError = document.getElementById('cf-name-error');
+    var emailError = document.getElementById('cf-email-error');
+    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var hasTrackedFocus = false;
+
+    function setError(input, errorEl, message){
+      if(message){
+        input.setAttribute('aria-invalid', 'true');
+        errorEl.textContent = message;
+        errorEl.classList.remove('visually-hidden');
+      } else {
+        input.removeAttribute('aria-invalid');
+        errorEl.textContent = '';
+        errorEl.classList.add('visually-hidden');
+      }
+    }
+
+    function validate(){
+      var ok = true;
+      var name = nameInput.value.trim();
+      var email = emailInput.value.trim();
+      if(name.length < 2){ setError(nameInput, nameError, 'نام باید حداقل ۲ حرف باشد.'); ok = false; }
+      else setError(nameInput, nameError, '');
+      if(!emailPattern.test(email)){ setError(emailInput, emailError, 'ایمیل را به‌صورت صحیح وارد کنید.'); ok = false; }
+      else setError(emailInput, emailError, '');
+      return ok;
+    }
+
+    // فعلاً فقط mailto؛ ساختار Promise باعث می‌شه جایگزینی با fetch واقعی
+    // بدون لمس بقیه‌ی initContactForm امکان‌پذیر باشه.
+    function sendToBackend(payload){
+      return new Promise(function(resolve){
+        var subject = encodeURIComponent('درخواست مشاوره از طریق سایت — ' + payload.name);
+        var body = encodeURIComponent('نام: ' + payload.name + '\nایمیل: ' + payload.email + '\n\nسلام پارسا، لطفاً برای دریافت مشاوره با من تماس بگیرید.');
+        setTimeout(function(){
+          window.location.href = 'mailto:hello@parsastudio.ir?subject=' + subject + '&body=' + body;
+          resolve({ ok: true });
+        }, 450);
+      });
+    }
+
+    [nameInput, emailInput].forEach(function(input){
+      input.addEventListener('focus', function(){
+        if(!hasTrackedFocus){ hasTrackedFocus = true; trackEvent('contact_form_focus'); }
+      });
+      input.addEventListener('blur', function(){
+        if(!form.contains(document.activeElement) && (nameInput.value || emailInput.value)){
+          trackEvent('contact_form_abandon');
+        }
+      });
+    });
+
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      var name = document.getElementById('cf-name').value.trim();
-      var email = document.getElementById('cf-email').value.trim();
-      var subject = encodeURIComponent('درخواست مشاوره از طریق سایت — ' + name);
-      var body = encodeURIComponent('نام: ' + name + '\nایمیل: ' + email + '\n\nسلام پارسا، لطفاً برای دریافت مشاوره با من تماس بگیرید.');
-      window.location.href = 'mailto:hello@parsastudio.ir?subject=' + subject + '&body=' + body;
+      if(!validate()){
+        status.dataset.state = 'error';
+        status.textContent = 'لطفاً خطاهای فرم را برطرف کنید.';
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'در حال ارسال...';
+      status.dataset.state = '';
+      status.textContent = '';
+
+      sendToBackend({ name: nameInput.value.trim(), email: emailInput.value.trim() })
+        .then(function(){
+          status.dataset.state = 'success';
+          status.textContent = 'اپ ایمیل شما باز شد — پیام آماده‌ی ارسال است.';
+          trackEvent('contact_form_submit');
+        })
+        .catch(function(){
+          status.dataset.state = 'error';
+          status.textContent = 'مشکلی پیش آمد، لطفاً مستقیم ایمیل بزنید: hello@parsastudio.ir';
+        })
+        .finally(function(){
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'ارسال پیام';
+        });
     });
+  })();
+
+  // --- ماژول ۷ب: ردیابی کلیک پکیج‌ها، CTAها و عمق اسکرول ---
+  (function initEngagementTracking(){
+    document.querySelectorAll('.package-card').forEach(function(card){
+      var title = card.querySelector('h3');
+      var label = title ? title.textContent.trim() : 'unknown';
+      card.querySelectorAll('a.btn').forEach(function(cta){
+        cta.addEventListener('click', function(){ trackEvent('package_cta_click', { package: label }); });
+      });
+    });
+    ['packages', 'contact'].forEach(function(id){
+      document.querySelectorAll('a[href="#' + id + '"]').forEach(function(a){
+        a.addEventListener('click', function(){ trackEvent('cta_click', { target: id }); });
+      });
+    });
+    if('IntersectionObserver' in window){
+      var depthTargets = ['services', 'packages', 'faq', 'contact'];
+      var obs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            trackEvent('scroll_depth', { section: entry.target.id });
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .3 });
+      depthTargets.forEach(function(id){
+        var el = document.getElementById(id);
+        if(el) obs.observe(el);
+      });
+    }
   })();
 
   // --- ماژول ۸: کرسر اختصاصی (فقط روی دیوایس‌های دارای موس واقعی) ---
@@ -1153,14 +1507,14 @@ document.addEventListener('DOMContentLoaded', function () {
   })();
 
   // --- ماژول ۹: شمارنده‌ی زنده‌ی آماره‌ها ---
-  (function initStatCounters(){
+  function initStatCounters(){
     var numbers = document.querySelectorAll('.stat-number');
     if(!numbers.length) return;
 
     function animateOne(el){
       var target = parseFloat(el.dataset.target);
       var decimals = parseInt(el.dataset.decimals || '0', 10);
-      var duration = 1200;
+      var duration = 2000;
       var start = null;
 
       function step(timestamp){
@@ -1186,17 +1540,23 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       numbers.forEach(animateOne);
     }
-  })();
+  }
+  runWhenIdle(initStatCounters);
 
   // --- ماژول ۱۰: کانواس بارش دیجیتال طلایی (پس‌زمینه‌ی هرو) ---
   // همکاران عزیز، این افکت عمداً سنگین نیست: تعداد ذره‌ها به عرض کانواس
   // محدوده، فقط وقتی هرو در دید کاربره اجرا می‌شه (IntersectionObserver)،
   // و اگه prefers-reduced-motion فعال باشه، حتی یک فریم هم انیمیت نمی‌کنیم.
+  // یک گارد دیگه هم اضافه شد: اگه کاربر «صرفه‌جویی داده» (Data Saver) رو
+  // در مرورگرش روشن کرده باشه، این یعنی صریحاً گفته «منابعم رو خرج
+  // تزئین نکن» — دقیقاً همون احترامی که به اینترنت محدود ایران در کل
+  // فلسفه‌ی این سایت وعده دادیم، اینجا هم رعایت می‌کنیم.
   (function initHeroRain(){
     var canvas = document.getElementById('hero-rain');
     var hero = canvas ? canvas.closest('.hero') : null;
     if(!canvas || !hero) return;
     if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(navigator.connection && navigator.connection.saveData) return;
 
     var ctx = canvas.getContext('2d');
     var drops = [];
@@ -1256,7 +1616,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     resize();
-    window.addEventListener('resize', resize);
+    var resizeTimer = null;
+    window.addEventListener('resize', function(){
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resize, 150);
+    });
     document.addEventListener('visibilitychange', function(){
       if(document.hidden) stop(); else start();
     });
